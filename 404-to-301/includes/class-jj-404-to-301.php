@@ -56,13 +56,13 @@ final class JJ_404_to_301 {
 			// Required only when admin.
 			if ( is_admin() ) {
 				// Init admin class..
-				self::$instance->admin = new JJ4T3_Admin();
+				new JJ4T3_Admin();
 			}
 
 			// Required only when not admin.
 			if ( ! is_admin() ) {
 				// Init 404 class.
-				self::$instance->actions = new JJ4T3_404_Actions();
+				new JJ4T3_404_Actions();
 			}
 		}
 

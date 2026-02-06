@@ -466,13 +466,28 @@ class JJ4T3_Log_Listing extends WP_List_Table {
 	 * @return string
 	 */
 	public function column_date( $item ) {
-		$delete_nonce = wp_create_nonce( 'bulk-' . $this->_args['plural'] );
-
 		$title = mysql2date( 'j M Y, g:i a', $item['date'] );
 
 		$confirm = __( 'Are you sure you want to delete this item?', '404-to-301' );
 
-		$actions = array( 'delete' => sprintf( '<a href="?page=jj4t3-logs&action=%s&bulk-delete=%s&_wpnonce=%s" onclick="return confirm(\'%s\');">' . __( 'Delete', '404-to-301' ) . '</a>', 'delete', absint( $item['id'] ), $delete_nonce, $confirm ) );
+		$url = add_query_arg(
+			array(
+				'page'        => 'jj4t3-logs',
+				'bulk-delete' => absint( $item['id'] ),
+				'action'      => 'delete',
+			)
+		);
+
+		// Add nonce.
+		$url = wp_nonce_url( $url, 'bulk-' . $this->_args['plural'] );
+
+		$actions = array(
+			'delete' => sprintf(
+				'<a href="%s" onclick="return confirm(\'%s\');">' . __( 'Delete', '404-to-301' ) . '</a>',
+				esc_url( $url ),
+				$confirm
+			)
+		);
 
 		/**
 		 * Filter to change date colum html content.
@@ -766,7 +781,7 @@ class JJ4T3_Log_Listing extends WP_List_Table {
 		$nonce = jj4t3_from_request( '_wpnonce' );
 
 		// Nonce verification.
-		if ( empty( $nonce ) || ! wp_verify_nonce( $nonce, 'bulk-404errorlogs' ) ) {
+		if ( empty( $nonce ) || ! wp_verify_nonce( $nonce, 'bulk-' . $this->_args['plural'] ) ) {
 			return false;
 		}
 

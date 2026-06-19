@@ -1,383 +1,1730 @@
-# Copyright (C) 2021 Joel James
+# Copyright (C) 2026 Joel James
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: 404 to 301 - Redirect, Log and Notify 404 Errors 3.1.1\n"
-"Report-Msgid-Bugs-To: https://duckdev.com/products/404-to-301/\n"
-"POT-Creation-Date: 2021-11-15 07:07:12+00:00\n"
+"Project-Id-Version: 404 to 301 - Redirect Manager, 404 Error Logs & Notifications 4.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/404-to-301\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Joel James <me@joelsays.com>\n"
-"Language-Team: Joel James <me@joelsays.com>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n 1.0.3\n"
+"POT-Creation-Date: 2026-06-19T12:27:15+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: 404-to-301\n"
 
-#: includes/admin/class-jj4t3-admin.php:149
-msgid "Custom Redirect"
+#. Plugin Name of the plugin
+#: 404-to-301.php
+msgid "404 to 301 - Redirect Manager, 404 Error Logs & Notifications"
 msgstr ""
 
-#: includes/admin/class-jj4t3-admin.php:174
-#: includes/admin/class-jj4t3-admin.php:255
-#: includes/admin/class-jj4t3-log-listing.php:46
-msgid "404 Error Logs"
+#. Plugin URI of the plugin
+#: 404-to-301.php
+msgid "https://wordpress.org/plugins/404-to-301/"
 msgstr ""
 
-#: includes/admin/class-jj4t3-admin.php:175
-msgid "404 Errors"
+#. Description of the plugin
+#: 404-to-301.php
+msgid "Custom redirects (301, 302, 307), automatic 404 redirection, full 404 error logs and email alerts — a complete redirect & 404 toolkit."
 msgstr ""
 
-#: includes/admin/class-jj4t3-admin.php:192
-msgid "404 to 301 Settings"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:193
-msgid "404 Settings"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:229
-msgid "Error Logs"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:314 includes/admin/views/admin.php:21
-msgid "404 to 301"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:383 includes/admin/views/admin.php:27
-msgid "Settings"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:384
-msgid "Logs"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:467
-msgid ""
-"Hey %1$s, I noticed you've been using %2$s404 to 301%3$s for more than 1 "
-"week – that’s awesome! Could you please do me a BIG favor and give it a "
-"5-star rating on WordPress? Just to help us spread the word and boost our "
-"motivation."
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:468
-msgid "there"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:475
-msgid "Ok, you deserve it"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:478
-msgid "Nope, maybe later"
-msgstr ""
-
-#: includes/admin/class-jj4t3-admin.php:481
-msgid "I already did"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:45
-msgid "404 Error Log"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:325
-#: includes/functions/jj4t3-general-functions.php:317
-msgid "Date"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:326
-#: includes/functions/jj4t3-general-functions.php:318
-#: includes/public/class-jj4t3-404-email.php:193
-msgid "404 Path"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:327
-#: includes/functions/jj4t3-general-functions.php:319
-msgid "From"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:328
-#: includes/functions/jj4t3-general-functions.php:320
-#: includes/public/class-jj4t3-404-email.php:198
-msgid "IP Address"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:329
-#: includes/functions/jj4t3-general-functions.php:321
-msgid "User Agent"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:330
-msgid "Customization"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:387
-msgid "Ah! You are so clean that you still got ZERO errors."
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:470
-msgid "Are you sure you want to delete this item?"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:472
-msgid "Delete"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:614
-#: includes/admin/views/custom-redirect.php:18
-#: includes/admin/views/custom-redirect.php:26
-#: includes/admin/views/custom-redirect.php:34
-msgid "Default"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:616
-msgid "Customize"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:683
-msgid "Delete Selected"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:684
-msgid "Delete All"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:685
-msgid "Delete All (Keep redirects)"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:721
-msgid "Group by"
-msgstr ""
-
-#: includes/admin/class-jj4t3-log-listing.php:726
-msgid "Apply"
-msgstr ""
-
-#: includes/admin/views/admin.php:21
-msgid "by <a href=\"%s\">Joel James</a>"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:12
-msgid "Redirecting from"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:16
-#: includes/functions/jj4t3-general-functions.php:322
-msgid "Redirect"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:19
-#: includes/admin/views/custom-redirect.php:27
-#: includes/admin/views/custom-redirect.php:35
-msgid "Enable"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:20
-#: includes/admin/views/custom-redirect.php:28
-#: includes/admin/views/custom-redirect.php:36
-msgid "Disable"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:24
-msgid "Error logging"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:32
-msgid "Email alert"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:40
-#: includes/admin/views/settings.php:31
-msgid "Redirect to"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:43
-msgid ""
-"Enter the url if you want to set custom redirect for above 404 path. Enter "
-"the full url including http://. Leave empty if you want to follow default "
-"settings."
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:52
-#: includes/admin/views/settings.php:18
-msgid "Redirect type"
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:59
-msgid "Select redirect type to override default one."
-msgstr ""
-
-#: includes/admin/views/custom-redirect.php:66
-msgid "Save Redirect"
-msgstr ""
-
-#: includes/admin/views/settings.php:25
-msgid "Learn more"
-msgstr ""
-
-#: includes/admin/views/settings.php:25
-msgid "about these redirect types"
-msgstr ""
-
-#: includes/admin/views/settings.php:34 includes/admin/views/settings.php:38
-msgid "Existing Page"
-msgstr ""
-
-#: includes/admin/views/settings.php:35 includes/admin/views/settings.php:39
-#: includes/admin/views/settings.php:53
-msgid "Custom URL"
-msgstr ""
-
-#: includes/admin/views/settings.php:36 includes/admin/views/settings.php:40
-msgid "No Redirect"
-msgstr ""
-
-#: includes/admin/views/settings.php:38
-msgid "Select any WordPress page as a 404 page"
-msgstr ""
-
-#: includes/admin/views/settings.php:39
-msgid "Redirect 404 requests to a specific URL"
-msgstr ""
-
-#: includes/admin/views/settings.php:40
-msgid "To disable redirect"
-msgstr ""
-
-#: includes/admin/views/settings.php:41
-msgid ""
-"You can override this by setting individual custom redirects from error "
-"logs list."
-msgstr ""
-
-#: includes/admin/views/settings.php:45
-msgid "Select the page"
-msgstr ""
-
-#: includes/admin/views/settings.php:48
-msgid "The default 404 page will be replaced by the page you choose in this list."
-msgstr ""
-
-#: includes/admin/views/settings.php:49
-msgid ""
-"You can <a href=\"%s\" target=\"_blank\">create a custom 404</a> page and "
-"assign that page here."
-msgstr ""
-
-#: includes/admin/views/settings.php:56
-msgid "Enter any url (including http://)"
-msgstr ""
-
-#: includes/admin/views/settings.php:60
-msgid "Log 404 Errors"
-msgstr ""
-
-#: includes/admin/views/settings.php:63
-msgid "Enable/Disable Logging"
-msgstr ""
-
-#: includes/admin/views/settings.php:67
-msgid "Email notifications"
-msgstr ""
-
-#: includes/admin/views/settings.php:70
-msgid ""
-"If you check this, an email will be sent on every 404 log on the admin "
-"email account."
-msgstr ""
-
-#: includes/admin/views/settings.php:74
-msgid "Disable URL guessing"
-msgstr ""
-
-#: includes/admin/views/settings.php:77
-msgid ""
-"If you disable URL guessing, it will stop WordPress from autocorrecting "
-"incorrect URLs. %1$sLearn more%2$s about canonical redirect."
-msgstr ""
-
-#: includes/admin/views/settings.php:81
-msgid "Email address"
-msgstr ""
-
-#: includes/admin/views/settings.php:85
-msgid "Change the recipient email address for error log notifications."
-msgstr ""
-
-#: includes/admin/views/settings.php:89
-msgid "Exclude paths"
-msgstr ""
-
-#: includes/admin/views/settings.php:92
-msgid "If you want to exclude few paths from error logs, enter here. One per line."
-msgstr ""
-
-#: includes/admin/views/settings.php:97
-msgid "Save settings"
-msgstr ""
-
-#: includes/functions/jj4t3-general-functions.php:283
-msgid "301 Redirect (SEO)"
-msgstr ""
-
-#: includes/functions/jj4t3-general-functions.php:284
-msgid "302 Redirect"
-msgstr ""
-
-#: includes/functions/jj4t3-general-functions.php:285
-msgid "307 Redirect"
-msgstr ""
-
-#: includes/public/class-jj4t3-404-email.php:141
-msgid "Snap! One more 404 on "
-msgstr ""
-
-#: includes/public/class-jj4t3-404-email.php:189
-msgid "Bummer! You have one more 404"
-msgstr ""
-
-#: includes/public/class-jj4t3-404-email.php:203
-msgid "Time"
-msgstr ""
-
-#: includes/public/class-jj4t3-404-email.php:208
-msgid "Referral Page"
-msgstr ""
-
-#: includes/public/class-jj4t3-404-email.php:213
-msgid "Alert sent by the %s404 to 301%s plugin for WordPress."
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "404 to 301 - Redirect, Log and Notify 404 Errors"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://duckdev.com/products/404-to-301/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid ""
-"Automatically redirect all <strong>404 errors</strong> to any page using "
-"<strong>301 redirect for SEO</strong>. You can <strong>redirect and "
-"log</strong> every 404 errors. No more 404 errors in Webmaster tool."
-msgstr ""
-
-#. Author of the plugin/theme
+#. Author of the plugin
+#: 404-to-301.php
 msgid "Joel James"
 msgstr ""
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
+#: 404-to-301.php
 msgid "https://duckdev.com/"
+msgstr ""
+
+#. translators: 1: required PHP version, 2: current PHP version.
+#: 404-to-301.php:42
+msgid "404 to 301 requires PHP %1$s or higher. Your site is running PHP %2$s."
+msgstr ""
+
+#: 404-to-301.php:97
+msgid "404 to 301: Composer dependencies are missing. Run `composer install` inside the plugin directory."
+msgstr ""
+
+#: includes/addons/class-catalog.php:179
+msgid "Logs Exporter"
+msgstr ""
+
+#: includes/addons/class-catalog.php:180
+msgid "One-click CSV export for the 404 to 301 plugin's error log — filter-aware, streamed, and ready for Excel, Sheets or Numbers."
+msgstr ""
+
+#: includes/addons/class-catalog.php:183
+msgid "Redirects Importer"
+msgstr ""
+
+#: includes/addons/class-catalog.php:184
+msgid "Bulk import custom redirects into 404 to 301 from CSV files or migrate them in from other redirect plugins like Redirection by John Godley and 301 Redirects – Redirect Manager by WebFactory — no manual re-entry."
+msgstr ""
+
+#: includes/admin/class-links.php:56
+#: includes/admin/class-menu.php:93
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-links.php:57
+#: assets/src/modules/settings/tabs/index.js:24
+msgid "Logs"
+msgstr ""
+
+#: includes/admin/class-links.php:58
+#: includes/admin/class-menu.php:63
+#: includes/admin/class-menu.php:75
+#: assets/src/modules/settings/tabs/index.js:20
+msgid "Redirects"
+msgstr ""
+
+#: includes/admin/class-links.php:81
+#: assets/src/modules/addons/support.js:12
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin/class-links.php:84
+#: includes/admin/class-menu.php:102
+#: assets/src/modules/addons/index.js:20
+msgid "Add-ons"
+msgstr ""
+
+#: includes/admin/class-links.php:89
+#: assets/src/modules/addons/index.js:24
+msgid "Support"
+msgstr ""
+
+#: includes/admin/class-menu.php:62
+msgid "Custom Redirects — 404 to 301"
+msgstr ""
+
+#: includes/admin/class-menu.php:74
+msgid "Custom Redirects"
+msgstr ""
+
+#: includes/admin/class-menu.php:83
+msgid "404 Error Logs"
+msgstr ""
+
+#: includes/admin/class-menu.php:84
+#: assets/src/modules/settings/tabs/logs.js:98
+msgid "404 Logs"
+msgstr ""
+
+#: includes/admin/class-menu.php:92
+msgid "404 to 301 Settings"
+msgstr ""
+
+#: includes/admin/class-menu.php:101
+msgid "404 to 301 Add-ons"
+msgstr ""
+
+#: includes/admin/class-site-health.php:116
+msgid "Plugin version"
+msgstr ""
+
+#: includes/admin/class-site-health.php:120
+msgid "Database schema version"
+msgstr ""
+
+#: includes/admin/class-site-health.php:124
+msgid "Redirect 404s"
+msgstr ""
+
+#: includes/admin/class-site-health.php:128
+msgid "Default redirect type"
+msgstr ""
+
+#: includes/admin/class-site-health.php:132
+msgid "Default redirect target"
+msgstr ""
+
+#: includes/admin/class-site-health.php:136
+msgid "Default redirect URL"
+msgstr ""
+
+#: includes/admin/class-site-health.php:141
+msgid "Disable URL guessing"
+msgstr ""
+
+#: includes/admin/class-site-health.php:145
+#: assets/src/modules/settings/tabs/logs.js:102
+msgid "Log 404 errors"
+msgstr ""
+
+#: includes/admin/class-site-health.php:149
+msgid "Skip bot 404s"
+msgstr ""
+
+#: includes/admin/class-site-health.php:153
+msgid "Logged 404 rows"
+msgstr ""
+
+#: includes/admin/class-site-health.php:157
+msgid "Logs table size"
+msgstr ""
+
+#: includes/admin/class-site-health.php:161
+msgid "Redirect rules"
+msgstr ""
+
+#: includes/admin/class-site-health.php:165
+msgid "Email notifications"
+msgstr ""
+
+#: includes/admin/class-site-health.php:169
+msgid "Email recipients"
+msgstr ""
+
+#: includes/admin/class-site-health.php:173
+#: assets/src/modules/settings/tabs/general.js:116
+msgid "Track admin 404s"
+msgstr ""
+
+#: includes/admin/class-site-health.php:177
+msgid "Mask logged IPs"
+msgstr ""
+
+#: includes/admin/class-site-health.php:181
+msgid "Logs Cleaner addon"
+msgstr ""
+
+#: includes/admin/class-site-health.php:185
+msgid "Logs Cleaner next run"
+msgstr ""
+
+#: includes/admin/class-site-health.php:189
+msgid "Email Reports next run"
+msgstr ""
+
+#: includes/admin/class-site-health.php:193
+msgid "Conflicting redirect plugins"
+msgstr ""
+
+#: includes/admin/class-site-health.php:199
+#: includes/admin/class-site-health.php:731
+msgid "404 to 301"
+msgstr ""
+
+#: includes/admin/class-site-health.php:200
+msgid "Diagnostic information for the 404 to 301 plugin."
+msgstr ""
+
+#: includes/admin/class-site-health.php:228
+msgid "404 to 301 logs table size"
+msgstr ""
+
+#: includes/admin/class-site-health.php:229
+msgid "404 to 301 Logs Cleaner cron"
+msgstr ""
+
+#: includes/admin/class-site-health.php:230
+msgid "404 to 301 Email Reports cron"
+msgstr ""
+
+#: includes/admin/class-site-health.php:231
+msgid "404 to 301 conflicting plugins"
+msgstr ""
+
+#: includes/admin/class-site-health.php:232
+#: includes/admin/class-site-health.php:397
+msgid "404 to 301 logging state"
+msgstr ""
+
+#: includes/admin/class-site-health.php:233
+msgid "404 to 301 database schema"
+msgstr ""
+
+#: includes/admin/class-site-health.php:265
+msgid "Your 404 logs table is a healthy size"
+msgstr ""
+
+#: includes/admin/class-site-health.php:266
+msgid "The 404 to 301 logs table is well within recommended limits."
+msgstr ""
+
+#. translators: %s: number of rows in the logs table.
+#: includes/admin/class-site-health.php:272
+msgid "Your 404 to 301 logs table currently holds %s rows. Large log tables slow down queries on the Logs screen and bloat your database backups."
+msgstr ""
+
+#: includes/admin/class-site-health.php:277
+msgid "The Logs Cleaner addon is active — set a cleanup policy to keep the table trimmed automatically."
+msgstr ""
+
+#: includes/admin/class-site-health.php:278
+msgid "Configure Auto Cleanup"
+msgstr ""
+
+#: includes/admin/class-site-health.php:281
+msgid "The Logs Cleaner addon can prune old entries automatically on a schedule you choose."
+msgstr ""
+
+#: includes/admin/class-site-health.php:282
+msgid "Get the Logs Cleaner addon"
+msgstr ""
+
+#: includes/admin/class-site-health.php:289
+msgid "Your 404 logs table is getting large"
+msgstr ""
+
+#: includes/admin/class-site-health.php:309
+msgid "Logs Cleaner is not installed"
+msgstr ""
+
+#: includes/admin/class-site-health.php:310
+msgid "No cron health check needed — the Logs Cleaner addon is not active."
+msgstr ""
+
+#: includes/admin/class-site-health.php:317
+msgid "Logs Cleaner"
+msgstr ""
+
+#: includes/admin/class-site-health.php:334
+msgid "Email Reports cron is not scheduled"
+msgstr ""
+
+#: includes/admin/class-site-health.php:335
+msgid "No cron health check needed — the Email Reports addon is not active or not configured to send reports."
+msgstr ""
+
+#: includes/admin/class-site-health.php:342
+msgid "Email Reports"
+msgstr ""
+
+#: includes/admin/class-site-health.php:365
+msgid "No conflicting redirect plugins detected"
+msgstr ""
+
+#: includes/admin/class-site-health.php:366
+msgid "Nothing else on this site is fighting 404 to 301 for control of redirects."
+msgstr ""
+
+#: includes/admin/class-site-health.php:373
+msgid "Another redirect plugin is active"
+msgstr ""
+
+#. translators: %s: comma-separated plugin names.
+#: includes/admin/class-site-health.php:376
+msgid "404 to 301 detected another redirect-handling plugin running alongside it: %s. Running two redirect plugins can cause duplicate logging, redirect loops or unpredictable precedence. Disable one of them if the duplication is unintentional."
+msgstr ""
+
+#: includes/admin/class-site-health.php:398
+msgid "Settings are not yet initialised."
+msgstr ""
+
+#: includes/admin/class-site-health.php:409
+msgid "404 logging is disabled"
+msgstr ""
+
+#: includes/admin/class-site-health.php:410
+msgid "404 to 301 is actively redirecting visitors away from broken URLs, but logging is turned off — you have no visibility into which URLs are 404ing. Re-enable logging on the Settings page if you want to see what is breaking."
+msgstr ""
+
+#: includes/admin/class-site-health.php:411
+#: includes/admin/class-site-health.php:494
+#: includes/admin/class-site-health.php:535
+msgid "Open Settings"
+msgstr ""
+
+#: includes/admin/class-site-health.php:419
+msgid "404 to 301 logging is healthy"
+msgstr ""
+
+#: includes/admin/class-site-health.php:420
+msgid "Logging and redirect settings are consistent."
+msgstr ""
+
+#: includes/admin/class-site-health.php:443
+msgid "404 to 301 database schema is up to date"
+msgstr ""
+
+#: includes/admin/class-site-health.php:444
+msgid "The plugin database tables match the expected schema version."
+msgstr ""
+
+#: includes/admin/class-site-health.php:451
+msgid "404 to 301 database schema is out of date"
+msgstr ""
+
+#. translators: 1: stored DB version, 2: expected DB version.
+#: includes/admin/class-site-health.php:454
+msgid "The stored database schema version (%1$s) is older than the version this plugin expects (%2$s). A previous upgrade may have been interrupted. Visit any 404 to 301 admin page to trigger the upgrader again."
+msgstr ""
+
+#. translators: %s: addon name.
+#: includes/admin/class-site-health.php:486
+msgid "%s cron is not scheduled"
+msgstr ""
+
+#. translators: %s: addon name.
+#: includes/admin/class-site-health.php:491
+msgid "The %s cron event is missing from WP-Cron. This usually means the addon was deactivated mid-cycle or another plugin cleared the schedule. Re-saving the addon settings will reschedule it."
+msgstr ""
+
+#. translators: %s: addon name.
+#: includes/admin/class-site-health.php:509
+msgid "%s cron is healthy"
+msgstr ""
+
+#. translators: 1: addon name, 2: next-run timestamp.
+#: includes/admin/class-site-health.php:514
+msgid "The %1$s cron is scheduled and on time. Next run: %2$s."
+msgstr ""
+
+#. translators: %s: addon name.
+#: includes/admin/class-site-health.php:526
+msgid "%s cron is overdue"
+msgstr ""
+
+#. translators: 1: addon name, 2: scheduled-for timestamp.
+#: includes/admin/class-site-health.php:531
+msgid "The %1$s cron event was due at %2$s but has not run. WP-Cron only fires when your site receives traffic; if traffic is low or DISABLE_WP_CRON is set without a real cron job, scheduled tasks will stall. Configure a real system cron, or check for a plugin blocking WP-Cron."
+msgstr ""
+
+#: includes/admin/class-site-health.php:578
+msgid "None detected"
+msgstr ""
+
+#: includes/admin/class-site-health.php:671
+msgid "Not scheduled"
+msgstr ""
+
+#: includes/admin/class-site-health.php:699
+msgid "Yes"
+msgstr ""
+
+#: includes/admin/class-site-health.php:699
+msgid "No"
+msgstr ""
+
+#: includes/api/class-addons.php:174
+#: includes/api/class-addons.php:205
+msgid "Licensing is not configured."
+msgstr ""
+
+#: includes/api/class-logs.php:184
+#: includes/api/class-logs.php:205
+#: includes/cli/class-logs.php:134
+msgid "Log not found."
+msgstr ""
+
+#: includes/api/class-logs.php:259
+msgid "Could not delete the log."
+msgstr ""
+
+#: includes/api/class-logs.php:381
+#: assets/src/modules/logs/fields.js:8
+msgid "Open"
+msgstr ""
+
+#: includes/api/class-logs.php:382
+#: assets/src/modules/logs/fields.js:9
+msgid "Ignored"
+msgstr ""
+
+#: includes/api/class-logs.php:383
+#: assets/src/modules/logs/fields.js:10
+msgid "Fixed"
+msgstr ""
+
+#: includes/api/class-logs.php:384
+#: assets/src/modules/logs/fields.js:11
+#: assets/src/modules/logs/list.js:102
+#: assets/src/modules/logs/view-modal.js:92
+msgid "Custom redirect"
+msgstr ""
+
+#: includes/api/class-redirects.php:182
+#: includes/api/class-redirects.php:234
+#: includes/cli/class-redirects.php:137
+msgid "Redirect not found."
+msgstr ""
+
+#: includes/api/class-redirects.php:212
+#: includes/cli/class-redirects.php:232
+msgid "Could not create the redirect."
+msgstr ""
+
+#: includes/api/class-redirects.php:274
+msgid "Could not delete the redirect."
+msgstr ""
+
+#. translators: %s: source URL/path of the existing redirect.
+#: includes/api/class-redirects.php:384
+msgid "A redirect for \"%s\" already exists. Edit the existing rule instead of creating a duplicate."
+msgstr ""
+
+#: includes/api/class-settings.php:181
+msgid "Invalid import payload — expected an object."
+msgstr ""
+
+#: includes/api/class-settings.php:211
+msgid "Import payload contained no usable settings."
+msgstr ""
+
+#: includes/api/class-settings.php:232
+msgid "No settings changed — the imported values matched what was already on this site."
+msgstr ""
+
+#: includes/class-freemius.php:376
+msgid "This add-on is not registered or its license public key is missing."
+msgstr ""
+
+#: includes/class-freemius.php:385
+#: includes/class-freemius.php:416
+msgid "License service is not available for this add-on."
+msgstr ""
+
+#: includes/class-freemius.php:407
+msgid "This add-on is not registered."
+msgstr ""
+
+#: includes/class-settings.php:313
+msgid "404 to 301 plugin settings."
+msgstr ""
+
+#. translators: 1: shown rows, 2: total rows
+#: includes/cli/class-logs.php:104
+msgid "Showing %1$d of %2$d logs."
+msgstr ""
+
+#: includes/cli/class-logs.php:186
+msgid "`--to` must be one of: open, ignored, fixed."
+msgstr ""
+
+#. translators: 1: id, 2: status
+#: includes/cli/class-logs.php:193
+msgid "Log #%1$d marked as %2$s."
+msgstr ""
+
+#: includes/cli/class-logs.php:199
+msgid "Could not update the log."
+msgstr ""
+
+#: includes/cli/class-logs.php:231
+msgid "Delete every log row?"
+msgstr ""
+
+#. translators: %d: number of rows
+#: includes/cli/class-logs.php:236
+#: includes/cli/class-logs.php:253
+#: includes/cli/class-logs.php:270
+msgid "Deleted %d logs."
+msgstr ""
+
+#. translators: 1: rows pruned, 2: days
+#: includes/cli/class-logs.php:298
+msgid "Pruned %1$d rows older than %2$d days."
+msgstr ""
+
+#. translators: %d: redirects copied
+#: includes/cli/class-migrate.php:94
+msgid "Phase 1 complete — %d custom redirects migrated."
+msgstr ""
+
+#: includes/cli/class-migrate.php:101
+msgid "Done."
+msgstr ""
+
+#: includes/cli/class-migrate.php:110
+msgid "Nothing to migrate."
+msgstr ""
+
+#: includes/cli/class-migrate.php:114
+msgid "Migrating logs"
+msgstr ""
+
+#. translators: %d: chunks
+#: includes/cli/class-migrate.php:142
+msgid "Migration finished after %d chunk(s)."
+msgstr ""
+
+#: includes/cli/class-migrate.php:161
+msgid "Migration aborted. The legacy table was left in place."
+msgstr ""
+
+#. translators: 1: shown, 2: total
+#: includes/cli/class-redirects.php:107
+msgid "Showing %1$d of %2$d redirects."
+msgstr ""
+
+#: includes/cli/class-redirects.php:208
+msgid "--source and --target are both required."
+msgstr ""
+
+#. translators: %d: id
+#: includes/cli/class-redirects.php:227
+msgid "Redirect created (id %d)."
+msgstr ""
+
+#: includes/cli/class-redirects.php:303
+msgid "Nothing to update — pass at least one --field."
+msgstr ""
+
+#. translators: %d: id
+#: includes/cli/class-redirects.php:311
+msgid "Redirect #%d updated."
+msgstr ""
+
+#: includes/cli/class-redirects.php:316
+msgid "Could not update the redirect."
+msgstr ""
+
+#: includes/cli/class-redirects.php:345
+msgid "Delete every redirect?"
+msgstr ""
+
+#. translators: %d: rows
+#: includes/cli/class-redirects.php:350
+#: includes/cli/class-redirects.php:367
+msgid "Deleted %d redirects."
+msgstr ""
+
+#. translators: %s: setting key.
+#: includes/cli/class-settings.php:75
+msgid "Setting \"%s\" not found."
+msgstr ""
+
+#: includes/cli/class-settings.php:109
+msgid "Provide a setting key."
+msgstr ""
+
+#. translators: %s: setting key
+#: includes/cli/class-settings.php:122
+msgid "Updated setting \"%s\"."
+msgstr ""
+
+#: includes/cli/class-settings.php:144
+msgid "Reset every setting to its default?"
+msgstr ""
+
+#: includes/cli/class-settings.php:149
+msgid "Settings reset."
+msgstr ""
+
+#. translators: %s: site name
+#: includes/front/actions/class-email.php:118
+msgid "[%s] 404 error detected"
+msgstr ""
+
+#. translators: %s: site name.
+#: includes/front/actions/class-email.php:148
+msgid "A new 404 error has been detected on %s:"
+msgstr ""
+
+#: includes/front/actions/class-email.php:152
+msgid "URL"
+msgstr ""
+
+#. translators: %d: total number of times this URL has 404'd.
+#: includes/front/actions/class-email.php:155
+msgid "%d hit so far"
+msgid_plural "%d hits so far"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/front/actions/class-email.php:158
+msgid "Time"
+msgstr ""
+
+#: includes/front/actions/class-email.php:159
+msgid "Referer"
+msgstr ""
+
+#: includes/front/actions/class-email.php:159
+msgid "(none)"
+msgstr ""
+
+#: includes/front/actions/class-email.php:160
+msgid "IP"
+msgstr ""
+
+#: includes/front/actions/class-email.php:160
+msgid "(masked)"
+msgstr ""
+
+#: includes/front/actions/class-email.php:161
+msgid "User-Agent"
+msgstr ""
+
+#: includes/front/actions/class-email.php:162
+#: assets/src/modules/logs/view-modal.js:83
+msgid "Method"
+msgstr ""
+
+#: includes/front/actions/class-email.php:164
+msgid "Review and manage 404 errors here:"
+msgstr ""
+
+#: includes/utils/class-helpers.php:61
+#: assets/src/common/redirect-statuses.js:29
+msgid "301 — Moved Permanently (SEO)"
+msgstr ""
+
+#: includes/utils/class-helpers.php:65
+#: assets/src/common/redirect-statuses.js:32
+msgid "302 — Found"
+msgstr ""
+
+#: includes/utils/class-helpers.php:69
+#: assets/src/common/redirect-statuses.js:33
+msgid "303 — See Other"
+msgstr ""
+
+#: includes/utils/class-helpers.php:73
+#: assets/src/common/redirect-statuses.js:36
+msgid "307 — Temporary Redirect"
+msgstr ""
+
+#: includes/utils/class-helpers.php:77
+#: assets/src/common/redirect-statuses.js:41
+msgid "308 — Permanent Redirect"
+msgstr ""
+
+#: includes/utils/class-helpers.php:81
+#: assets/src/common/redirect-statuses.js:44
+msgid "410 — Gone"
+msgstr ""
+
+#: includes/utils/class-helpers.php:85
+#: assets/src/common/redirect-statuses.js:47
+msgid "451 — Unavailable for Legal Reasons"
+msgstr ""
+
+#: includes/utils/class-helpers.php:176
+#: assets/src/modules/settings/tabs/redirects.js:102
+msgid "A custom URL"
+msgstr ""
+
+#: includes/utils/class-helpers.php:177
+#: assets/src/modules/settings/tabs/redirects.js:106
+msgid "An existing page"
+msgstr ""
+
+#: includes/utils/class-helpers.php:178
+#: assets/src/modules/redirects/form-fields.js:81
+#: assets/src/modules/settings/tabs/redirects.js:110
+msgid "No redirect"
+msgstr ""
+
+#: assets/src/common/bulk-actions.js:114
+msgid "Bulk actions"
+msgstr ""
+
+#: assets/src/common/error-boundary.js:43
+msgid "Something went wrong while rendering this page."
+msgstr ""
+
+#: assets/src/common/footer.js:21
+msgid "Saving…"
+msgstr ""
+
+#: assets/src/common/footer.js:22
+msgid "Save Changes"
+msgstr ""
+
+#: assets/src/common/page-select.js:19
+msgid "Page #%d"
+msgstr ""
+
+#: assets/src/common/page-select.js:109
+msgid "Search for a page…"
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:127
+msgid "Failed to load logs."
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:150
+#: assets/src/hooks/use-logs.js:230
+msgid "Log updated."
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:155
+msgid "Failed to update log."
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:189
+msgid "Logs deleted."
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:190
+msgid "Log deleted."
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:196
+msgid "Failed to delete log(s)."
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:229
+msgid "Logs updated."
+msgstr ""
+
+#: assets/src/hooks/use-logs.js:236
+msgid "Failed to update log(s)."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:82
+msgid "Failed to load redirects."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:105
+msgid "Redirect created."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:111
+msgid "Failed to create redirect."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:134
+#: assets/src/hooks/use-redirects.js:225
+msgid "Redirect updated."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:140
+msgid "Failed to update redirect."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:182
+msgid "Redirects deleted."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:183
+msgid "Redirect deleted."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:190
+msgid "Failed to delete redirect(s)."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:224
+msgid "Redirects updated."
+msgstr ""
+
+#: assets/src/hooks/use-redirects.js:232
+msgid "Failed to update redirect(s)."
+msgstr ""
+
+#: assets/src/hooks/use-settings.js:67
+msgid "Settings saved."
+msgstr ""
+
+#: assets/src/hooks/use-settings.js:71
+msgid "Could not save settings."
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:45
+msgid "Download"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:47
+msgid "Buy Now"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:49
+msgid "Get it"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:88
+#: assets/src/modules/addons/addon-card.js:90
+#: assets/src/modules/redirects/fields.js:27
+#: assets/src/modules/redirects/fields.js:130
+#: assets/src/modules/redirects/form-fields.js:146
+msgid "Active"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:104
+msgid "Premium"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:108
+msgid "Free"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:144
+msgid "Installed"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:152
+msgid "Manage License"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:153
+#: assets/src/modules/addons/license-modal.js:164
+msgid "Activate License"
+msgstr ""
+
+#: assets/src/modules/addons/addon-card.js:170
+msgid "More details"
+msgstr ""
+
+#: assets/src/modules/addons/catalog.js:61
+msgid "Refreshing…"
+msgstr ""
+
+#: assets/src/modules/addons/catalog.js:62
+msgid "Refresh"
+msgstr ""
+
+#: assets/src/modules/addons/catalog.js:73
+msgid "No add-ons available yet. Try the Refresh button above or check back later."
+msgstr ""
+
+#: assets/src/modules/addons/components/license-badge.js:21
+msgid "Licensed"
+msgstr ""
+
+#: assets/src/modules/addons/components/license-badge.js:23
+msgid "Unlicensed"
+msgstr ""
+
+#: assets/src/modules/addons/index.js:59
+msgid "404 to 301 - Add-ons"
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:65
+msgid "Enter a license key first."
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:85
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#. translators: %s: addon title.
+#: assets/src/modules/addons/license-modal.js:93
+msgid "Manage license — %s"
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:103
+msgid "A license is currently active for this add-on. Deactivate it to enter a different key."
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:110
+msgid "Paste your license key below to activate this add-on."
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:121
+msgid "License key"
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:128
+msgid "Enter license key"
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:144
+#: assets/src/modules/logs/configure-modal.js:170
+#: assets/src/modules/logs/delete-modal.js:55
+#: assets/src/modules/redirects/delete-modal.js:51
+#: assets/src/modules/redirects/edit-modal.js:147
+msgid "Cancel"
+msgstr ""
+
+#: assets/src/modules/addons/license-modal.js:163
+msgid "Deactivate License"
+msgstr ""
+
+#: assets/src/modules/addons/support.js:17
+msgid "Support Forums"
+msgstr ""
+
+#: assets/src/modules/addons/support.js:22
+msgid "Priority Support"
+msgstr ""
+
+#: assets/src/modules/addons/support.js:38
+msgid "About Us"
+msgstr ""
+
+#: assets/src/modules/addons/support.js:43
+msgid "WP.org Profile"
+msgstr ""
+
+#: assets/src/modules/addons/support.js:82
+msgid "Support Information"
+msgstr ""
+
+#: assets/src/modules/addons/support.js:84
+msgid "Access our detailed documentation to handle most situations. For human feedback or community help, visit our wp.org forum. Premium customers receive priority support by contacting us directly."
+msgstr ""
+
+#: assets/src/modules/addons/support.js:92
+msgid "About the Author"
+msgstr ""
+
+#: assets/src/modules/addons/support.js:94
+msgid "Hey, I'm Joel James, a Software Engineer based in Kerala, India. I'm passionate about open source and dedicate a lot of my time to contributing to it. If you like this plugin, I'd encourage you to check out my other WordPress plugins as well!"
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:19
+#: assets/src/modules/logs/view-modal.js:46
+msgid "Global"
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:20
+msgid "Enable"
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:21
+msgid "Disable"
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:39
+msgid "Redirect"
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:41
+msgid "Override the global redirect setting for this URL only."
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:50
+msgid "Email"
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:52
+msgid "Override whether email alerts fire for this URL."
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:141
+msgid "This log has a linked custom redirect. The Redirect override is managed by the redirect row’s Active toggle."
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:150
+msgid "Open Custom Redirects"
+msgstr ""
+
+#: assets/src/modules/logs/configure-modal.js:180
+msgid "Save"
+msgstr ""
+
+#: assets/src/modules/logs/custom-redirect-modal.js:49
+msgid "Custom redirect created."
+msgstr ""
+
+#: assets/src/modules/logs/custom-redirect-modal.js:59
+msgid "Failed to create custom redirect."
+msgstr ""
+
+#. translators: %d: number of selected logs.
+#: assets/src/modules/logs/delete-modal.js:38
+msgid "Delete %d log entry? This cannot be undone."
+msgid_plural "Delete %d log entries? This cannot be undone."
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/src/modules/logs/delete-modal.js:66
+#: assets/src/modules/logs/list.js:143
+#: assets/src/modules/redirects/delete-modal.js:62
+#: assets/src/modules/redirects/list.js:86
+msgid "Delete"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:26
+msgid "Today"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:27
+msgid "Last 7 days"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:28
+msgid "Last 30 days"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:29
+msgid "Last 90 days"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:30
+msgid "Last 12 months"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:44
+msgid "404 Path"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:54
+#: assets/src/modules/logs/view-modal.js:68
+msgid "Referrer"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:71
+msgid "IP Address"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:79
+msgid "User Agent"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:87
+#: assets/src/modules/logs/view-modal.js:86
+#: assets/src/modules/redirects/fields.js:151
+msgid "Hits"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:94
+#: assets/src/modules/logs/view-modal.js:89
+#: assets/src/modules/redirects/fields.js:124
+msgid "Status"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:118
+#: assets/src/modules/logs/view-modal.js:109
+msgid "First seen"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:136
+#: assets/src/modules/logs/view-modal.js:112
+#: assets/src/modules/redirects/fields.js:158
+msgid "Last hit"
+msgstr ""
+
+#: assets/src/modules/logs/index.js:12
+msgid "404 to 301 - 404 Error Logs"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:79
+msgid "View details"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:80
+msgid "Log details"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:89
+msgid "Configure"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:90
+msgid "Configure log"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:113
+msgid "Mark fixed"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:120
+msgid "Mark ignored"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:127
+msgid "Reopen"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:146
+msgid "Delete log"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:195
+msgid "No logs match your filters"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:196
+msgid "Try a different search or date range, or clear your filters to see every logged 404."
+msgstr ""
+
+#: assets/src/modules/logs/list.js:202
+#: assets/src/modules/redirects/list.js:139
+msgid "Clear filters"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:209
+msgid "No 404 errors logged yet"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:210
+msgid "Nice — nothing's broken. When a visitor hits a missing URL, it'll show up here automatically."
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:42
+msgid "Enabled"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:44
+#: assets/src/modules/redirects/fields.js:28
+#: assets/src/modules/redirects/fields.js:131
+msgid "Disabled"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:57
+msgid "A custom redirect is set for this path. Future visits will be redirected automatically."
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:65
+msgid "404 path"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:77
+msgid "IP address"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:80
+msgid "User agent"
+msgstr ""
+
+#. translators: %d: redirect id.
+#: assets/src/modules/logs/view-modal.js:97
+msgid "Linked redirect #%d"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:100
+msgid "Not set"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:103
+msgid "Override: Redirect"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:106
+msgid "Override: Email"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:118
+msgid "Close"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:60
+#: assets/src/modules/migration/banner.js:66
+msgid "Migration complete."
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:68
+msgid "Your old 404 logs have been moved. Reload the page to see them."
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:79
+msgid "Reload page"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:110
+#: assets/src/modules/migration/banner.js:118
+msgid "Migrating old 404 logs in the background…"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:124
+msgid "rows remaining"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:127
+msgid "Using Action Scheduler"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:135
+msgid "Abort migration"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:153
+#: assets/src/modules/migration/banner.js:160
+msgid "Legacy 404 to 301 data detected"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:164
+msgid "There are old 404 logs from the previous version of the plugin that have not been migrated yet."
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:169
+msgid "rows are waiting to be moved."
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:181
+msgid "Starting…"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:182
+msgid "Start migration"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:192
+msgid "Install Action Scheduler (faster, optional)"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:206
+msgid "Skip migration"
+msgstr ""
+
+#: assets/src/modules/migration/banner.js:219
+msgid "Action Scheduler is recommended for sites with many 404 logs — it runs the migration in the background with retries. The migration still works without it, processing rows in chunks while you stay on this page."
+msgstr ""
+
+#. translators: %d: number of selected redirects.
+#: assets/src/modules/redirects/delete-modal.js:34
+msgid "Delete %d redirect? This cannot be undone."
+msgid_plural "Delete %d redirects? This cannot be undone."
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/src/modules/redirects/edit-modal.js:115
+msgid "Edit redirect"
+msgstr ""
+
+#: assets/src/modules/redirects/edit-modal.js:116
+#: assets/src/modules/redirects/index.js:45
+msgid "Add redirect"
+msgstr ""
+
+#: assets/src/modules/redirects/edit-modal.js:158
+msgid "Save changes"
+msgstr ""
+
+#: assets/src/modules/redirects/edit-modal.js:159
+msgid "Create redirect"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:15
+#: assets/src/modules/redirects/form-fields.js:68
+msgid "Exact"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:16
+#: assets/src/modules/redirects/form-fields.js:69
+msgid "Prefix"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:17
+#: assets/src/modules/redirects/form-fields.js:70
+msgid "Regex"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:21
+msgid "Link"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:22
+msgid "Page"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:23
+msgid "None"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:45
+msgid "Source URL"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:55
+msgid "Destination"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:84
+msgid "Type"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:105
+msgid "Match"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:116
+msgid "Destination type"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:172
+msgid "Created"
+msgstr ""
+
+#: assets/src/modules/redirects/fields.js:190
+msgid "Last edited by"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:50
+msgid "Source URL or pattern"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:52
+msgid "For \"Exact\" use a full path (e.g. /old-page). For \"Prefix\" use a starting fragment. For \"Regex\" use a PCRE expression."
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:64
+msgid "Match type"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:75
+msgid "Target type"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:79
+msgid "Custom URL"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:80
+msgid "Existing page"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:86
+msgid "Target URL"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:101
+msgid "Target page"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:112
+msgid "Redirect status"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:122
+msgid "Query string"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:125
+msgid "How the source URL's query string affects this rule. \"Preserve\" forwards tracking params (utm_*, gclid, …) to the destination."
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:132
+msgid "Ignore — strip on match"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:136
+msgid "Preserve — forward to destination"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:140
+msgid "Require — must match exactly"
+msgstr ""
+
+#: assets/src/modules/redirects/form-fields.js:155
+msgid "Notes (optional)"
+msgstr ""
+
+#: assets/src/modules/redirects/index.js:35
+msgid "404 to 301 - Custom Redirects"
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:53
+msgid "Edit"
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:65
+msgid "Activate"
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:73
+msgid "Deactivate"
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:89
+msgid "Delete redirects"
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:129
+msgid "No redirects match your filters"
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:133
+msgid "Try a different search, or clear your filters to see all your redirects."
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:146
+msgid "No redirects yet"
+msgstr ""
+
+#: assets/src/modules/redirects/list.js:147
+msgid "Use \"Add redirect\" above to send an old or broken URL to a new destination."
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:43
+msgid "Settings exported."
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:46
+msgid "Failed to export settings."
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:83
+msgid "That file is not valid JSON."
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:100
+msgid "Settings imported."
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:109
+msgid "Failed to import settings."
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:117
+msgid "Import/Export Settings"
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:120
+msgid "Move plugin settings between sites — eg. from staging to production. The export contains every user-facing setting; install-specific state (database versions, migration flags) is excluded."
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:135
+msgid "Download settings"
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:144
+msgid "Import settings…"
+msgstr ""
+
+#: assets/src/modules/settings/components/import-export.js:160
+msgid "Applied %1$d setting(s) from %2$s."
+msgstr ""
+
+#. translators: %d: number of paths in the list.
+#: assets/src/modules/settings/components/paths-repeater.js:106
+msgid "%d path"
+msgid_plural "%d paths"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: row number.
+#: assets/src/modules/settings/components/paths-repeater.js:125
+msgid "Path %d"
+msgstr ""
+
+#: assets/src/modules/settings/components/paths-repeater.js:138
+msgid "Remove path"
+msgstr ""
+
+#: assets/src/modules/settings/components/paths-repeater.js:157
+msgid "Fill in the current row before adding another."
+msgstr ""
+
+#: assets/src/modules/settings/components/paths-repeater.js:163
+msgid "Add path"
+msgstr ""
+
+#: assets/src/modules/settings/index.js:29
+msgid "404 to 301 - Settings"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:40
+msgid "Behaviour"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:45
+msgid "WordPress URL guessing"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:46
+msgid "How aggressively to block WordPress’ auto-correction of unknown URLs. \"Light\" stops the closest-post guess; \"Strict\" also bypasses trailing-slash, case, and attachment fallback redirects."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:66
+msgid "Off — let WordPress guess (default WP behaviour)"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:73
+msgid "Light — block closest-post guessing only"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:80
+msgid "Strict — bypass redirect_canonical() entirely"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:92
+msgid "Monitor post slug changes"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:93
+msgid "Automatically create a redirect from the old URL to the new one when a post or page slug is renamed."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:104
+msgid "Mask IP addresses"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:105
+msgid "Drop visitor IPs before they hit the database. Useful for GDPR."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/general.js:117
+msgid "Also process 404 requests that occur on the WordPress admin side. Off by default — most sites only care about front-end 404s."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/index.js:16
+msgid "General"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/index.js:28
+msgid "Notifications"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/index.js:32
+msgid "Tools"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:34
+msgid "Get Logs Cleaner"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:41
+msgid "Drowning in 404 logs?"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:44
+msgid "Install the Logs Cleaner addon to auto-prune the 404 log table — by age, by row count, or on a fixed schedule. Set it once and the table stays small on its own."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:103
+msgid "Save every 404 hit to the database so you can review and fix them from the Logs page."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:114
+msgid "Skip search engine bots"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:115
+msgid "Skip 404s from obvious crawlers (bot, spider, slurp, …) to keep the log table small."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:126
+msgid "Skip duplicate URLs"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:127
+msgid "When on, repeat 404s on the same URL do not bump the hit counter. Useful when you only want the first occurrence."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:83
+msgid "Email Notifications"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:87
+msgid "Notify by email on 404 errors"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:91
+msgid "Send an email when a 404 fires. Honours the threshold below so the inbox does not get flooded on busy sites."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:103
+msgid "Notifications are off — the threshold and recipient below are ignored until you enable them."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:115
+msgid "Recipient emails"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:116
+msgid "Press Enter or comma to add an address. Add as many recipients as you need."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:140
+msgid "name@example.com"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:151
+msgid "Hits threshold"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:152
+msgid "Only send an email once a URL has racked up at least this many 404 hits."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:47
+msgid "404 Redirects"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:51
+msgid "Enable redirect"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:52
+msgid "When on, 404 URLs without a specific custom redirect fall back to the destination configured here."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:64
+msgid "The redirect is off. Per-URL redirects from the Redirects page still fire."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:76
+msgid "Redirect type"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:77
+msgid "HTTP status code used when this fallback redirect fires."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:94
+msgid "Redirect to"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:95
+msgid "Where 404 requests land when no custom redirect matches."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:123
+msgid "Destination URL"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:124
+msgid "Absolute URL (including https://)."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:142
+msgid "Destination page"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/redirects.js:143
+msgid "Search and pick the page that should serve as the 404 destination."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/tools.js:29
+msgid "Exclude Paths"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/tools.js:33
+msgid "Paths to ignore"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/tools.js:38
+msgid "e.g. /wp-json/ or /feed/"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/tools.js:44
+msgid "Any 404 whose URL contains one of these substrings is skipped — no log, no redirect, no email."
+msgstr ""
+
+#: assets/src/store/addons/actions.js:75
+msgid "Add-on list refreshed."
+msgstr ""
+
+#: assets/src/store/addons/actions.js:80
+msgid "Could not refresh the add-on list."
+msgstr ""
+
+#: assets/src/store/addons/actions.js:112
+msgid "License activated."
+msgstr ""
+
+#: assets/src/store/addons/actions.js:119
+msgid "License activation failed. Please double-check the key and try again."
+msgstr ""
+
+#: assets/src/store/addons/actions.js:129
+msgid "License activation failed. Please try again."
+msgstr ""
+
+#: assets/src/store/addons/actions.js:156
+msgid "License deactivated."
+msgstr ""
+
+#: assets/src/store/addons/actions.js:163
+#: assets/src/store/addons/actions.js:173
+msgid "License deactivation failed. Please try again."
+msgstr ""
+
+#: assets/src/store/addons/resolvers.js:32
+msgid "Could not load the add-on list."
+msgstr ""
+
+#: assets/src/store/migration/actions.js:54
+msgid "Could not start the migration."
+msgstr ""
+
+#: assets/src/store/migration/actions.js:79
+msgid "Migration tick failed — will retry on next page load."
+msgstr ""
+
+#: assets/src/store/migration/actions.js:99
+msgid "Migration aborted."
+msgstr ""
+
+#: assets/src/store/migration/actions.js:104
+msgid "Could not abort the migration."
 msgstr ""

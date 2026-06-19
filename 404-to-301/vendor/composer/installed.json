@@ -1,0 +1,309 @@
+{
+    "packages": [
+        {
+            "name": "berlindb/core",
+            "version": "2.0.2",
+            "version_normalized": "2.0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/berlindb/core.git",
+                "reference": "6a9383ab2dad726bf2d6dbda6687da848eda22ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/berlindb/core/zipball/6a9383ab2dad726bf2d6dbda6687da848eda22ea",
+                "reference": "6a9383ab2dad726bf2d6dbda6687da848eda22ea",
+                "shasum": ""
+            },
+            "time": "2025-10-23T20:00:35+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "BerlinDB\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A collection of PHP classes and functions that aims to provide an ORM-like experience and interface to WordPress database tables.",
+            "support": {
+                "issues": "https://github.com/berlindb/core/issues",
+                "source": "https://github.com/berlindb/core/tree/2.0.2"
+            },
+            "install-path": "../berlindb/core"
+        },
+        {
+            "name": "composer/installers",
+            "version": "v2.3.0",
+            "version_normalized": "2.3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/installers.git",
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/installers/zipball/12fb2dfe5e16183de69e784a7b84046c43d97e8e",
+                "reference": "12fb2dfe5e16183de69e784a7b84046c43d97e8e",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.10.27 || ^2.7",
+                "composer/semver": "^1.7.2 || ^3.4.0",
+                "phpstan/phpstan": "^1.11",
+                "phpstan/phpstan-phpunit": "^1",
+                "symfony/phpunit-bridge": "^7.1.1",
+                "symfony/process": "^5 || ^6 || ^7"
+            },
+            "time": "2024-06-24T20:46:46+00:00",
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Composer\\Installers\\Plugin",
+                "branch-alias": {
+                    "dev-main": "2.x-dev"
+                },
+                "plugin-modifies-install-path": true
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Robinson Young",
+                    "email": "kyle@dontkry.com",
+                    "homepage": "https://github.com/shama"
+                }
+            ],
+            "description": "A multi-framework Composer library installer",
+            "homepage": "https://composer.github.io/installers/",
+            "keywords": [
+                "Dolibarr",
+                "Eliasis",
+                "Hurad",
+                "ImageCMS",
+                "Kanboard",
+                "Lan Management System",
+                "MODX Evo",
+                "MantisBT",
+                "Mautic",
+                "Maya",
+                "OXID",
+                "Plentymarkets",
+                "Porto",
+                "RadPHP",
+                "SMF",
+                "Starbug",
+                "Thelia",
+                "Whmcs",
+                "WolfCMS",
+                "agl",
+                "annotatecms",
+                "attogram",
+                "bitrix",
+                "cakephp",
+                "chef",
+                "cockpit",
+                "codeigniter",
+                "concrete5",
+                "concreteCMS",
+                "croogo",
+                "dokuwiki",
+                "drupal",
+                "eZ Platform",
+                "elgg",
+                "expressionengine",
+                "fuelphp",
+                "grav",
+                "installer",
+                "itop",
+                "known",
+                "kohana",
+                "laravel",
+                "lavalite",
+                "lithium",
+                "magento",
+                "majima",
+                "mako",
+                "matomo",
+                "mediawiki",
+                "miaoxing",
+                "modulework",
+                "modx",
+                "moodle",
+                "osclass",
+                "pantheon",
+                "phpbb",
+                "piwik",
+                "ppi",
+                "processwire",
+                "puppet",
+                "pxcms",
+                "reindex",
+                "roundcube",
+                "shopware",
+                "silverstripe",
+                "sydes",
+                "sylius",
+                "tastyigniter",
+                "wordpress",
+                "yawik",
+                "zend",
+                "zikula"
+            ],
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/v2.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "install-path": "./installers"
+        },
+        {
+            "name": "duckdev/freemius-plugin-licensing",
+            "version": "2.0.1",
+            "version_normalized": "2.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/duckdev/freemius-plugin-licensing.git",
+                "reference": "d7f4b9d11890c144db6b25bc16dddf61c48d0168"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/duckdev/freemius-plugin-licensing/zipball/d7f4b9d11890c144db6b25bc16dddf61c48d0168",
+                "reference": "d7f4b9d11890c144db6b25bc16dddf61c48d0168",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "brain/monkey": "^2.6",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "phpcompatibility/phpcompatibility-wp": "^2.1",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "^3.10",
+                "wp-coding-standards/wpcs": "^3.1"
+            },
+            "time": "2026-06-03T17:11:44+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "DuckDev\\Freemius\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Joel James",
+                    "email": "me@joelsays.com",
+                    "homepage": "https://duckdev.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lite version of the Freemius SDK for managing plugin licensing and updates using Freemius APIs, specifically developed for use with Duck Dev plugins.",
+            "homepage": "https://github.com/duckdev/freemius-plugin-licensing",
+            "keywords": [
+                "freemius",
+                "licensing",
+                "plugins",
+                "updates"
+            ],
+            "support": {
+                "issues": "https://github.com/duckdev/freemius-plugin-licensing/issues",
+                "source": "https://github.com/duckdev/freemius-plugin-licensing/tree/v2.0.1"
+            },
+            "install-path": "../duckdev/freemius-plugin-licensing"
+        },
+        {
+            "name": "duckdev/wp-cache-helper",
+            "version": "2.0.1",
+            "version_normalized": "2.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/duckdev/wp-cache-helper.git",
+                "reference": "33440e17edc0a3a35aee424b99ffc86f3af05eba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/duckdev/wp-cache-helper/zipball/33440e17edc0a3a35aee424b99ffc86f3af05eba",
+                "reference": "33440e17edc0a3a35aee424b99ffc86f3af05eba",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "brain/monkey": "^2.6",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+                "phpcompatibility/phpcompatibility-wp": "^2.1",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "^3.10",
+                "wp-coding-standards/wpcs": "^3.1"
+            },
+            "time": "2026-06-11T20:34:03+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "DuckDev\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Joel James",
+                    "email": "me@joelsays.com",
+                    "homepage": "https://duckdev.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Helper library for the WordPress object cache and transients with group flush support, per-prefix scoping, and a swappable driver layer.",
+            "homepage": "https://github.com/duckdev/wp-cache-helper",
+            "keywords": [
+                "cache",
+                "object-cache",
+                "transients",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/duckdev/wp-cache-helper/issues/",
+                "source": "https://github.com/duckdev/wp-cache-helper/tree/v2.0.1"
+            },
+            "install-path": "../duckdev/wp-cache-helper"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}

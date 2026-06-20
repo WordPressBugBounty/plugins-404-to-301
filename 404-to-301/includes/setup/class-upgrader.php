@@ -80,9 +80,10 @@ class Upgrader extends Singleton {
 		// version bump, not just on the v3 → v4 transition.
 		$this->run_first_boot_setup();
 
-		// Per-version upgrade callbacks land here as we ship them; the
-		// first entry will look like `'4.1.0' => array( $this, 'to_4_1_0' )`.
-		$steps = array();
+		// Per-version upgrade callbacks land here as we ship them.
+		$steps = array(
+			'4.0.1' => array( $this, 'to_4_0_1' ),
+		);
 
 		foreach ( $steps as $version => $callback ) {
 			if ( version_compare( $stored, $version, '<' ) && is_callable( $callback ) ) {
@@ -101,6 +102,45 @@ class Upgrader extends Singleton {
 		 * @param string $current Version the DB has just been stamped with.
 		 */
 		do_action( '404_to_301_upgraded', $stored, $current );
+	}
+
+	/**
+	 * 4.0.0 → 4.0.1: migrate legacy status = 3 rows.
+	 *
+	 * In 4.0.0, linking a custom redirect set the log status to 3
+	 * ("custom redirect"). That value was removed in 4.0.1 — status
+	 * is now a 3-value enum (0 open, 1 ignored, 2 fixed) and
+	 * redirect linkage is tracked solely via redirect_id.
+	 *
+	 * Rows with status = 3 that have an active linked redirect become
+	 * Fixed (2). All others (inactive redirect or no redirect) become
+	 * Open (0) so they surface for review.
+	 *
+	 * @since 4.0.1
+	 *
+	 * @return void
+	 */
+	private function to_4_0_1(): void {
+		global $wpdb;
+
+		$logs_table      = $wpdb->prefix . '404_to_301_logs';
+		$redirects_table = $wpdb->prefix . '404_to_301_redirects';
+
+		// Rows with status = 3 whose linked redirect is active → Fixed.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$wpdb->query(
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table names are internal.
+			"UPDATE `{$logs_table}` l INNER JOIN `{$redirects_table}` r ON r.id = l.redirect_id AND r.is_active = 1 SET l.status = 2 WHERE l.status = 3"
+		);
+
+		// Remaining status = 3 rows (inactive or missing redirect) → Open.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$wpdb->query(
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- table name is internal.
+			"UPDATE `{$logs_table}` SET status = 0 WHERE status = 3"
+		);
+
+		wp_cache_set( 'last_changed', microtime(), '404_to_301_logs' );
 	}
 
 	/**

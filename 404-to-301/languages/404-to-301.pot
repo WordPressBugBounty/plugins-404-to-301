@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: 404 to 301 - Redirect Manager, 404 Error Logs & Notifications 4.0.0\n"
+"Project-Id-Version: 404 to 301 - Redirect Manager, 404 Error Logs & Notifications 4.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/404-to-301\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-19T12:27:15+00:00\n"
+"POT-Creation-Date: 2026-06-20T09:05:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: 404-to-301\n"
@@ -65,7 +65,8 @@ msgid "Bulk import custom redirects into 404 to 301 from CSV files or migrate th
 msgstr ""
 
 #: includes/admin/class-links.php:56
-#: includes/admin/class-menu.php:93
+#: includes/admin/class-menu.php:98
+#: assets/src/modules/logs/view-modal.js:118
 msgid "Settings"
 msgstr ""
 
@@ -75,8 +76,8 @@ msgid "Logs"
 msgstr ""
 
 #: includes/admin/class-links.php:58
-#: includes/admin/class-menu.php:63
-#: includes/admin/class-menu.php:75
+#: includes/admin/class-menu.php:68
+#: includes/admin/class-menu.php:80
 #: assets/src/modules/settings/tabs/index.js:20
 msgid "Redirects"
 msgstr ""
@@ -87,7 +88,7 @@ msgid "Documentation"
 msgstr ""
 
 #: includes/admin/class-links.php:84
-#: includes/admin/class-menu.php:102
+#: includes/admin/class-menu.php:107
 #: assets/src/modules/addons/index.js:20
 msgid "Add-ons"
 msgstr ""
@@ -97,29 +98,33 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: includes/admin/class-menu.php:62
+#: includes/admin/class-menu.php:67
 msgid "Custom Redirects — 404 to 301"
 msgstr ""
 
-#: includes/admin/class-menu.php:74
+#: includes/admin/class-menu.php:79
 msgid "Custom Redirects"
 msgstr ""
 
-#: includes/admin/class-menu.php:83
+#: includes/admin/class-menu.php:88
 msgid "404 Error Logs"
 msgstr ""
 
-#: includes/admin/class-menu.php:84
-#: assets/src/modules/settings/tabs/logs.js:98
+#: includes/admin/class-menu.php:89
+#: assets/src/modules/settings/tabs/logs.js:95
 msgid "404 Logs"
 msgstr ""
 
-#: includes/admin/class-menu.php:92
+#: includes/admin/class-menu.php:97
 msgid "404 to 301 Settings"
 msgstr ""
 
-#: includes/admin/class-menu.php:101
+#: includes/admin/class-menu.php:106
 msgid "404 to 301 Add-ons"
+msgstr ""
+
+#: includes/admin/class-menu.php:168
+msgid "New"
 msgstr ""
 
 #: includes/admin/class-site-health.php:116
@@ -151,7 +156,7 @@ msgid "Disable URL guessing"
 msgstr ""
 
 #: includes/admin/class-site-health.php:145
-#: assets/src/modules/settings/tabs/logs.js:102
+#: assets/src/modules/settings/tabs/logs.js:99
 msgid "Log 404 errors"
 msgstr ""
 
@@ -292,6 +297,7 @@ msgid "No cron health check needed — the Email Reports addon is not active or 
 msgstr ""
 
 #: includes/admin/class-site-health.php:342
+#: assets/src/modules/settings/tabs/notifications.js:30
 msgid "Email Reports"
 msgstr ""
 
@@ -406,55 +412,55 @@ msgstr ""
 msgid "Licensing is not configured."
 msgstr ""
 
-#: includes/api/class-logs.php:184
-#: includes/api/class-logs.php:205
+#: includes/api/class-logs.php:208
+#: includes/api/class-logs.php:229
 #: includes/cli/class-logs.php:134
 msgid "Log not found."
 msgstr ""
 
-#: includes/api/class-logs.php:259
+#: includes/api/class-logs.php:283
 msgid "Could not delete the log."
 msgstr ""
 
-#: includes/api/class-logs.php:381
+#: includes/api/class-logs.php:318
+msgid "Could not purge the logs."
+msgstr ""
+
+#: includes/api/class-logs.php:433
 #: assets/src/modules/logs/fields.js:8
+#: assets/src/modules/logs/index.js:16
 msgid "Open"
 msgstr ""
 
-#: includes/api/class-logs.php:382
+#: includes/api/class-logs.php:434
 #: assets/src/modules/logs/fields.js:9
+#: assets/src/modules/logs/index.js:18
 msgid "Ignored"
 msgstr ""
 
-#: includes/api/class-logs.php:383
+#: includes/api/class-logs.php:435
 #: assets/src/modules/logs/fields.js:10
+#: assets/src/modules/logs/index.js:17
 msgid "Fixed"
 msgstr ""
 
-#: includes/api/class-logs.php:384
-#: assets/src/modules/logs/fields.js:11
-#: assets/src/modules/logs/list.js:102
-#: assets/src/modules/logs/view-modal.js:92
-msgid "Custom redirect"
-msgstr ""
-
-#: includes/api/class-redirects.php:182
-#: includes/api/class-redirects.php:234
+#: includes/api/class-redirects.php:215
+#: includes/api/class-redirects.php:267
 #: includes/cli/class-redirects.php:137
 msgid "Redirect not found."
 msgstr ""
 
-#: includes/api/class-redirects.php:212
+#: includes/api/class-redirects.php:245
 #: includes/cli/class-redirects.php:232
 msgid "Could not create the redirect."
 msgstr ""
 
-#: includes/api/class-redirects.php:274
+#: includes/api/class-redirects.php:313
 msgid "Could not delete the redirect."
 msgstr ""
 
 #. translators: %s: source URL/path of the existing redirect.
-#: includes/api/class-redirects.php:384
+#: includes/api/class-redirects.php:434
 msgid "A redirect for \"%s\" already exists. Edit the existing rule instead of creating a duplicate."
 msgstr ""
 
@@ -652,7 +658,7 @@ msgid "User-Agent"
 msgstr ""
 
 #: includes/front/actions/class-email.php:162
-#: assets/src/modules/logs/view-modal.js:83
+#: assets/src/modules/logs/view-modal.js:87
 msgid "Method"
 msgstr ""
 
@@ -834,6 +840,7 @@ msgstr ""
 #: assets/src/modules/redirects/fields.js:27
 #: assets/src/modules/redirects/fields.js:130
 #: assets/src/modules/redirects/form-fields.js:146
+#: assets/src/modules/redirects/index.js:39
 msgid "Active"
 msgstr ""
 
@@ -919,7 +926,8 @@ msgstr ""
 #: assets/src/modules/logs/configure-modal.js:170
 #: assets/src/modules/logs/delete-modal.js:55
 #: assets/src/modules/redirects/delete-modal.js:51
-#: assets/src/modules/redirects/edit-modal.js:147
+#: assets/src/modules/redirects/edit-modal.js:183
+#: assets/src/modules/settings/components/purge-logs.js:90
 msgid "Cancel"
 msgstr ""
 
@@ -960,7 +968,7 @@ msgid "Hey, I'm Joel James, a Software Engineer based in Kerala, India. I'm pass
 msgstr ""
 
 #: assets/src/modules/logs/configure-modal.js:19
-#: assets/src/modules/logs/view-modal.js:46
+#: assets/src/modules/logs/view-modal.js:35
 msgid "Global"
 msgstr ""
 
@@ -1000,12 +1008,20 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: assets/src/modules/logs/custom-redirect-modal.js:49
+#: assets/src/modules/logs/custom-redirect-modal.js:42
+msgid "Failed to load the linked redirect."
+msgstr ""
+
+#: assets/src/modules/logs/custom-redirect-modal.js:58
+msgid "Custom redirect updated."
+msgstr ""
+
+#: assets/src/modules/logs/custom-redirect-modal.js:76
 msgid "Custom redirect created."
 msgstr ""
 
-#: assets/src/modules/logs/custom-redirect-modal.js:59
-msgid "Failed to create custom redirect."
+#: assets/src/modules/logs/custom-redirect-modal.js:91
+msgid "Failed to save custom redirect."
 msgstr ""
 
 #. translators: %d: number of selected logs.
@@ -1016,173 +1032,195 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: assets/src/modules/logs/delete-modal.js:66
-#: assets/src/modules/logs/list.js:143
+#: assets/src/modules/logs/list.js:135
 #: assets/src/modules/redirects/delete-modal.js:62
 #: assets/src/modules/redirects/list.js:86
 msgid "Delete"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:26
+#: assets/src/modules/logs/fields.js:24
 msgid "Today"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:27
+#: assets/src/modules/logs/fields.js:25
 msgid "Last 7 days"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:28
+#: assets/src/modules/logs/fields.js:26
 msgid "Last 30 days"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:29
+#: assets/src/modules/logs/fields.js:27
 msgid "Last 90 days"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:30
+#: assets/src/modules/logs/fields.js:28
 msgid "Last 12 months"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:44
+#: assets/src/modules/logs/fields.js:42
 msgid "404 Path"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:54
-#: assets/src/modules/logs/view-modal.js:68
+#: assets/src/modules/logs/fields.js:52
+#: assets/src/modules/logs/view-modal.js:69
 msgid "Referrer"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:71
+#: assets/src/modules/logs/fields.js:69
 msgid "IP Address"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:79
+#: assets/src/modules/logs/fields.js:77
 msgid "User Agent"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:87
-#: assets/src/modules/logs/view-modal.js:86
+#: assets/src/modules/logs/fields.js:85
+#: assets/src/modules/logs/view-modal.js:101
 #: assets/src/modules/redirects/fields.js:151
 msgid "Hits"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:94
-#: assets/src/modules/logs/view-modal.js:89
+#: assets/src/modules/logs/fields.js:92
 #: assets/src/modules/redirects/fields.js:124
 msgid "Status"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:118
-#: assets/src/modules/logs/view-modal.js:109
+#: assets/src/modules/logs/fields.js:115
+#: assets/src/modules/logs/fields.js:119
+msgid "Has custom redirect"
+msgstr ""
+
+#: assets/src/modules/logs/fields.js:131
+#: assets/src/modules/logs/view-modal.js:105
 msgid "First seen"
 msgstr ""
 
-#: assets/src/modules/logs/fields.js:136
-#: assets/src/modules/logs/view-modal.js:112
+#: assets/src/modules/logs/fields.js:149
+#: assets/src/modules/logs/view-modal.js:109
 #: assets/src/modules/redirects/fields.js:158
 msgid "Last hit"
 msgstr ""
 
-#: assets/src/modules/logs/index.js:12
+#: assets/src/modules/logs/index.js:15
+#: assets/src/modules/redirects/index.js:38
+msgid "Total"
+msgstr ""
+
+#: assets/src/modules/logs/index.js:19
+msgid "Custom redirects"
+msgstr ""
+
+#: assets/src/modules/logs/index.js:24
 msgid "404 to 301 - 404 Error Logs"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:79
+#: assets/src/modules/logs/list.js:74
 msgid "View details"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:80
+#: assets/src/modules/logs/list.js:75
 msgid "Log details"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:89
+#: assets/src/modules/logs/list.js:85
 msgid "Configure"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:90
+#: assets/src/modules/logs/list.js:86
 msgid "Configure log"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:113
+#: assets/src/modules/logs/list.js:94
+#: assets/src/modules/logs/view-modal.js:123
+msgid "Custom redirect"
+msgstr ""
+
+#: assets/src/modules/logs/list.js:105
 msgid "Mark fixed"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:120
+#: assets/src/modules/logs/list.js:112
 msgid "Mark ignored"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:127
+#: assets/src/modules/logs/list.js:119
 msgid "Reopen"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:146
+#: assets/src/modules/logs/list.js:138
 msgid "Delete log"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:195
+#: assets/src/modules/logs/list.js:187
 msgid "No logs match your filters"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:196
+#: assets/src/modules/logs/list.js:188
 msgid "Try a different search or date range, or clear your filters to see every logged 404."
 msgstr ""
 
-#: assets/src/modules/logs/list.js:202
+#: assets/src/modules/logs/list.js:194
 #: assets/src/modules/redirects/list.js:139
 msgid "Clear filters"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:209
+#: assets/src/modules/logs/list.js:201
 msgid "No 404 errors logged yet"
 msgstr ""
 
-#: assets/src/modules/logs/list.js:210
+#: assets/src/modules/logs/list.js:202
 msgid "Nice — nothing's broken. When a visitor hits a missing URL, it'll show up here automatically."
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:42
+#: assets/src/modules/logs/view-modal.js:31
 msgid "Enabled"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:44
+#: assets/src/modules/logs/view-modal.js:33
 #: assets/src/modules/redirects/fields.js:28
 #: assets/src/modules/redirects/fields.js:131
 msgid "Disabled"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:57
+#: assets/src/modules/logs/view-modal.js:55
 msgid "A custom redirect is set for this path. Future visits will be redirected automatically."
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:65
-msgid "404 path"
+#: assets/src/modules/logs/view-modal.js:64
+msgid "Request"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:77
+#: assets/src/modules/logs/view-modal.js:79
 msgid "IP address"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:80
+#: assets/src/modules/logs/view-modal.js:83
 msgid "User agent"
 msgstr ""
 
-#. translators: %d: redirect id.
-#: assets/src/modules/logs/view-modal.js:97
-msgid "Linked redirect #%d"
+#: assets/src/modules/logs/view-modal.js:96
+msgid "Visit info"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:100
+#. translators: %d: redirect id.
+#: assets/src/modules/logs/view-modal.js:128
+msgid "Linked to redirect #%d"
+msgstr ""
+
+#: assets/src/modules/logs/view-modal.js:131
 msgid "Not set"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:103
-msgid "Override: Redirect"
+#: assets/src/modules/logs/view-modal.js:135
+msgid "Redirect override"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:106
-msgid "Override: Email"
+#: assets/src/modules/logs/view-modal.js:139
+msgid "Email override"
 msgstr ""
 
-#: assets/src/modules/logs/view-modal.js:118
+#: assets/src/modules/logs/view-modal.js:148
 msgid "Close"
 msgstr ""
 
@@ -1256,20 +1294,29 @@ msgid_plural "Delete %d redirects? This cannot be undone."
 msgstr[0] ""
 msgstr[1] ""
 
-#: assets/src/modules/redirects/edit-modal.js:115
+#: assets/src/modules/redirects/edit-modal.js:134
 msgid "Edit redirect"
 msgstr ""
 
-#: assets/src/modules/redirects/edit-modal.js:116
-#: assets/src/modules/redirects/index.js:45
+#: assets/src/modules/redirects/edit-modal.js:135
+#: assets/src/modules/redirects/index.js:58
 msgid "Add redirect"
 msgstr ""
 
-#: assets/src/modules/redirects/edit-modal.js:158
+#: assets/src/modules/redirects/edit-modal.js:154
+#: assets/src/modules/redirects/form-fields.js:50
+msgid "Source URL or pattern"
+msgstr ""
+
+#: assets/src/modules/redirects/edit-modal.js:161
+msgid "Source is locked because this redirect is linked to a 404 log."
+msgstr ""
+
+#: assets/src/modules/redirects/edit-modal.js:194
 msgid "Save changes"
 msgstr ""
 
-#: assets/src/modules/redirects/edit-modal.js:159
+#: assets/src/modules/redirects/edit-modal.js:195
 msgid "Create redirect"
 msgstr ""
 
@@ -1328,10 +1375,6 @@ msgstr ""
 msgid "Last edited by"
 msgstr ""
 
-#: assets/src/modules/redirects/form-fields.js:50
-msgid "Source URL or pattern"
-msgstr ""
-
 #: assets/src/modules/redirects/form-fields.js:52
 msgid "For \"Exact\" use a full path (e.g. /old-page). For \"Prefix\" use a starting fragment. For \"Regex\" use a PCRE expression."
 msgstr ""
@@ -1388,7 +1431,15 @@ msgstr ""
 msgid "Notes (optional)"
 msgstr ""
 
-#: assets/src/modules/redirects/index.js:35
+#: assets/src/modules/redirects/index.js:40
+msgid "Inactive"
+msgstr ""
+
+#: assets/src/modules/redirects/index.js:41
+msgid "Total hits"
+msgstr ""
+
+#: assets/src/modules/redirects/index.js:47
 msgid "404 to 301 - Custom Redirects"
 msgstr ""
 
@@ -1488,6 +1539,38 @@ msgstr ""
 msgid "Add path"
 msgstr ""
 
+#: assets/src/modules/settings/components/purge-logs.js:33
+msgid "All logs have been deleted."
+msgstr ""
+
+#: assets/src/modules/settings/components/purge-logs.js:38
+msgid "Could not purge logs. Please try again."
+msgstr ""
+
+#: assets/src/modules/settings/components/purge-logs.js:58
+msgid "Permanently delete every entry in the 404 error log. This action cannot be undone. Custom redirects are not affected."
+msgstr ""
+
+#: assets/src/modules/settings/components/purge-logs.js:65
+msgid "Purge all logs"
+msgstr ""
+
+#: assets/src/modules/settings/components/purge-logs.js:70
+msgid "Purge all logs?"
+msgstr ""
+
+#: assets/src/modules/settings/components/purge-logs.js:75
+msgid "This will permanently delete every entry in the 404 error log. This action cannot be undone."
+msgstr ""
+
+#: assets/src/modules/settings/components/purge-logs.js:81
+msgid "Custom redirects will not be affected."
+msgstr ""
+
+#: assets/src/modules/settings/components/purge-logs.js:101
+msgid "Yes, purge all logs"
+msgstr ""
+
 #: assets/src/modules/settings/index.js:29
 msgid "404 to 301 - Settings"
 msgstr ""
@@ -1548,71 +1631,87 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/logs.js:34
-msgid "Get Logs Cleaner"
-msgstr ""
-
-#: assets/src/modules/settings/tabs/logs.js:41
+#: assets/src/modules/settings/tabs/logs.js:31
 msgid "Drowning in 404 logs?"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/logs.js:44
+#: assets/src/modules/settings/tabs/logs.js:34
 msgid "Install the Logs Cleaner addon to auto-prune the 404 log table — by age, by row count, or on a fixed schedule. Set it once and the table stays small on its own."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/logs.js:103
+#: assets/src/modules/settings/tabs/logs.js:43
+msgid "Get Logs Cleaner"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/logs.js:100
 msgid "Save every 404 hit to the database so you can review and fix them from the Logs page."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/logs.js:114
+#: assets/src/modules/settings/tabs/logs.js:111
 msgid "Skip search engine bots"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/logs.js:115
+#: assets/src/modules/settings/tabs/logs.js:112
 msgid "Skip 404s from obvious crawlers (bot, spider, slurp, …) to keep the log table small."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/logs.js:126
+#: assets/src/modules/settings/tabs/logs.js:123
 msgid "Skip duplicate URLs"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/logs.js:127
+#: assets/src/modules/settings/tabs/logs.js:124
 msgid "When on, repeat 404s on the same URL do not bump the hit counter. Useful when you only want the first occurrence."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:83
+#: assets/src/modules/settings/tabs/notifications.js:32
+msgid "scheduled email digests of your 404s"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:39
+msgid "Telegram Alerts"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:41
+msgid "instant 404 alerts in Telegram"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:65
+msgid "Want more 404 notifications?"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/notifications.js:154
 msgid "Email Notifications"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:87
+#: assets/src/modules/settings/tabs/notifications.js:158
 msgid "Notify by email on 404 errors"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:91
+#: assets/src/modules/settings/tabs/notifications.js:162
 msgid "Send an email when a 404 fires. Honours the threshold below so the inbox does not get flooded on busy sites."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:103
+#: assets/src/modules/settings/tabs/notifications.js:174
 msgid "Notifications are off — the threshold and recipient below are ignored until you enable them."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:115
+#: assets/src/modules/settings/tabs/notifications.js:186
 msgid "Recipient emails"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:116
+#: assets/src/modules/settings/tabs/notifications.js:187
 msgid "Press Enter or comma to add an address. Add as many recipients as you need."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:140
+#: assets/src/modules/settings/tabs/notifications.js:211
 msgid "name@example.com"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:151
+#: assets/src/modules/settings/tabs/notifications.js:222
 msgid "Hits threshold"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/notifications.js:152
+#: assets/src/modules/settings/tabs/notifications.js:223
 msgid "Only send an email once a URL has racked up at least this many 404 hits."
 msgstr ""
 
@@ -1664,20 +1763,24 @@ msgstr ""
 msgid "Search and pick the page that should serve as the 404 destination."
 msgstr ""
 
-#: assets/src/modules/settings/tabs/tools.js:29
+#: assets/src/modules/settings/tabs/tools.js:30
 msgid "Exclude Paths"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/tools.js:33
+#: assets/src/modules/settings/tabs/tools.js:34
 msgid "Paths to ignore"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/tools.js:38
+#: assets/src/modules/settings/tabs/tools.js:39
 msgid "e.g. /wp-json/ or /feed/"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/tools.js:44
+#: assets/src/modules/settings/tabs/tools.js:45
 msgid "Any 404 whose URL contains one of these substrings is skipped — no log, no redirect, no email."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/tools.js:61
+msgid "Danger Zone"
 msgstr ""
 
 #: assets/src/store/addons/actions.js:75

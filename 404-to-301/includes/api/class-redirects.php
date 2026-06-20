@@ -18,6 +18,7 @@ namespace DuckDev\FourNotFour\Api;
 defined( 'ABSPATH' ) || exit;
 
 use DuckDev\FourNotFour\Database\Rows\Redirect as RedirectRow;
+use DuckDev\FourNotFour\Models\Logs as LogsModel;
 use DuckDev\FourNotFour\Models\Redirects as RedirectsModel;
 use DuckDev\FourNotFour\Utils\Helpers;
 use WP_Error;
@@ -68,6 +69,18 @@ class Redirects extends Endpoint {
 							'items'    => array( 'type' => 'integer' ),
 						),
 					),
+				),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/redirects/summary',
+			array(
+				array(
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'summary' ),
+					'permission_callback' => array( $this, 'require_access' ),
 				),
 			)
 		);
@@ -129,6 +142,26 @@ class Redirects extends Endpoint {
 
 	/**
 	 * GET /redirects — paginated list.
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param WP_REST_Request $request REST request.
+	 *
+	 * @return WP_REST_Response
+	 */
+	/**
+	 * GET /redirects/summary — aggregate counts for the dashboard strip.
+	 *
+	 * @since 4.0.1
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function summary(): WP_REST_Response {
+		return $this->respond( RedirectsModel::instance()->summary() );
+	}
+
+	/**
+	 * GET /redirects — paginated, filtered list of redirects.
 	 *
 	 * @since 4.0.0
 	 *
@@ -250,6 +283,12 @@ class Redirects extends Endpoint {
 
 		if ( ! empty( $data ) ) {
 			RedirectsModel::instance()->update( $id, $data );
+
+			// When is_active changes, sync the status of every log that
+			// is linked to this redirect so the overview stays accurate.
+			if ( isset( $data['is_active'] ) ) {
+				LogsModel::instance()->sync_status_for_redirect( $id, (bool) $data['is_active'] );
+			}
 		}
 
 		$row = RedirectsModel::instance()->find( $id );
@@ -274,6 +313,9 @@ class Redirects extends Endpoint {
 			return $this->error( 'rest_delete_failed', __( 'Could not delete the redirect.', '404-to-301' ), 500 );
 		}
 
+		// Unlink any logs that were pointing at this redirect.
+		LogsModel::instance()->unlink_redirect( $id );
+
 		return $this->respond(
 			array(
 				'id'      => $id,
@@ -292,13 +334,16 @@ class Redirects extends Endpoint {
 	 * @return WP_REST_Response
 	 */
 	public function bulk_delete( WP_REST_Request $request ): WP_REST_Response {
-		$ids     = (array) $request->get_param( 'ids' );
-		$model   = RedirectsModel::instance();
-		$deleted = 0;
+		$ids        = (array) $request->get_param( 'ids' );
+		$model      = RedirectsModel::instance();
+		$logs_model = LogsModel::instance();
+		$deleted    = 0;
 
 		foreach ( $ids as $id ) {
-			if ( $model->delete( (int) $id ) ) {
+			$int_id = (int) $id;
+			if ( $model->delete( $int_id ) ) {
 				++$deleted;
+				$logs_model->unlink_redirect( $int_id );
 			}
 		}
 
@@ -343,10 +388,15 @@ class Redirects extends Endpoint {
 			return $this->respond( array( 'updated' => 0 ) );
 		}
 
-		$updated = 0;
+		$updated    = 0;
+		$logs_model = isset( $data['is_active'] ) ? LogsModel::instance() : null;
+
 		foreach ( $ids as $id ) {
 			if ( $id > 0 && $model->update( $id, $data ) ) {
 				++$updated;
+				if ( $logs_model ) {
+					$logs_model->sync_status_for_redirect( $id, (bool) $data['is_active'] );
+				}
 			}
 		}
 
@@ -439,6 +489,7 @@ class Redirects extends Endpoint {
 			'modified_by_name' => $modified_by_name,
 			'created_at'       => $row->created_at,
 			'updated_at'       => $row->updated_at,
+			'has_linked_log'   => RedirectsModel::instance()->has_linked_log( (int) $row->id ),
 		);
 	}
 

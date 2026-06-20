@@ -60,6 +60,30 @@ class Logs extends Endpoint {
 			)
 		);
 
+		register_rest_route(
+			self::NAMESPACE,
+			'/logs/summary',
+			array(
+				array(
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'summary' ),
+					'permission_callback' => array( $this, 'require_access' ),
+				),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/logs/purge',
+			array(
+				array(
+					'methods'             => WP_REST_Server::DELETABLE,
+					'callback'            => array( $this, 'purge' ),
+					'permission_callback' => array( $this, 'require_access' ),
+				),
+			)
+		);
+
 		// Dedicated bulk-update endpoint. Keeps `PATCH /logs/{id}`
 		// for single-item updates and gives bulk operations a single
 		// round-trip instead of N concurrent requests.
@@ -102,7 +126,7 @@ class Logs extends Endpoint {
 					'args'                => array(
 						'status'            => array(
 							'type' => 'integer',
-							'enum' => array( 0, 1, 2, 3 ),
+							'enum' => array( 0, 1, 2 ),
 						),
 						'redirect_id'       => array( 'type' => 'integer' ),
 						'override_redirect' => array(
@@ -268,6 +292,36 @@ class Logs extends Endpoint {
 	}
 
 	/**
+	 * GET /logs/summary — aggregate counts for the dashboard strip.
+	 *
+	 * @since 4.0.1
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function summary(): WP_REST_Response {
+		return $this->respond( LogsModel::instance()->summary() );
+	}
+
+	/**
+	 * DELETE /logs/purge — wipe the entire logs table.
+	 *
+	 * Custom redirects are stored in a separate table and are untouched.
+	 *
+	 * @since 4.0.1
+	 *
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public function purge() {
+		$ok = LogsModel::instance()->purge_all();
+
+		if ( ! $ok ) {
+			return $this->error( 'rest_purge_failed', __( 'Could not purge the logs.', '404-to-301' ), 500 );
+		}
+
+		return $this->respond( array( 'purged' => true ) );
+	}
+
+	/**
 	 * DELETE /logs (bulk).
 	 *
 	 * @since 4.0.0
@@ -354,9 +408,7 @@ class Logs extends Endpoint {
 			'search'    => array( 'type' => 'string' ),
 			'status'    => array(
 				'type' => 'integer',
-				// Includes 3 (custom redirect) so the Logs list can filter
-				// by it — the table exposes all four statuses as a filter.
-				'enum' => array( 0, 1, 2, 3 ),
+				'enum' => array( 0, 1, 2 ),
 			),
 			'date_from' => array( 'type' => 'string' ),
 			'date_to'   => array( 'type' => 'string' ),
@@ -381,7 +433,6 @@ class Logs extends Endpoint {
 			LogsModel::STATUS_OPEN    => __( 'Open', '404-to-301' ),
 			LogsModel::STATUS_IGNORED => __( 'Ignored', '404-to-301' ),
 			LogsModel::STATUS_FIXED   => __( 'Fixed', '404-to-301' ),
-			LogsModel::STATUS_CUSTOM  => __( 'Custom redirect', '404-to-301' ),
 		);
 
 		return array(

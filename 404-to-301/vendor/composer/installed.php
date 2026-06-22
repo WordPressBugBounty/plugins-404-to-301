@@ -3,7 +3,7 @@
         'name' => 'duckdev/404-to-301',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'd7d7036a85751f6707ba3eceb69f178971c245c9',
+        'reference' => '7bbf1dca7a0d1f81a04f2954e5e8ea0e20f49a94',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'duckdev/404-to-301' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd7d7036a85751f6707ba3eceb69f178971c245c9',
+            'reference' => '7bbf1dca7a0d1f81a04f2954e5e8ea0e20f49a94',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

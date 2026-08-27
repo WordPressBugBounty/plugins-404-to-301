@@ -1,0 +1,63 @@
+/* Recent 404s dashboard widget. Loaded on the Dashboard only. */
+.d404-widget__list {
+	margin: 0;
+}
+
+.d404-widget__row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 8px 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.d404-widget__row:last-child {
+	border-bottom: 0;
+}
+
+.d404-widget__url {
+	font-family: Menlo, Consolas, monospace;
+	font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.d404-widget__hits {
+	flex: 0 0 auto;
+	font-size: 12px;
+	color: #646970;
+	font-variant-numeric: tabular-nums;
+}
+
+.d404-widget__empty {
+	margin: 4px 0 0;
+	color: #646970;
+}
+
+.d404-widget__foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin: 12px -12px -12px;
+	padding: 10px 12px;
+	border-top: 1px solid #f0f0f1;
+	background: #f6f7f7;
+	font-size: 12px;
+}
+
+.d404-widget__promo {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.d404-widget__promo img {
+	width: 16px;
+	height: 16px;
+	border-radius: 3px;
+	display: block;
+}

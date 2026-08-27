@@ -6,8 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'DuckDev\\Freemius\\' => array($vendorDir . '/duckdev/freemius-plugin-licensing/src'),
-    'DuckDev\\Cache\\' => array($vendorDir . '/duckdev/wp-cache-helper/src'),
-    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
-    'BerlinDB\\' => array($vendorDir . '/berlindb/core/src'),
+    'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
+    'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
+    'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
+    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
+    'AIOSEO\\FourNotFour\\' => array($baseDir . '/app'),
 );

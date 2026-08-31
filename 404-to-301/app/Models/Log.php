@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The 404 log DB model class.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Log extends Model {
 	/**
@@ -18,7 +18,7 @@ class Log extends Model {
 	 * NOTE: no `aioseo_` prefix - the table predates the plugin joining AIOSEO and renaming it would
 	 * orphan every existing install's data.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -27,7 +27,7 @@ class Log extends Model {
 	/**
 	 * Fields set to null when empty on save.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -36,7 +36,7 @@ class Log extends Model {
 	/**
 	 * Status values, mirroring the `status` column.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var int
 	 */
@@ -47,7 +47,7 @@ class Log extends Model {
 	/**
 	 * Per-row override values, mirroring the `override_*` columns.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var int
 	 */
@@ -58,7 +58,7 @@ class Log extends Model {
 	/**
 	 * The zero date MySQL hands back as the datetime column default.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -70,7 +70,7 @@ class Log extends Model {
 	 * The column is varbinary so IPv4 and IPv6 both fit in packed form; every reader wants the text
 	 * version. Named alongside the `$ip` column deliberately - the callers all ask for `$row->ip()`.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string The IP, or an empty string when it was masked or never captured.
 	 */
@@ -83,7 +83,7 @@ class Log extends Model {
 	 *
 	 * NOTE: Model::save() stamps `created`/`updated`; our table uses `created_at`/`updated_at`.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -112,7 +112,7 @@ class Log extends Model {
 	/**
 	 * Returns the log row for a normalized URL, if any.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string   $url Raw URL.
 	 * @return Log|null      The log, or null when the URL has never 404'd.
@@ -132,7 +132,7 @@ class Log extends Model {
 	/**
 	 * Records a 404 hit, either inserting a row or bumping the existing hit counter.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array    $data       Column => value, must contain at least `url`.
 	 * @param  Log|null $existing   Pre-fetched row for this URL, when the caller already looked.
@@ -184,7 +184,7 @@ class Log extends Model {
 	 * Contextual columns fall back to their current value so a caller that omits them doesn't blank
 	 * them.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  Log    $existing The row whose counter is being bumped.
 	 * @param  array  $data     Latest request context (ref, ip, ua, method).
@@ -217,7 +217,7 @@ class Log extends Model {
 	/**
 	 * Sets the status column on a log row.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int  $id     Row id.
 	 * @param  int  $status One of the STATUS_* constants.
@@ -248,7 +248,7 @@ class Log extends Model {
 	 * Status follows the redirect's active state: Fixed when the redirect is live, Open when it
 	 * isn't, so the admin can still see the 404 needs attention.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int  $id         Log row id.
 	 * @param  int  $redirectId Redirect row id, or 0 to clear.
@@ -284,7 +284,7 @@ class Log extends Model {
 	/**
 	 * Clears the redirect link from every log referencing a deleted redirect.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int  $redirectId Redirect row id that was just deleted.
 	 * @return void
@@ -312,7 +312,7 @@ class Log extends Model {
 	/**
 	 * Syncs the status of every log linked to a redirect when its active flag changes.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int  $redirectId Redirect row id.
 	 * @param  bool $isActive   New active state.
@@ -343,7 +343,7 @@ class Log extends Model {
 	 * Anything outside the OVERRIDE_* range is coerced to OVERRIDE_GLOBAL, so an unexpected payload
 	 * never persists a junk value.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int   $id        Log row id.
 	 * @param  array $overrides Override values keyed by column.
@@ -377,7 +377,7 @@ class Log extends Model {
 	 * An allow-list: `orderby` reaches this from a query string and a WP-CLI flag, and the builder
 	 * escapes column names but won't reject one that doesn't exist.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -386,7 +386,7 @@ class Log extends Model {
 	/**
 	 * Copies a column => value map onto the row, leaving anything absent untouched.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $data Column values.
 	 * @return $this       For chaining onto save().
@@ -405,7 +405,7 @@ class Log extends Model {
 	 * The one place the filter vocabulary lives - the REST collection, the CSV exporter, the cleaner,
 	 * the reporter, the stats roll-up and the WP-CLI list command all pass the same args.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $args number, offset, orderby, order, status, search, date_query.
 	 * @return array       [ 'items' => Log[], 'total' => int ].
@@ -431,7 +431,7 @@ class Log extends Model {
 	 * Deliberately excludes `xml`, `json` and `txt`: a 404 on `sitemap.xml` or
 	 * `robots.txt` is a content problem, not a missing file.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	const ASSET_EXTENSIONS = [
 		'png',
@@ -473,7 +473,7 @@ class Log extends Model {
 	/**
 	 * Narrow a query to 404s by where the visitor came from.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  \AIOSEO\FourNotFour\Core\Database $query The query to narrow.
 	 * @param  string                             $source internal, external or none.
@@ -515,7 +515,7 @@ class Log extends Model {
 	 * Compares the extension after stripping any query string, so `logo.png?v=2`
 	 * still reads as an asset.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  \AIOSEO\FourNotFour\Core\Database $query The query to narrow.
 	 * @param  string                             $kind  asset or content.
@@ -537,7 +537,7 @@ class Log extends Model {
 	/**
 	 * Cache key for the unresolved-log count shown in the admin menu.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	const OPEN_COUNT_CACHE = '404_to_301_open_log_count';
 
@@ -547,7 +547,7 @@ class Log extends Model {
 	 * The menu is built on every admin page load, so this must not reach the database
 	 * each time. The cache is cleared whenever a row is logged or its status changes.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return int
 	 */
@@ -571,7 +571,7 @@ class Log extends Model {
 	/**
 	 * Forget the cached unresolved count.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -585,7 +585,7 @@ class Log extends Model {
 	 * Built fresh per call because count() rewrites the SELECT, so counting and fetching can't share
 	 * one instance.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $args Query args.
 	 * @return \AIOSEO\FourNotFour\Core\Database The query.
@@ -632,7 +632,7 @@ class Log extends Model {
 	/**
 	 * A safe ORDER BY clause from the caller's args.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array  $args Query args.
 	 * @return string       The clause.
@@ -653,7 +653,7 @@ class Log extends Model {
 	 * NOTE: one GROUP BY beats four COUNT(*) round-trips. `custom` is counted separately because
 	 * redirect_id IS NOT NULL is the ground truth for "has a custom redirect", independent of status.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array Counts keyed total, open, ignored, fixed, custom.
 	 */
@@ -696,7 +696,7 @@ class Log extends Model {
 	/**
 	 * Deletes every row matching a set of column conditions.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $where Column => value conditions. Empty deletes every row.
 	 * @return int          Number of rows deleted.
@@ -722,7 +722,7 @@ class Log extends Model {
 	/**
 	 * Truncates the logs table. Custom redirects live elsewhere and are untouched.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool Whether the truncate succeeded.
 	 */
@@ -739,7 +739,7 @@ class Log extends Model {
 	/**
 	 * Deletes rows older than the given number of days.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int $days Cut-off in days.
 	 * @return int       Number of rows deleted.

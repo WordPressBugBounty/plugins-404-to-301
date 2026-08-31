@@ -450,7 +450,7 @@ class Redirects extends Endpoint {
 	 * malformed pattern is skipped by `preg_match`, a missing page resolves to no target, and a rule
 	 * pointing at its own source loops until the browser gives up.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array      $data    Writable fields, merged with the stored row on update.
 	 * @param  array|null $changed Field names this request sends; null on create, meaning "all of them".
@@ -536,7 +536,7 @@ class Redirects extends Endpoint {
 	/**
 	 * Build a 400 for a rejected field.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $code    Error code.
 	 * @param  string $message Human-readable reason.

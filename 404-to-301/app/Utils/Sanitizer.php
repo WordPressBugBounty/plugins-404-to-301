@@ -212,7 +212,7 @@ class Sanitizer {
 	 * Prefixing a single quote makes the cell text; numbers are left alone so a negative value isn't
 	 * turned into a string.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  mixed $value Raw cell value.
 	 * @return mixed        The value, quoted when a spreadsheet would treat it as a formula.
@@ -232,7 +232,7 @@ class Sanitizer {
 	/**
 	 * Apply {@see self::csvCell()} across a whole row.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $row Cell values.
 	 * @return array      The row with formula-looking cells quoted.

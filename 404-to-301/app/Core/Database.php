@@ -1758,7 +1758,7 @@ class Database {
 	/**
 	 * Acquires a database lock with the given name.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $lockName The name of the lock to acquire.
 	 * @param  int    $timeout  Timeout in seconds. 0 returns immediately when the lock is taken.
@@ -1783,7 +1783,7 @@ class Database {
 	/**
 	 * Releases a database lock with the given name.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $lockName The name of the lock to release.
 	 * @return bool             Whether the lock was released.

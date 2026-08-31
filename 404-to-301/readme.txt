@@ -3,7 +3,7 @@ Contributors: aioseo, smub, benjaminprojas
 Tags: redirect manager, redirection, 301 redirect, 404 monitor, broken links
 Requires at least: 6.4
 Tested up to: 7.1
-Stable tag: 4.0.3
+Stable tag: 4.0.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -227,6 +227,16 @@ Post on the [support forum](https://wordpress.org/support/plugin/404-to-301/) an
 
 == Changelog ==
 
+= 4.0.4 =
+* New: MCP tab in Settings that connects an AI client (Claude, Gemini, Cursor, VS Code) to your site. The plugin registers 11 abilities with the WordPress Abilities API, so an assistant can read your 404 logs, create and repoint redirects, check where a URL lands and change settings from chat.
+* Improve: Redirect matching is faster on sites with a lot of rules. Only the rule that actually matches is loaded now, rather than every candidate, and pattern rules are cached instead of being re-queried for every 404.
+* Improve: The 404 logs list and the Recent 404s dashboard widget are much faster on large log tables. Both columns they sort on are now indexed.
+* Improve: Log trimming is on by default on new installs, keeping 30 days of 404s so the table cannot grow without limit. Existing sites keep whatever they already have.
+* Improve: New page header carrying the 404 to 301 logo, and the admin menu now uses the plugin's own icon instead of a generic WordPress one.
+* Improve: The "Paths to ignore" setting accepts `*` as a wildcard, so one entry such as `/20*/` covers every year of date-based archive URLs instead of needing one entry per year.
+* Fix: An entry in "Paths to ignore" typed with capital letters never matched anything, and an entry ending in a slash did not match a request that ended exactly there — `/feed/` skipped `/blog/feed/page/2` but not `/blog/feed/`. Entries are now matched the same way the request is, so an entry means what it looks like.
+* Fix: On a server using MySQL's default date handling, any future change to the plugin's tables would have failed, because the tables were created with a zero-date default that MySQL re-validates whenever it rebuilds a table. The defaults are dropped on upgrade. Both timestamps have always been written by the plugin, so nothing depended on them.
+
 = 4.0.3 =
 * New: The Redirects Importer, Logs Exporter, Logs Cleaner and Email Reports add-ons are now built into the plugin and free. Nothing to install, nothing to enable, no licence key. If you have the separate add-on plugins, a notice lists the ones you can delete.
 * New: Recent 404s dashboard widget listing your busiest broken URLs from the last 30 days.
@@ -281,22 +291,9 @@ Post on the [support forum](https://wordpress.org/support/plugin/404-to-301/) an
 * New: Add-ons catalogue for free and premium extensions.
 * Improve: IP masking and path exclusions for GDPR-friendly logging.
 
-= 3.1.5 =
-* Improve: Row action link.
-* Fix: Unable to delete logs.
-
 For the full release history, see the [changelog](https://github.com/awesomemotive/404-to-301/releases).
 
 == Upgrade Notice ==
 
-= 4.0.3 =
-Fixes a fatal error when trashing a post and a security issue in regex redirect rules. The four add-ons are now built in and free, so the separate plugins can be deleted. Telegram Alerts is deprecated. Developers: namespaces and the `D404_*` constants were renamed; hooks and options are unchanged.
-
-= 4.0.2 =
-A maintenance release with add-ons catalogue improvements and migration-banner fixes, including a false positive on SQLite (WordPress Playground) installs.
-
-= 4.0.1 =
-A maintenance release with UX polish, a Purge-all-logs tool and a one-time data migration that converts legacy "custom redirect" log rows to the new status model.
-
-= 4.0.0 =
-A major release with a brand-new redirect manager, modern admin, faster 404 logging, REST API and WP-CLI support. Back up your database before updating.
+= 4.0.4 =
+Adds an MCP tab so an AI client can work on your redirects and 404 logs, plus a rotating menu item introducing another plugin from our team each week. Wildcards in Paths to ignore, faster redirect matching and log queries, log trimming on by default for new installs, and several fixes.

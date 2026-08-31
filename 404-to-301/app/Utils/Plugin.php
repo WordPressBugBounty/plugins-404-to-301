@@ -19,6 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use AIOSEO\FourNotFour\Admin\PromoMenu;
+
 /**
  * Class Plugin
  *
@@ -61,16 +63,19 @@ class Plugin {
 	/**
 	 * The About Us page slug.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
 	const PAGE_ABOUT = '404-to-301-about';
 
 	/**
-	 * Hidden landing page that installs Broken Link Checker.
+	 * Landing page that installs Broken Link Checker.
 	 *
-	 * @since 4.0.3
+	 * One of the rotating promo pages ({@see \AIOSEO\FourNotFour\Admin\PromoMenu}); named because
+	 * the dashboard widget and the Site Health check link straight to it.
+	 *
+	 * @since 4.0.4
 	 */
 	const PAGE_BLC = '404-to-301-blc';
 
@@ -90,7 +95,6 @@ class Plugin {
 		'logs'      => 'redirects_page_404-to-301-logs',
 		'settings'  => 'redirects_page_404-to-301-settings',
 		'about'     => 'redirects_page_404-to-301-about',
-		'blc'       => 'admin_page_404-to-301-blc',
 	];
 
 	/**
@@ -164,6 +168,20 @@ class Plugin {
 			];
 		}
 
+		/*
+		 * The promo landing pages carry no fixed screen id: whichever one is currently in the menu
+		 * is registered under the plugin's parent and the rest are hidden, so the id depends on the
+		 * rotation. Their URLs don't, which is all a caller needs.
+		 */
+		foreach ( PromoMenu::keys() as $key ) {
+			$slug          = '404-to-301-' . $key;
+			$pages[ $key ] = [
+				'id'   => '',
+				'url'  => admin_url( 'admin.php?page=' . $slug ),
+				'slug' => $slug,
+			];
+		}
+
 		return $pages;
 	}
 
@@ -229,9 +247,37 @@ class Plugin {
 		}
 
 		if ( null === $page ) {
-			return in_array( $screen->id, self::$screens, true );
+			return in_array( $screen->id, self::$screens, true ) || self::isPromoScreen( $screen->id );
+		}
+
+		if ( PromoMenu::has( $page ) ) {
+			return self::isPromoScreen( $screen->id, $page );
 		}
 
 		return self::screenId( $page ) === $screen->id;
+	}
+
+	/**
+	 * Whether a screen id belongs to a promo landing page.
+	 *
+	 * Matched by suffix because the prefix moves with the rotation: WordPress derives it from the
+	 * parent menu, and only the promoted page of the moment has one.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @param  string      $screenId Screen id to test.
+	 * @param  string|null $page     Optional single page key to match; all of them otherwise.
+	 * @return bool
+	 */
+	private static function isPromoScreen( string $screenId, ?string $page = null ): bool {
+		foreach ( ( null === $page ? PromoMenu::keys() : [ $page ] ) as $key ) {
+			$slug = '404-to-301-' . $key;
+
+			if ( "admin_page_{$slug}" === $screenId || "redirects_page_{$slug}" === $screenId ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

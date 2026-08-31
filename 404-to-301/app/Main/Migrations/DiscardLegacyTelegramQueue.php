@@ -17,13 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * Key names are spelled out here because the library that derived them is gone.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class DiscardLegacyTelegramQueue implements Migration {
 	/**
 	 * The retired queue's fully-qualified identifier.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -32,7 +32,7 @@ class DiscardLegacyTelegramQueue implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
@@ -43,18 +43,18 @@ class DiscardLegacyTelegramQueue implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
 	public function version() {
-		return '4.0.3';
+		return '4.0.4';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -72,7 +72,7 @@ class DiscardLegacyTelegramQueue implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool
 	 */
@@ -90,7 +90,7 @@ class DiscardLegacyTelegramQueue implements Migration {
 	 * Read straight off the table because each key carries a random suffix. The table mirrors the
 	 * library's own resolution: network installs kept the queue in sitemeta, single sites in options.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array
 	 */

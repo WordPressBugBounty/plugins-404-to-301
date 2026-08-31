@@ -9,13 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * URL normalization, hashing and request-fingerprint helpers.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 trait Urls {
 	/**
 	 * Reduces a URL to the canonical form used for storing and matching.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $url Raw URL or path.
 	 * @return string      The normalized path.
@@ -55,7 +55,7 @@ trait Urls {
 		/**
 		 * Filters the normalized form of a URL before it is hashed or compared.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @param string $normalized Normalized URL.
 		 * @param string $raw        Original input as passed in.
@@ -73,7 +73,7 @@ trait Urls {
 	 * here - the single chokepoint both storage and lookup run through - keeps the two in sync.
 	 * Root installs have an empty home path, so this is a no-op for them.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $path Normalized, lowercased path.
 	 * @return string       The path relative to the home path.
@@ -101,7 +101,7 @@ trait Urls {
 	 * Accepts a bare pattern or a delimited one, matching how {@see \AIOSEO\FourNotFour\Models\Redirect}
 	 * wraps it before matching — so what validates here is exactly what runs later.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $pattern Raw pattern as the user typed it.
 	 * @return bool            True when the pattern compiles.
@@ -126,7 +126,7 @@ trait Urls {
 	 * they never redirect anything, and the admin table renders the destination as a clickable link,
 	 * so storing one turns the Redirects screen into a script-execution surface.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $url Destination as entered or imported.
 	 * @return bool        True when the destination is safe to store and emit.
@@ -156,7 +156,7 @@ trait Urls {
 	/**
 	 * Returns the SHA1 of a normalized URL, used as the unique key on the logs and redirects tables.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $url Raw URL or path.
 	 * @return string      40-char hexadecimal hash.
@@ -172,7 +172,7 @@ trait Urls {
 	 * two distinct rows. The path is normalized as usual but the query is kept verbatim, because
 	 * query values can be case-sensitive.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $url Raw URL or path.
 	 * @return string      40-char hexadecimal hash.
@@ -193,7 +193,7 @@ trait Urls {
 	 * Returns an empty string for invalid input so callers can skip the column write without an
 	 * extra check.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $ip Dotted-quad IPv4 or colon-hex IPv6.
 	 * @return string     Binary packed IP, or '' when invalid.
@@ -212,7 +212,7 @@ trait Urls {
 	/**
 	 * Converts a packed IP back to its printable form.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $packed Binary packed IP as stored in the DB.
 	 * @return string         Printable IP, or '' when the input isn't a valid packed address.
@@ -233,7 +233,7 @@ trait Urls {
 	 *
 	 * Filterable so the heuristic can be swapped for a real bot-detection library.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $userAgent Raw User-Agent string.
 	 * @return bool              True when the request looks like a human.
@@ -251,7 +251,7 @@ trait Urls {
 		/**
 		 * Filters the human-vs-bot determination for a request.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @param bool   $isHuman   Whether the request looks like a human.
 		 * @param string $userAgent Raw User-Agent string.

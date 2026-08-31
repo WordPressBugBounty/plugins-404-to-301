@@ -61,7 +61,7 @@ abstract class Action implements Actionable {
 	 *
 	 * Lets action subclasses ask for `logs.skipBots` rather than walking the accessor chain.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $path     Dot-delimited option path.
 	 * @param  mixed  $fallback Returned when the path doesn't resolve.

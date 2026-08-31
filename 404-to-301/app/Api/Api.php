@@ -85,7 +85,7 @@ class Api {
 	 * element. Without one, the registering class's namespace wins when the class exists there, and
 	 * this file's namespace is the fallback.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  mixed            $callback The configured callback.
 	 * @param  \ReflectionClass $reflection The registering class, read for its namespace.

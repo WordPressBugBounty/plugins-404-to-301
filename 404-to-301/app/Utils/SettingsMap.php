@@ -17,13 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * \AIOSEO\FourNotFour\Main\Migrations\MigrateFlatSettings}) and the live settings endpoint, so the two
  * can't drift apart.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class SettingsMap {
 	/**
 	 * Flat key => dot path in the user-facing options.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -69,7 +69,7 @@ class SettingsMap {
 	 *
 	 * Read-only: these are written by the workers, and the admin app only displays them.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -90,7 +90,7 @@ class SettingsMap {
 	/**
 	 * Build the flat settings array the admin app reads.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array Flat key => current value.
 	 */
@@ -114,7 +114,7 @@ class SettingsMap {
 	 * Unknown keys are dropped, and so is anything from {@see self::INTERNAL} — the admin app displays
 	 * those but must not write them.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $flat Flat key => value, as sent by the admin app.
 	 * @return array       Nested options tree, ready for sanitizeAndSave().
@@ -136,7 +136,7 @@ class SettingsMap {
 	/**
 	 * Read a dotted path off an options object.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  object $options Options instance.
 	 * @param  string $path    Dotted path, eg. `notifications.email.enabled`.
@@ -159,7 +159,7 @@ class SettingsMap {
 	/**
 	 * Set a dotted path on an array.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array  $target The array to write into.
 	 * @param  string $path   Dotted path.

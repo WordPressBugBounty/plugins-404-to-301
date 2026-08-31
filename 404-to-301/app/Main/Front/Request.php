@@ -354,7 +354,7 @@ class Request {
 	/**
 	 * Whether this request is WordPress spawning its own cron rather than a visitor.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool
 	 */
@@ -385,7 +385,20 @@ class Request {
 	 *
 	 * Used by Actions to bail before doing any work.
 	 *
-	 * @since 4.0.0
+	 * An entry is a substring: `/feed/` skips anything containing it. An entry containing `*` is a
+	 * pattern instead, where `*` stands for any run of characters - `/20*\/` covers every
+	 * date-based archive path in one row rather than one row per year.
+	 *
+	 * Entries go through the same normalisation as the request, which matters more than it sounds:
+	 * the request path arrives lower-cased and with its trailing slash stripped, so before this an
+	 * entry of `/Feed/` could never match anything, and `/feed/` missed a request to exactly
+	 * `/blog/feed/` while matching `/blog/feed/page/2` - despite `/feed/` being the field's own
+	 * placeholder. Normalising both sides is what makes an entry mean what it looks like.
+	 *
+	 * @since   4.0.0
+	 * @version 4.0.4 Entries containing `*` are matched as patterns.
+	 * @version 4.0.4 Entries are normalised like the request, so case and a trailing slash no
+	 *                 longer decide whether one matches.
 	 *
 	 * @return bool
 	 */
@@ -398,15 +411,45 @@ class Request {
 		$url = aioseo404To301()->helpers->normalizeUrl( $this->url() );
 
 		foreach ( $paths as $path ) {
-			$path = (string) $path;
+			$path = trim( (string) $path );
 			if ( '' === $path ) {
 				continue;
 			}
-			if ( false !== strpos( $url, trim( $path ) ) ) {
+
+			$path = aioseo404To301()->helpers->normalizeUrl( $path );
+
+			if ( false !== strpos( $path, '*' ) ) {
+				if ( $this->matchesPattern( $url, $path ) ) {
+					return true;
+				}
+
+				continue;
+			}
+
+			if ( false !== strpos( $url, $path ) ) {
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Whether a wildcard exclude entry matches a path.
+	 *
+	 * Deliberately unanchored, so a pattern behaves like the substring entries beside it: `/20*`
+	 * matches anywhere in the path rather than having to describe the whole of it. Everything except
+	 * `*` is quoted, so a pattern can't smuggle in a character class or a quantifier.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @param  string $url  Normalised request path.
+	 * @param  string $path Normalised exclude entry containing at least one `*`.
+	 * @return bool         Whether the entry matches.
+	 */
+	private function matchesPattern( string $url, string $path ): bool {
+		$pattern = str_replace( '\*', '.*', preg_quote( $path, '#' ) );
+
+		return 1 === preg_match( '#' . $pattern . '#', $url );
 	}
 }

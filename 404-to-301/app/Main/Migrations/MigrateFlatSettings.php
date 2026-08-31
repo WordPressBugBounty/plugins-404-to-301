@@ -19,13 +19,13 @@ use AIOSEO\FourNotFour\Utils\SettingsMap;
  * that hits a problem after upgrading can be recovered by hand. `uninstall.php` removes it, and a
  * later release can drop it outright.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class MigrateFlatSettings implements Migration {
 	/**
 	 * The pre-port option name.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -34,7 +34,7 @@ class MigrateFlatSettings implements Migration {
 	/**
 	 * The pre-port option holding the addon plugins 4.0.3 made redundant.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -43,7 +43,7 @@ class MigrateFlatSettings implements Migration {
 	/**
 	 * Stable identifier.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
@@ -54,18 +54,18 @@ class MigrateFlatSettings implements Migration {
 	/**
 	 * Release this migration was introduced in.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
 	public function version() {
-		return '4.0.3';
+		return '4.0.4';
 	}
 
 	/**
 	 * Carries the flat option across into the nested options.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -114,7 +114,7 @@ class MigrateFlatSettings implements Migration {
 	/**
 	 * Whether the flat option has already been folded in.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool
 	 */
@@ -125,7 +125,7 @@ class MigrateFlatSettings implements Migration {
 	/**
 	 * Writes a value into a nested array at a dot-delimited path.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array  $target The array to write into.
 	 * @param  string $path   Dot-delimited path.

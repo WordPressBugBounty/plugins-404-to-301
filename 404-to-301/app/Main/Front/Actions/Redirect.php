@@ -385,11 +385,12 @@ class Redirect extends Action {
 	/**
 	 * Resolve the global default redirect target.
 	 *
-	 * @since 4.0.0
+	 * @since   4.0.0
+	 * @version 4.0.4 Made public for the redirect-test ability.
 	 *
 	 * @return string Empty when no default is configured.
 	 */
-	private function resolveGlobalTarget(): string {
+	public function resolveGlobalTarget(): string {
 		$targetType = (string) $this->setting( 'redirects.target', 'link' );
 
 		switch ( $targetType ) {

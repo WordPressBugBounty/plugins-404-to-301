@@ -11,13 +11,13 @@ use AIOSEO\FourNotFour\Utils\Plugin;
 /**
  * Boots the admin surface.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Admin {
 	/**
 	 * The admin page renderer.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var Page
 	 */
@@ -26,7 +26,7 @@ class Admin {
 	/**
 	 * Class constructor.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	public function __construct() {
 		if ( ! is_admin() ) {
@@ -41,6 +41,7 @@ class Admin {
 		new Links();
 		new SiteHealth();
 		new Notices\RedundantAddons();
+		new Notices\Review();
 		new DashboardWidget();
 
 		// Late enough to catch notices registered after `current_screen`: `in_admin_header` fires
@@ -57,7 +58,7 @@ class Admin {
 	 * Links through the aioseo.com redirect rather than straight to wp.org, so the
 	 * click is measurable and the destination can be changed without a release.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $text The existing footer text.
 	 * @return string       Our text on our screens, the original everywhere else.
@@ -98,7 +99,7 @@ class Admin {
 	 * unhooking core's callback, so nothing has to be removed and other screens are
 	 * left alone.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $text The existing footer version text.
 	 * @return string       Our versions on our screens, the original everywhere else.
@@ -126,7 +127,7 @@ class Admin {
 	 * plugin does on its screens - foreign notices are dropped here. This plugin's own notices are
 	 * kept: they're the ones that say something about the page the user is looking at.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -143,7 +144,7 @@ class Admin {
 	/**
 	 * Remove every callback on a hook that doesn't belong to this plugin.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $hook The notice hook to filter.
 	 * @return void
@@ -175,7 +176,7 @@ class Admin {
 	 *
 	 * NOTE: a closure can't be attributed to a plugin, so it counts as foreign. Ours are all methods.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  mixed $callback The registered callback.
 	 * @return bool            True when the callback is this plugin's.

@@ -51,16 +51,19 @@ class Page {
 	/**
 	 * Mount id for the About Us app.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	const MOUNT_ABOUT = '404-to-301-about';
 
 	/**
-	 * Mount point for the Broken Link Checker landing page.
+	 * Mount point shared by every cross-promotion landing page.
 	 *
-	 * @since 4.0.3
+	 * One mount for all five: which plugin is being pitched comes from the localised payload, so
+	 * the rotation needs no new React entry per plugin.
+	 *
+	 * @since 4.0.4
 	 */
-	const MOUNT_BLC = '404-to-301-blc';
+	const MOUNT_PROMO = '404-to-301-promo';
 
 	/**
 	 * Render the Logs admin page.
@@ -96,20 +99,20 @@ class Page {
 	}
 
 	/**
-	 * Render the About Us admin page.
+	 * Render a cross-promotion landing page.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
-	public function renderBlc(): void {
-		$this->mount( self::MOUNT_BLC );
+	public function renderPromo(): void {
+		$this->mount( self::MOUNT_PROMO );
 	}
 
 	/**
 	 * Render the About Us page.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */

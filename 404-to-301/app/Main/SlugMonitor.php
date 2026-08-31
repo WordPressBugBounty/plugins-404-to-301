@@ -35,7 +35,7 @@ class SlugMonitor {
 	/**
 	 * Marks the rows this class creates, so an admin's own redirects are never overwritten.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -63,7 +63,7 @@ class SlugMonitor {
 	 * post's permalink changes.
 	 *
 	 * @since   4.0.0
-	 * @version 4.0.3 Params are no longer typed; a non-WP_Post is now skipped.
+	 * @version 4.0.4 Params are no longer typed; a non-WP_Post is now skipped.
 	 *
 	 * @param int          $postId     Updated post id.
 	 * @param WP_Post|null $postAfter  Post object after the update.

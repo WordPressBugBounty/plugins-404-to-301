@@ -112,7 +112,7 @@ class Migrator {
 	 * The migration writes into them, and an external caller (WP-CLI, a REST hit) can reach this
 	 * before the schema has been laid down.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool Whether both tables exist.
 	 */
@@ -565,7 +565,7 @@ class Migrator {
 	 * variant missing a column or a restrictive grant would therefore destroy the data it was meant
 	 * to move, so every read has to rule the error out first.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $context Method name, recorded with the error for support.
 	 * @return bool            True when the read failed and the caller must bail.
@@ -688,7 +688,7 @@ class Migrator {
 	 * The column only ever held scalars and arrays, so refusing classes closes the
 	 * object-injection path a poisoned legacy row would otherwise open.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $raw The stored value.
 	 * @return mixed       The decoded value, or an empty array when it isn't usable.

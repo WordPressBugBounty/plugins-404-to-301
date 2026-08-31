@@ -21,6 +21,7 @@ use AIOSEO\FourNotFour\Main\Telegram\Connection;
 use AIOSEO\FourNotFour\Utils\Plugin;
 
 use AIOSEO\FourNotFour\Api\Endpoint;
+use AIOSEO\FourNotFour\Api\Mcp;
 use AIOSEO\FourNotFour\Main\Exporter\Download;
 use AIOSEO\FourNotFour\Utils\Assets as AssetManifest;
 use AIOSEO\FourNotFour\Utils\Helpers;
@@ -37,7 +38,9 @@ class Assets {
 	 * Map of admin screen id => entry handle.
 	 *
 	 * The keys come from `Plugin::screens()`; the values match the
-	 * `assets/src/<name>.js` entry files emitted into `build/`.
+	 * `assets/src/<name>.js` entry files emitted into `build/`. The promo
+	 * landing pages are matched separately - their screen id moves with the
+	 * rotation, so {@see self::promoKey()} reads it off the hook suffix.
 	 *
 	 * @since 4.0.0
 	 * @var array<string, string>
@@ -47,7 +50,6 @@ class Assets {
 		'redirects_page_404-to-301-logs'     => 'logs',
 		'redirects_page_404-to-301-settings' => 'settings',
 		'redirects_page_404-to-301-about'    => 'about',
-		'admin_page_404-to-301-blc'          => 'blc',
 	];
 
 	/**
@@ -71,11 +73,13 @@ class Assets {
 	 * @return void
 	 */
 	public function enqueue( $hook ): void {
-		if ( ! isset( self::HANDLES[ $hook ] ) ) {
+		$promoKey = $this->promoKey( $hook );
+
+		if ( ! isset( self::HANDLES[ $hook ] ) && '' === $promoKey ) {
 			return;
 		}
 
-		$entry  = self::HANDLES[ $hook ];
+		$entry  = '' !== $promoKey ? 'promo' : self::HANDLES[ $hook ];
 		$handle = 'd404-' . $entry;
 		$asset  = AssetManifest::manifest( $entry );
 		$src    = AIOSEO_404_TO_301_PLUGIN_URL . 'build/' . $entry . '.js';
@@ -90,11 +94,13 @@ class Assets {
 
 		wp_set_script_translations( $handle, '404-to-301', AIOSEO_404_TO_301_DIR . '/languages' );
 
-		wp_localize_script(
-			$handle,
-			'd404',
-			$this->scriptVars( $entry )
-		);
+		$vars = $this->scriptVars( $entry );
+
+		if ( '' !== $promoKey ) {
+			$vars['promo'] = $promoKey;
+		}
+
+		wp_localize_script( $handle, 'd404', $vars );
 
 		$cssPath = AIOSEO_404_TO_301_DIR . '/build/' . $entry . '.css';
 		if ( is_readable( $cssPath ) ) {
@@ -105,6 +111,30 @@ class Assets {
 				$asset['version']
 			);
 		}
+	}
+
+	/**
+	 * The promo landing page a screen hook belongs to.
+	 *
+	 * WordPress builds the hook from the parent menu, and only the promoted page of the moment has
+	 * one - so the prefix is `redirects_page_` for that page and `admin_page_` for the other four.
+	 * Matching on the suffix covers both without the rotation leaking into this map.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @param  string $hook Current admin screen hook.
+	 * @return string       Promo page key, or '' when the screen is not one.
+	 */
+	private function promoKey( string $hook ): string {
+		foreach ( PromoMenu::keys() as $key ) {
+			$slug = '404-to-301-' . $key;
+
+			if ( "admin_page_{$slug}" === $hook || "redirects_page_{$slug}" === $hook ) {
+				return $key;
+			}
+		}
+
+		return '';
 	}
 
 	/**
@@ -142,6 +172,10 @@ class Assets {
 			// registers under its own namespace rather than Endpoint::NAMESPACE.
 			'pluginsRestBase'  => '/' . aioseo404To301()->api->namespace,
 			'adminUrl'         => admin_url(),
+
+			// The header lockup links out; the UTM is built here so the campaign naming stays in
+			// one place rather than being reassembled in JS.
+			'logoUrl'          => aioseo404To301()->helpers->utmUrl( AIOSEO_404_TO_301_MARKETING_URL, 'header-logo' ),
 
 			// Logged 404s are stored as request paths, so the front end needs the site
 			// root to turn one back into a link an admin can click to test the redirect.
@@ -185,6 +219,10 @@ class Assets {
 			// catalogue; the other screens only need the handful their CTA can offer, and
 			// get_plugins() reads the filesystem, so nothing is built for screens with none.
 			'plugins'          => $this->pluginData( $entry ),
+			// Only the Settings page carries the MCP tab, and building this walks the plugin
+			// list and the current user's Application Passwords - nothing another screen
+			// should pay for.
+			'mcp'              => 'settings' === $entry ? $this->mcpData() : null,
 		];
 
 		/**
@@ -212,7 +250,7 @@ class Assets {
 	/**
 	 * Install/activation status for the plugins a given screen can promote.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $entry Entry handle.
 	 * @return array         Plugin key => status, empty when the screen promotes nothing.
@@ -222,8 +260,12 @@ class Assets {
 		// them - the JS treats an active Pro build as "already handled".
 		$promoted = [
 			'about'     => [],
-			'blc'       => [ 'brokenLinkChecker' ],
-			'settings'  => [ 'wpMail', 'wpMailPro', 'brokenLinkChecker' ],
+			// One entry per landing page; the page reads the one it is pitching.
+			'promo'     => array_merge(
+				array_column( PromoMenu::items(), 'plugin' ),
+				[ 'aioseoPro' ]
+			),
+			'settings'  => [ 'wpMail', 'wpMailPro', 'brokenLinkChecker', 'wpVibe' ],
 			'logs'      => [ 'brokenLinkChecker' ],
 			'redirects' => [ 'aioseo', 'aioseoPro' ],
 		];
@@ -240,6 +282,90 @@ class Assets {
 		}
 
 		return array_intersect_key( $data, array_flip( $promoted[ $entry ] ) );
+	}
+
+	/**
+	 * Server-side state the MCP settings tab renders its setup steps from.
+	 *
+	 * Every flag is read fresh on each page load rather than remembered client-side: an
+	 * Application Password can be revoked and a plugin deactivated between two visits, and a
+	 * stored "you're connected" flag would keep claiming otherwise.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @return array
+	 */
+	private function mcpData(): array {
+		$user = wp_get_current_user();
+
+		return [
+			'abilitiesApiAvailable' => function_exists( 'wp_register_ability' ),
+			// Counted across all plugins: on a WP version that has the Abilities API, zero means
+			// something is suppressing it, since core registers abilities of its own.
+			'totalAbilities'        => function_exists( 'wp_get_abilities' ) ? count( wp_get_abilities() ) : 0,
+			'abilities'             => $this->registeredAbilities(),
+			'adapterActive'         => '' !== Mcp::activeAdapterFile(),
+			'adapterInstalled'      => '' !== Mcp::installedAdapterFile(),
+			'hasAppPassword'        => Mcp::currentUserHasAppPassword(),
+			// `supported` is core's HTTPS/local-environment gate; `available` also accounts for a
+			// security plugin or filter switching the feature off. Each drives its own guidance.
+			'appPasswordsSupported' => is_ssl() || 'local' === wp_get_environment_type(),
+			'appPasswordsAvailable' => Mcp::appPasswordsAvailable(),
+			'username'              => $user ? (string) $user->user_login : '',
+			'profileUrl'            => admin_url( 'profile.php#application-passwords-section' ),
+			'updateCoreUrl'         => admin_url( 'update-core.php' ),
+			'abilitiesRestUrl'      => rest_url( 'wp-abilities/v1/abilities' ),
+			'serverUrl'             => rest_url( 'mcp/mcp-adapter-default-server' ),
+		];
+	}
+
+	/**
+	 * This plugin's abilities, grouped for display.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @return array<int, array{slug: string, label: string, items: array}>
+	 */
+	private function registeredAbilities(): array {
+		if ( ! function_exists( 'wp_get_abilities' ) ) {
+			return [];
+		}
+
+		$categoryLabels = [];
+		if ( function_exists( 'wp_get_ability_categories' ) ) {
+			foreach ( wp_get_ability_categories() as $category ) {
+				$categoryLabels[ $category->get_slug() ] = $category->get_label();
+			}
+		}
+
+		$groups = [];
+		foreach ( wp_get_abilities() as $ability ) {
+			$name = $ability->get_name();
+
+			if ( 0 !== strpos( $name, '404-to-301/' ) ) {
+				continue;
+			}
+
+			$slug = $ability->get_category();
+
+			if ( ! isset( $groups[ $slug ] ) ) {
+				$groups[ $slug ] = [
+					'slug'  => $slug,
+					// The category label carries the plugin name for the global abilities list;
+					// on this page every row is ours, so the prefix is noise.
+					'label' => preg_replace( '/^404 to 301\s*[—–-]+\s*/u', '', (string) ( $categoryLabels[ $slug ] ?? $slug ) ),
+					'items' => [],
+				];
+			}
+
+			$groups[ $slug ]['items'][] = [
+				'name'        => $name,
+				'label'       => $ability->get_label(),
+				'description' => $ability->get_description(),
+			];
+		}
+
+		return array_values( $groups );
 	}
 
 	/**

@@ -49,7 +49,7 @@ final class Cron {
 	/**
 	 * Allowed digest frequencies.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */

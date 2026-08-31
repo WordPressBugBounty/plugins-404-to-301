@@ -20,13 +20,13 @@ use AIOSEO\FourNotFour\Utils\Sanitizer;
  * The value mapping is deliberately identical to the 4.0.x conversion so both upgrade paths land on
  * the same settings.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class MigrateV3Settings implements Migration {
 	/**
 	 * The v3 options blob.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -35,7 +35,7 @@ class MigrateV3Settings implements Migration {
 	/**
 	 * The 4.0.x flat option. Its presence means the conversion already happened.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -44,7 +44,7 @@ class MigrateV3Settings implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
@@ -55,18 +55,18 @@ class MigrateV3Settings implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
 	public function version() {
-		return '4.0.3';
+		return '4.0.4';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -144,7 +144,7 @@ class MigrateV3Settings implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool
 	 */

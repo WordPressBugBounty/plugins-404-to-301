@@ -11,7 +11,7 @@ use AIOSEO\FourNotFour\Traits;
 /**
  * Handles the main options.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Options {
 	use Traits\Options;
@@ -24,7 +24,7 @@ class Options {
 	 * and the report recipients (`admin_email`) - resolves at the point of use instead, so a site that
 	 * later changes its URL or admin address isn't stuck with a stale value baked into the options.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -103,7 +103,7 @@ class Options {
 	/**
 	 * Class constructor.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param string $optionsName The options name.
 	 */
@@ -118,7 +118,7 @@ class Options {
 	/**
 	 * Initializes the options.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -131,7 +131,7 @@ class Options {
 	/**
 	 * Returns the options from the DB, merged over the defaults.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array An array of options.
 	 */
@@ -149,7 +149,7 @@ class Options {
 	/**
 	 * Sanitizes, then saves the options to the database.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $newOptions An array of options to sanitize, then save.
 	 * @return void

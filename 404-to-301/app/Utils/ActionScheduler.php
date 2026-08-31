@@ -24,7 +24,7 @@ class ActionScheduler {
 	/**
 	 * Intervals we've minted a WP-Cron recurrence for during this request.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -33,7 +33,7 @@ class ActionScheduler {
 	/**
 	 * WP-Cron hook prefixes this plugin owns.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -46,7 +46,7 @@ class ActionScheduler {
 	 * without their own copy of this file schedule into the main plugin's group, so draining their
 	 * hooks is correct - it's the ones that track their own mode that must be left alone.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -198,7 +198,7 @@ class ActionScheduler {
 	 * @NOTE: This method differs from the one in the main plugin!
 	 *
 	 * @since   1.0.0
-	 * @version 4.0.3 Added the WP-Cron fallback.
+	 * @version 4.0.4 Added the WP-Cron fallback.
 	 *
 	 * @param  string  $actionName The action name.
 	 * @param  int     $time       The time to add to the current time.
@@ -227,7 +227,7 @@ class ActionScheduler {
 	 * Checks if a given action is already scheduled.
 	 *
 	 * @since   1.0.0
-	 * @version 4.0.3 Now delegates to hasScheduled(), so it honours the WP-Cron fallback.
+	 * @version 4.0.4 Now delegates to hasScheduled(), so it honours the WP-Cron fallback.
 	 *
 	 * @param  string  $actionName The action name.
 	 * @param  array   $args       Args passed down to the action.
@@ -241,7 +241,7 @@ class ActionScheduler {
 	 * Returns the running actions for a given action.
 	 *
 	 * @since   1.0.0
-	 * @version 4.0.3 Reports nothing under the WP-Cron fallback, which has no running state.
+	 * @version 4.0.4 Reports nothing under the WP-Cron fallback, which has no running state.
 	 *
 	 * @param  string $actionName The action name.
 	 * @param  array  $args       Args passed down to the action.
@@ -268,7 +268,7 @@ class ActionScheduler {
 	 * Returns the pending actions for a given action.
 	 *
 	 * @since   1.0.0
-	 * @version 4.0.3 Now honours the WP-Cron fallback.
+	 * @version 4.0.4 Now honours the WP-Cron fallback.
 	 *
 	 * @param  string $actionName The action name.
 	 * @param  array  $args       Args passed down to the action.
@@ -300,7 +300,7 @@ class ActionScheduler {
 	 * Unschedule an action.
 	 *
 	 * @since   1.0.0
-	 * @version 4.0.3 Now delegates to unscheduleAll(), so it honours the WP-Cron fallback.
+	 * @version 4.0.4 Now delegates to unscheduleAll(), so it honours the WP-Cron fallback.
 	 *
 	 * @param  string $actionName The action name to unschedule.
 	 * @param  array  $args       Args passed down to the action.
@@ -314,7 +314,7 @@ class ActionScheduler {
 	 * Schedules a recurring action.
 	 *
 	 * @since   1.0.0
-	 * @version 4.0.3 Added the WP-Cron fallback.
+	 * @version 4.0.4 Added the WP-Cron fallback.
 	 *
 	 * @param  string  $actionName The action name.
 	 * @param  int     $time       The seconds to add to the current time.
@@ -344,7 +344,7 @@ class ActionScheduler {
 	 * Schedule a single async action.
 	 *
 	 * @since   1.0.0
-	 * @version 4.0.3 Added the WP-Cron fallback.
+	 * @version 4.0.4 Added the WP-Cron fallback.
 	 *
 	 * @param  string $actionName The name of the action.
 	 * @param  array  $args       Any relevant arguments.
@@ -376,7 +376,7 @@ class ActionScheduler {
 	 * not help when loopback or WP-Cron itself is broken, since Action Scheduler leans on the same
 	 * machinery - reach for it when the store or runner is at fault, not when cron is dead.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool Whether the WP-Cron fallback is active.
 	 */
@@ -402,7 +402,7 @@ class ActionScheduler {
 		 * NOTE: not consulted at all when the constant is set - that decides whether the library is
 		 * even loaded, so a filter can't undo it.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @param bool   $useCron Whether to use WP-Cron.
 		 * @param string $group   The Action Scheduler group of the plugin asking.
@@ -422,7 +422,7 @@ class ActionScheduler {
 	 * NOTE: the new mode is recorded before the drain, not after. Draining twice is harmless if a
 	 * request dies before the internal options are written - both drains only remove what's pending.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -453,7 +453,7 @@ class ActionScheduler {
 	 * or is pending without a schedule of its own (an async action). Check `is_int()` before doing any
 	 * date math on the result. The WP-Cron branch always resolves to a timestamp.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string   $actionName The action name.
 	 * @param  array    $args       Args passed down to the action.
@@ -477,7 +477,7 @@ class ActionScheduler {
 	 * NOTE: deliberately not nextScheduled() cast to a bool. Resolving the next run date costs a second
 	 * query and a row hydration that this throws away; as_has_scheduled_action() just tests existence.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $actionName The action name.
 	 * @param  array  $args       Args passed down to the action.
@@ -503,7 +503,7 @@ class ActionScheduler {
 	/**
 	 * Unschedules every pending instance of an action.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $actionName The action name.
 	 * @param  array  $args       Args passed down to the action.
@@ -538,7 +538,7 @@ class ActionScheduler {
 	 * paging are ignored and at most one pending entry is reported per hook. Callers that need real
 	 * action metadata should treat an empty result as "unknown" rather than "none".
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $args Query args, as accepted by as_get_scheduled_actions().
 	 * @return array       The matching actions.
@@ -568,7 +568,7 @@ class ActionScheduler {
 	 * Action Scheduler takes a raw number of seconds; WP-Cron needs a named schedule. This picks or
 	 * mints one so scheduleRecurrent() can honour any interval under the fallback.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int    $interval The interval in seconds.
 	 * @return string           The schedule name.
@@ -599,7 +599,7 @@ class ActionScheduler {
 	 * nothing leaves the event with an unrecognised schedule in WP Crontrol, and leaves WP falling back
 	 * to the interval stored on the event to reschedule it.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $schedules The registered schedules.
 	 * @return array            The schedules, with ours added.
@@ -634,7 +634,7 @@ class ActionScheduler {
 	 * NOTE: reads the option directly instead of _get_cron_array(), which calls wp_get_schedules() to
 	 * upgrade a legacy cron array and would recurse back into the filter this feeds.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array The intervals in seconds.
 	 */
@@ -668,7 +668,7 @@ class ActionScheduler {
 	 * Deliberately not namespaced per plugin - the name says what it does, so any of our plugins can
 	 * resolve a recurrence another one minted.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int    $interval The interval in seconds.
 	 * @return string           The schedule name.
@@ -689,7 +689,7 @@ class ActionScheduler {
 	 *
 	 * The filter still governs scheduling behaviour for sites that only need that much.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool Whether Action Scheduler should be skipped outright.
 	 */
@@ -710,7 +710,7 @@ class ActionScheduler {
 	 * case those functions don't exist. Only pending and in-progress rows are removed; completed
 	 * history is left for Action Scheduler to retire on its own schedule.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -737,7 +737,7 @@ class ActionScheduler {
 	 * The cron array has no notion of which plugin queued an event, so the hook name is the only thing
 	 * to go on. Every hook scheduled through this class is a literal starting with a prefix we own.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -765,7 +765,7 @@ class ActionScheduler {
 	/**
 	 * Whether a WP-Cron hook is ours to clear.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $hook The hook name.
 	 * @return bool         Whether we own it.

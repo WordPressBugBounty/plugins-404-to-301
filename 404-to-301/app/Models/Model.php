@@ -396,7 +396,7 @@ class Model implements \JsonSerializable {
 	 * without them - anything predating the template's naming - would get an INSERT naming columns
 	 * that don't exist. This gates that stamping.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $column The column name.
 	 * @return bool           Whether the column exists.

@@ -69,6 +69,7 @@ class ComposerStaticInit19b2b2a54e1925b481697f627d4a3b4e
     );
 
     public static $classMap = array (
+        'AIOSEO\\FourNotFour\\Abilities\\Abilities' => __DIR__ . '/../..' . '/app/Abilities/Abilities.php',
         'AIOSEO\\FourNotFour\\Admin\\Admin' => __DIR__ . '/../..' . '/app/Admin/Admin.php',
         'AIOSEO\\FourNotFour\\Admin\\Assets' => __DIR__ . '/../..' . '/app/Admin/Assets.php',
         'AIOSEO\\FourNotFour\\Admin\\DashboardWidget' => __DIR__ . '/../..' . '/app/Admin/DashboardWidget.php',
@@ -77,11 +78,13 @@ class ComposerStaticInit19b2b2a54e1925b481697f627d4a3b4e
         'AIOSEO\\FourNotFour\\Admin\\Notices\\RedundantAddons' => __DIR__ . '/../..' . '/app/Admin/Notices/RedundantAddons.php',
         'AIOSEO\\FourNotFour\\Admin\\Notices\\Review' => __DIR__ . '/../..' . '/app/Admin/Notices/Review.php',
         'AIOSEO\\FourNotFour\\Admin\\Page' => __DIR__ . '/../..' . '/app/Admin/Page.php',
+        'AIOSEO\\FourNotFour\\Admin\\PromoMenu' => __DIR__ . '/../..' . '/app/Admin/PromoMenu.php',
         'AIOSEO\\FourNotFour\\Admin\\SiteHealth' => __DIR__ . '/../..' . '/app/Admin/SiteHealth.php',
         'AIOSEO\\FourNotFour\\Api\\Api' => __DIR__ . '/../..' . '/app/Api/Api.php',
         'AIOSEO\\FourNotFour\\Api\\Endpoint' => __DIR__ . '/../..' . '/app/Api/Endpoint.php',
         'AIOSEO\\FourNotFour\\Api\\Import' => __DIR__ . '/../..' . '/app/Api/Import.php',
         'AIOSEO\\FourNotFour\\Api\\Logs' => __DIR__ . '/../..' . '/app/Api/Logs.php',
+        'AIOSEO\\FourNotFour\\Api\\Mcp' => __DIR__ . '/../..' . '/app/Api/Mcp.php',
         'AIOSEO\\FourNotFour\\Api\\Migration' => __DIR__ . '/../..' . '/app/Api/Migration.php',
         'AIOSEO\\FourNotFour\\Api\\Plugins' => __DIR__ . '/../..' . '/app/Api/Plugins.php',
         'AIOSEO\\FourNotFour\\Api\\Redirects' => __DIR__ . '/../..' . '/app/Api/Redirects.php',
@@ -125,6 +128,7 @@ class ComposerStaticInit19b2b2a54e1925b481697f627d4a3b4e
         'AIOSEO\\FourNotFour\\Main\\Main' => __DIR__ . '/../..' . '/app/Main/Main.php',
         'AIOSEO\\FourNotFour\\Main\\Migration\\Migrator' => __DIR__ . '/../..' . '/app/Main/Migration/Migrator.php',
         'AIOSEO\\FourNotFour\\Main\\Migration\\Scheduler' => __DIR__ . '/../..' . '/app/Main/Migration/Scheduler.php',
+        'AIOSEO\\FourNotFour\\Main\\Migrations\\AddLogIndexes' => __DIR__ . '/../..' . '/app/Main/Migrations/AddLogIndexes.php',
         'AIOSEO\\FourNotFour\\Main\\Migrations\\DiscardLegacyTelegramQueue' => __DIR__ . '/../..' . '/app/Main/Migrations/DiscardLegacyTelegramQueue.php',
         'AIOSEO\\FourNotFour\\Main\\Migrations\\FoldFeatureFlags' => __DIR__ . '/../..' . '/app/Main/Migrations/FoldFeatureFlags.php',
         'AIOSEO\\FourNotFour\\Main\\Migrations\\MigrateFlatSettings' => __DIR__ . '/../..' . '/app/Main/Migrations/MigrateFlatSettings.php',

@@ -609,7 +609,7 @@ class SiteHealth {
 	 * from this site's own pages — otherwise there is nothing to diagnose, and Site
 	 * Health is no place for a suggestion the data doesn't support.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array
 	 */
@@ -658,7 +658,7 @@ class SiteHealth {
 	/**
 	 * Logged 404s whose referrer is a page on this site.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return int
 	 */

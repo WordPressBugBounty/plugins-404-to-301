@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AIOSEO\\FourNotFour\\Abilities\\Abilities' => $baseDir . '/app/Abilities/Abilities.php',
     'AIOSEO\\FourNotFour\\Admin\\Admin' => $baseDir . '/app/Admin/Admin.php',
     'AIOSEO\\FourNotFour\\Admin\\Assets' => $baseDir . '/app/Admin/Assets.php',
     'AIOSEO\\FourNotFour\\Admin\\DashboardWidget' => $baseDir . '/app/Admin/DashboardWidget.php',
@@ -14,11 +15,13 @@ return array(
     'AIOSEO\\FourNotFour\\Admin\\Notices\\RedundantAddons' => $baseDir . '/app/Admin/Notices/RedundantAddons.php',
     'AIOSEO\\FourNotFour\\Admin\\Notices\\Review' => $baseDir . '/app/Admin/Notices/Review.php',
     'AIOSEO\\FourNotFour\\Admin\\Page' => $baseDir . '/app/Admin/Page.php',
+    'AIOSEO\\FourNotFour\\Admin\\PromoMenu' => $baseDir . '/app/Admin/PromoMenu.php',
     'AIOSEO\\FourNotFour\\Admin\\SiteHealth' => $baseDir . '/app/Admin/SiteHealth.php',
     'AIOSEO\\FourNotFour\\Api\\Api' => $baseDir . '/app/Api/Api.php',
     'AIOSEO\\FourNotFour\\Api\\Endpoint' => $baseDir . '/app/Api/Endpoint.php',
     'AIOSEO\\FourNotFour\\Api\\Import' => $baseDir . '/app/Api/Import.php',
     'AIOSEO\\FourNotFour\\Api\\Logs' => $baseDir . '/app/Api/Logs.php',
+    'AIOSEO\\FourNotFour\\Api\\Mcp' => $baseDir . '/app/Api/Mcp.php',
     'AIOSEO\\FourNotFour\\Api\\Migration' => $baseDir . '/app/Api/Migration.php',
     'AIOSEO\\FourNotFour\\Api\\Plugins' => $baseDir . '/app/Api/Plugins.php',
     'AIOSEO\\FourNotFour\\Api\\Redirects' => $baseDir . '/app/Api/Redirects.php',
@@ -62,6 +65,7 @@ return array(
     'AIOSEO\\FourNotFour\\Main\\Main' => $baseDir . '/app/Main/Main.php',
     'AIOSEO\\FourNotFour\\Main\\Migration\\Migrator' => $baseDir . '/app/Main/Migration/Migrator.php',
     'AIOSEO\\FourNotFour\\Main\\Migration\\Scheduler' => $baseDir . '/app/Main/Migration/Scheduler.php',
+    'AIOSEO\\FourNotFour\\Main\\Migrations\\AddLogIndexes' => $baseDir . '/app/Main/Migrations/AddLogIndexes.php',
     'AIOSEO\\FourNotFour\\Main\\Migrations\\DiscardLegacyTelegramQueue' => $baseDir . '/app/Main/Migrations/DiscardLegacyTelegramQueue.php',
     'AIOSEO\\FourNotFour\\Main\\Migrations\\FoldFeatureFlags' => $baseDir . '/app/Main/Migrations/FoldFeatureFlags.php',
     'AIOSEO\\FourNotFour\\Main\\Migrations\\MigrateFlatSettings' => $baseDir . '/app/Main/Migrations/MigrateFlatSettings.php',

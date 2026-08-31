@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * NOTE: these are the single source of truth for both REST enum validation and option sanitization,
  * so the allowed values can never drift from what the UI offers.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 trait Redirects {
 	/**
@@ -20,7 +20,7 @@ trait Redirects {
 	 *
 	 * Terminal codes end the request with a status header instead of redirecting.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array Code => [ label, terminal ].
 	 */
@@ -59,7 +59,7 @@ trait Redirects {
 		/**
 		 * Filters the catalogue of supported HTTP status codes.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @param array $statuses Code => [ label, terminal ].
 		 */
@@ -69,7 +69,7 @@ trait Redirects {
 	/**
 	 * Returns a flat list of supported status codes.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  bool  $redirectingOnly Exclude terminal codes, for the global fallback which always
 	 *                                redirects to a destination.
@@ -95,7 +95,7 @@ trait Redirects {
 	 * Reads the flag off the catalogue so a code registered through the filter is honored at runtime
 	 * without touching the front controller.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int  $status HTTP status code.
 	 * @return bool         Whether the code is terminal.
@@ -113,7 +113,7 @@ trait Redirects {
 	 * its 404). Anything registered beyond those three is treated as a serve-in-place disposition:
 	 * the redirect action fires `404_to_301_serve_404` and keeps the 404 status.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array Stored value => translated label.
 	 */
@@ -127,7 +127,7 @@ trait Redirects {
 		/**
 		 * Filters the catalogue of global 404-fallback target modes.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @param array $targets Stored value => label.
 		 */

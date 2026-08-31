@@ -3,7 +3,7 @@
  * Plugin Name:       404 to 301 - Redirect Manager, 301 Redirection, 404 Error Logs & 404 Monitoring
  * Plugin URI:        https://wordpress.org/plugins/404-to-301/
  * Description:       Custom redirects (301, 302, 307), automatic 404 redirection, full 404 error logs and email alerts — a complete redirect & 404 toolkit.
- * Version:           4.0.3
+ * Version:           4.0.4
  * Author:            All in One SEO Team
  * Author URI:        https://aioseo.com/
  * License:           GPL-2.0+

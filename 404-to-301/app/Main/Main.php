@@ -12,13 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Anything gated on an opt-in feature is wired in {@see self::features()}, so a site that hasn't
  * opted in registers no cron events, request listeners or admin-post handlers for it.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Main {
 	/**
 	 * The v3 -> v4 log migrator.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var Migration\Migrator
 	 */
@@ -27,7 +27,7 @@ class Main {
 	/**
 	 * Class constructor.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	public function __construct() {
 		new Activate();
@@ -49,7 +49,7 @@ class Main {
 	 * non-existent path under /wp-admin/ doesn't resolve to an admin PHP file, so it falls through
 	 * here with is_admin() false - the controller re-checks, this is just the cheap early exit.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -67,7 +67,7 @@ class Main {
 	 * Each of these is gated on its own setting rather than a separate opt-in flag, so "off" is
 	 * expressed once, in the panel where the thing is configured.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */

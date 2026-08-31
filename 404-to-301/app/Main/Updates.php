@@ -72,7 +72,7 @@ class Updates {
 	/**
 	 * Runs the registered migrations.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -86,6 +86,10 @@ class Updates {
 
 		// After the settings migrations: it reconciles what those wrote.
 		$runner->register( new Migrations\FoldFeatureFlags() );
+
+		// Schema work last: it rewrites column defaults, so anything reading or writing rows should
+		// already have run.
+		$runner->register( new Migrations\AddLogIndexes() );
 
 		$runner->run();
 	}

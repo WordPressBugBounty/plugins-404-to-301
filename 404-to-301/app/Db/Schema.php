@@ -13,13 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * `404_to_301_*` names and index names — the `aioseo_` prefix and `ndx__*` convention are not applied,
  * because renaming would orphan every existing install's data and make dbDelta add duplicate indexes.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Schema {
 	/**
 	 * Returns every table schema, for dbDelta().
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array Array of SQL CREATE TABLE statements.
 	 */
@@ -34,7 +34,7 @@ class Schema {
 	/**
 	 * Returns the schema for the aioseo_404_to_301_cache table.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string SQL CREATE TABLE statement.
 	 */
@@ -61,7 +61,7 @@ class Schema {
 	 *
 	 * NOTE: mirrors the table BerlinDB created before the port, down to the index names.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string SQL CREATE TABLE statement.
 	 */
@@ -84,8 +84,8 @@ class Schema {
 			notes text,
 			modified_by bigint(20) unsigned DEFAULT NULL,
 			query_handling varchar(10) NOT NULL DEFAULT 'ignore',
-			created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-			updated_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+			created_at datetime NOT NULL,
+			updated_at datetime NOT NULL,
 			PRIMARY KEY  (id),
 			UNIQUE KEY source_hash (source_hash),
 			KEY is_active (is_active),
@@ -101,7 +101,7 @@ class Schema {
 	 * NOTE: mirrors the table BerlinDB created before the port, down to the index names.
 	 * `ip` is varbinary so both IPv4 and IPv6 can be stored in packed form.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string SQL CREATE TABLE statement.
 	 */
@@ -122,13 +122,15 @@ class Schema {
 			status tinyint(3) unsigned NOT NULL DEFAULT 0,
 			override_redirect tinyint(3) unsigned NOT NULL DEFAULT 0,
 			override_email tinyint(3) unsigned NOT NULL DEFAULT 0,
-			created_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-			updated_at datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+			created_at datetime NOT NULL,
+			updated_at datetime NOT NULL,
 			PRIMARY KEY  (id),
 			UNIQUE KEY url_hash (url_hash),
 			KEY status (status),
 			KEY created_at (created_at),
-			KEY redirect_id (redirect_id)
+			KEY redirect_id (redirect_id),
+			KEY ndx_404_to_301_logs_updated_at (updated_at),
+			KEY ndx_404_to_301_logs_status_hits (status, hits)
 		) {$charsetCollate};";
 	}
 }

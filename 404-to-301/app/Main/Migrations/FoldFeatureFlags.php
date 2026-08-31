@@ -20,13 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * The Redirects Importer and Logs Exporter flags need no reconciliation: they gated UI with no
  * behaviour of its own, and both are now always available.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class FoldFeatureFlags implements Migration {
 	/**
 	 * The retired option group.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -35,7 +35,7 @@ class FoldFeatureFlags implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
@@ -46,18 +46,18 @@ class FoldFeatureFlags implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
 	public function version() {
-		return '4.0.3';
+		return '4.0.4';
 	}
 
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -98,7 +98,7 @@ class FoldFeatureFlags implements Migration {
 	/**
 	 * {@inheritDoc}
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool
 	 */
@@ -113,7 +113,7 @@ class FoldFeatureFlags implements Migration {
 	 * every upgraded site's options row — and leaving it there means a future group of the same name
 	 * would inherit stale values.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -142,7 +142,7 @@ class FoldFeatureFlags implements Migration {
 	 * The group is gone from the defaults, so the options layer no longer surfaces it — but an
 	 * upgrading site still has the values in its row, which is exactly what has to be reconciled.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array Flag name => stored leaf, or empty when the group isn't present.
 	 */
@@ -168,7 +168,7 @@ class FoldFeatureFlags implements Migration {
 	 * A flag that isn't in the stored row was never touched, so it can't be the "configured, then
 	 * switched off" case this reconciles — leave those settings alone.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array  $flags Stored flag group.
 	 * @param  string $name  Flag name.

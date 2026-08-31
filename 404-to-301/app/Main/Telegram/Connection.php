@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * test: the toggle can go off but never back on, so a site that has retired it reads as unconnected
  * and the tab disappears with it.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Connection {
 	/**
 	 * Whether alerts can be delivered.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool True when the feature is on and both credentials are present.
 	 */
@@ -40,7 +40,7 @@ class Connection {
 	 * Used by the settings sanitiser to tell "never set up" apart from "set up and then retired",
 	 * which is what makes switching it back on refusable rather than merely hidden.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool True when both credentials are stored.
 	 */

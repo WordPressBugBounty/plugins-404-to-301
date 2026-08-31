@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: 404 to 301 - Redirect Manager, 301 Redirection, 404 Error Logs & 404 Monitoring 4.0.3\n"
+"Project-Id-Version: 404 to 301 - Redirect Manager, 301 Redirection, 404 Error Logs & 404 Monitoring 4.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/404-to-301\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-27T09:19:32+00:00\n"
+"POT-Creation-Date: 2026-08-31T10:57:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: 404-to-301\n"
@@ -39,18 +39,208 @@ msgstr ""
 msgid "https://aioseo.com/"
 msgstr ""
 
-#: app/Admin/Admin.php:71
+#: app/Abilities/Abilities.php:88
+msgid "Redirect and 404 management abilities provided by 404 to 301."
+msgstr ""
+
+#: app/Abilities/Abilities.php:136
+msgid "List Redirects"
+msgstr ""
+
+#: app/Abilities/Abilities.php:137
+msgid "Returns a page of redirect rules with their source, destination, status code, match type, hit count and whether they are enabled. Filterable by search term, match type, status code and enabled state."
+msgstr ""
+
+#: app/Abilities/Abilities.php:146
+msgid "Match against the source and destination."
+msgstr ""
+
+#: app/Abilities/Abilities.php:154
+msgid "HTTP status code the rule sends, e.g. 301."
+msgstr ""
+
+#: app/Abilities/Abilities.php:170
+msgid "Create Redirect"
+msgstr ""
+
+#: app/Abilities/Abilities.php:171
+msgid "Creates a redirect rule. The source is a path or pattern on this site; the destination is either a URL or the ID of an existing page. Rejects a source that duplicates an existing rule, an invalid regular expression, and a destination equal to its own source."
+msgstr ""
+
+#: app/Abilities/Abilities.php:188
+msgid "Update Redirect"
+msgstr ""
+
+#: app/Abilities/Abilities.php:189
+msgid "Updates an existing redirect rule. Only the fields passed in are changed; everything else is left as it is. Use this to repoint, re-code or disable a rule."
+msgstr ""
+
+#: app/Abilities/Abilities.php:197
+#: app/Abilities/Abilities.php:222
+msgid "The redirect ID."
+msgstr ""
+
+#: app/Abilities/Abilities.php:214
+msgid "Delete Redirect"
+msgstr ""
+
+#: app/Abilities/Abilities.php:215
+msgid "Permanently deletes a redirect rule and unlinks it from any 404 log entry it was resolving. Disabling a rule is usually the safer option — see the update ability."
+msgstr ""
+
+#: app/Abilities/Abilities.php:243
+msgid "Test a URL Against the Redirects"
+msgstr ""
+
+#: app/Abilities/Abilities.php:244
+msgid "Resolves a path the way the plugin would for a real visitor and reports what happens: which rule matches (if any), the destination it sends them to, the status code, and whether the site-wide 404 fallback would take over instead. Changes nothing."
+msgstr ""
+
+#: app/Abilities/Abilities.php:251
+msgid "Path or URL to resolve, e.g. /old-post/."
+msgstr ""
+
+#: app/Abilities/Abilities.php:263
+msgid "Which mechanism handles the request: a redirect rule, the site-wide 404 fallback, or nothing."
+msgstr ""
+
+#: app/Abilities/Abilities.php:267
+msgid "Where the visitor lands; null when nothing redirects them."
+msgstr ""
+
+#: app/Abilities/Abilities.php:294
+msgid "List 404 Logs"
+msgstr ""
+
+#: app/Abilities/Abilities.php:295
+msgid "Returns a page of logged 404 requests with the requested path, referrer, hit count and whether the entry is still open. Sort by hits to find the URLs worth fixing first."
+msgstr ""
+
+#: app/Abilities/Abilities.php:304
+msgid "Match against the requested path and the referrer."
+msgstr ""
+
+#: app/Abilities/Abilities.php:309
+#: app/Abilities/Abilities.php:360
+msgid "0 open, 1 ignored, 2 fixed."
+msgstr ""
+
+#: app/Abilities/Abilities.php:324
+msgid "Summarise 404 Logs"
+msgstr ""
+
+#: app/Abilities/Abilities.php:325
+msgid "Returns how many logged 404s are open, ignored, fixed and resolved by a custom redirect. A cheap health check to run before listing anything."
+msgstr ""
+
+#: app/Abilities/Abilities.php:347
+msgid "Update a 404 Log Entry"
+msgstr ""
+
+#: app/Abilities/Abilities.php:348
+msgid "Marks a logged 404 as open, ignored or fixed. Ignoring an entry keeps it out of the open count and the email reports without deleting its history."
+msgstr ""
+
+#: app/Abilities/Abilities.php:355
+msgid "The log entry ID."
+msgstr ""
+
+#: app/Abilities/Abilities.php:375
+msgid "Fix a Logged 404"
+msgstr ""
+
+#: app/Abilities/Abilities.php:376
+msgid "Creates a redirect for a logged 404 and links the two, which marks the log entry fixed. The source is taken from the log entry, so only the destination has to be supplied."
+msgstr ""
+
+#: app/Abilities/Abilities.php:383
+msgid "The log entry ID to resolve."
+msgstr ""
+
+#: app/Abilities/Abilities.php:387
+msgid "Destination path or URL."
+msgstr ""
+
+#: app/Abilities/Abilities.php:391
+msgid "ID of an existing page to send visitors to, instead of a URL."
+msgstr ""
+
+#: app/Abilities/Abilities.php:395
+#: app/Abilities/Abilities.php:786
+msgid "HTTP status code to send. Defaults to 301."
+msgstr ""
+
+#: app/Abilities/Abilities.php:425
+msgid "Get 404 to 301 Settings"
+msgstr ""
+
+#: app/Abilities/Abilities.php:426
+msgid "Returns every plugin setting as a flat map: the site-wide 404 fallback, 404 logging, email notifications and reports, and log trimming."
+msgstr ""
+
+#: app/Abilities/Abilities.php:439
+msgid "Update 404 to 301 Settings"
+msgstr ""
+
+#: app/Abilities/Abilities.php:440
+msgid "Writes plugin settings from a flat map of the same keys the get ability returns. Only the keys passed in are changed. Unknown keys are ignored, and the Telegram credentials cannot be written here."
+msgstr ""
+
+#: app/Abilities/Abilities.php:447
+msgid "Flat key => value map of the settings to change."
+msgstr ""
+
+#: app/Abilities/Abilities.php:616
+#: app/Api/Logs.php:218
+#: app/Api/Logs.php:238
+#: app/Cli/Logs.php:134
+msgid "Log not found."
+msgstr ""
+
+#: app/Abilities/Abilities.php:764
+msgid "Path or pattern to redirect from, e.g. /old-post/."
+msgstr ""
+
+#: app/Abilities/Abilities.php:769
+msgid "How the source is matched. Defaults to exact."
+msgstr ""
+
+#: app/Abilities/Abilities.php:774
+msgid "Whether the destination is a URL, an existing page, or nothing."
+msgstr ""
+
+#: app/Abilities/Abilities.php:778
+msgid "Destination path or URL, used when target_type is link."
+msgstr ""
+
+#: app/Abilities/Abilities.php:782
+msgid "Destination page ID, used when target_type is page."
+msgstr ""
+
+#: app/Abilities/Abilities.php:790
+msgid "Whether the rule runs. Defaults to true."
+msgstr ""
+
+#: app/Abilities/Abilities.php:795
+msgid "What to do with the request query string. Defaults to ignore."
+msgstr ""
+
+#: app/Abilities/Abilities.php:883
+msgid "Total rows matching the filters, across all pages."
+msgstr ""
+
+#: app/Admin/Admin.php:72
 msgid "Give us a 5-star rating!"
 msgstr ""
 
 #. Translators: 1 - The plugin name, 2 - Five star icons, 3 - "WordPress.org".
-#: app/Admin/Admin.php:87
+#: app/Admin/Admin.php:88
 #, php-format
 msgid "Please rate %1$s %2$s on %3$s to help us spread the word."
 msgstr ""
 
 #. Translators: 1 - The WordPress version, 2 - The plugin name, 3 - The plugin version.
-#: app/Admin/Admin.php:115
+#: app/Admin/Admin.php:116
 #, php-format
 msgid "WordPress %1$s | %2$s %3$s"
 msgstr ""
@@ -90,8 +280,9 @@ msgid "Find the links causing these"
 msgstr ""
 
 #: app/Admin/Links.php:57
-#: app/Admin/Menu.php:93
+#: app/Admin/Menu.php:94
 #: assets/src/modules/logs/view-modal.js:135
+#: assets/src/modules/settings/index.js:36
 msgid "Settings"
 msgstr ""
 
@@ -100,10 +291,7 @@ msgid "Get AIOSEO"
 msgstr ""
 
 #: app/Admin/Links.php:95
-#: app/Admin/Menu.php:116
-#: app/Admin/Menu.php:117
 #: app/Admin/SiteHealth.php:653
-#: assets/src/modules/blc/index.js:124
 msgid "Get Broken Link Checker"
 msgstr ""
 
@@ -111,35 +299,38 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: app/Admin/Menu.php:62
+#: app/Admin/Menu.php:63
 msgid "Custom Redirects — 404 to 301"
 msgstr ""
 
-#: app/Admin/Menu.php:63
-#: app/Admin/Menu.php:75
-#: assets/src/modules/settings/tabs/index.js:15
+#: app/Admin/Menu.php:64
+#: app/Admin/Menu.php:76
+#: assets/src/modules/settings/tabs/index.js:19
 msgid "Redirects"
 msgstr ""
 
-#: app/Admin/Menu.php:74
+#: app/Admin/Menu.php:75
+#: assets/src/modules/redirects/index.js:57
 msgid "Custom Redirects"
 msgstr ""
 
-#: app/Admin/Menu.php:83
+#: app/Admin/Menu.php:84
+#: assets/src/modules/logs/index.js:34
 msgid "404 Error Logs"
 msgstr ""
 
-#: app/Admin/Menu.php:92
+#: app/Admin/Menu.php:93
 msgid "404 to 301 Settings"
 msgstr ""
 
-#: app/Admin/Menu.php:101
-#: app/Admin/Menu.php:102
+#: app/Admin/Menu.php:104
+#: app/Admin/Menu.php:105
+#: assets/src/modules/about/index.js:227
 msgid "About Us"
 msgstr ""
 
-#: app/Admin/Menu.php:170
-#: assets/src/modules/settings/tabs/index.js:19
+#: app/Admin/Menu.php:191
+#: assets/src/modules/settings/tabs/index.js:23
 #: assets/src/modules/settings/tabs/logs.js:44
 msgid "404 Logs"
 msgstr ""
@@ -169,22 +360,42 @@ msgid "Dismiss"
 msgstr ""
 
 #. Translators: 1 - The plugin name ("404 to 301").
-#: app/Admin/Notices/Review.php:77
+#: app/Admin/Notices/Review.php:94
 #, php-format
 msgid "Hey, we noticed you have been using %1$s for some time - that’s awesome! Could you please do us a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?"
 msgstr ""
 
 #. Translators: 1 - The plugin name ("404 to 301").
-#: app/Admin/Notices/Review.php:82
+#: app/Admin/Notices/Review.php:99
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: app/Admin/Notices/Review.php:83
+#: app/Admin/Notices/Review.php:100
 msgid "Nope, maybe later"
 msgstr ""
 
-#: app/Admin/Notices/Review.php:84
+#: app/Admin/Notices/Review.php:101
 msgid "I already did"
+msgstr ""
+
+#: app/Admin/PromoMenu.php:85
+msgid "SEO"
+msgstr ""
+
+#: app/Admin/PromoMenu.php:89
+msgid "Broken Links"
+msgstr ""
+
+#: app/Admin/PromoMenu.php:93
+msgid "Privacy Compliance"
+msgstr ""
+
+#: app/Admin/PromoMenu.php:97
+msgid "Backups"
+msgstr ""
+
+#: app/Admin/PromoMenu.php:101
+msgid "Spam Protection"
 msgstr ""
 
 #: app/Admin/SiteHealth.php:100
@@ -552,12 +763,6 @@ msgstr ""
 msgid "Upload failed."
 msgstr ""
 
-#: app/Api/Logs.php:218
-#: app/Api/Logs.php:238
-#: app/Cli/Logs.php:134
-msgid "Log not found."
-msgstr ""
-
 #: app/Api/Logs.php:299
 msgid "Could not delete the log."
 msgstr ""
@@ -582,10 +787,72 @@ msgstr ""
 
 #: app/Api/Logs.php:460
 #: app/Main/Exporter/Exporter.php:221
-#: assets/src/modules/blc/index.js:179
 #: assets/src/modules/logs/fields.js:10
 #: assets/src/modules/logs/index.js:24
+#: assets/src/modules/promo/blc-visual.js:44
 msgid "Fixed"
+msgstr ""
+
+#: app/Api/Mcp.php:222
+msgid "The MCP Adapter is already active on this site."
+msgstr ""
+
+#: app/Api/Mcp.php:234
+msgid "The MCP Adapter is installed but not active on this site. Ask a network administrator to network-activate it."
+msgstr ""
+
+#: app/Api/Mcp.php:235
+msgid "You do not have permission to activate plugins."
+msgstr ""
+
+#: app/Api/Mcp.php:241
+msgid "MCP Adapter activated on this site."
+msgstr ""
+
+#: app/Api/Mcp.php:249
+msgid "On multisite, the MCP Adapter must be installed and network-activated by a network administrator before it is available on this site."
+msgstr ""
+
+#: app/Api/Mcp.php:250
+msgid "You do not have permission to install plugins."
+msgstr ""
+
+#: app/Api/Mcp.php:261
+msgid "Could not resolve the MCP Adapter download URL."
+msgstr ""
+
+#: app/Api/Mcp.php:289
+msgid "The MCP Adapter install failed. Check the site's write permissions and try again."
+msgstr ""
+
+#. translators: %s: installed MCP Adapter version.
+#: app/Api/Mcp.php:299
+#, php-format
+msgid "MCP Adapter %s installed and activated."
+msgstr ""
+
+#: app/Api/Mcp.php:323
+msgid "Application Passwords are not available on this site."
+msgstr ""
+
+#: app/Api/Mcp.php:334
+msgid "You must be logged in to generate an Application Password."
+msgstr ""
+
+#: app/Api/Mcp.php:347
+msgid "Application Passwords are not available for your account. Please contact a site administrator."
+msgstr ""
+
+#: app/Api/Mcp.php:378
+msgid "Application Password generated. Copy it now — it will not be shown again."
+msgstr ""
+
+#: app/Api/Mcp.php:438
+msgid "Could not fetch the latest MCP Adapter release from GitHub."
+msgstr ""
+
+#: app/Api/Mcp.php:444
+msgid "The GitHub response did not include a downloadable release asset."
 msgstr ""
 
 #: app/Api/Plugins.php:27
@@ -776,7 +1043,7 @@ msgstr ""
 msgid "Settings reset."
 msgstr ""
 
-#: app/FourNotFour.php:242
+#: app/FourNotFour.php:251
 msgid "Plugin is missing required dependencies. Please contact support for more information."
 msgstr ""
 
@@ -1231,6 +1498,10 @@ msgstr ""
 msgid "Something went wrong while rendering this page."
 msgstr ""
 
+#: assets/src/common/logo.js:19
+msgid "404 to 301, an AIOSEO product"
+msgstr ""
+
 #: assets/src/common/page-select.js:19
 #, js-format
 msgid "Page #%d"
@@ -1246,7 +1517,7 @@ msgstr ""
 
 #: assets/src/common/plugin-cta.js:98
 #: assets/src/modules/about/index.js:127
-#: assets/src/modules/blc/index.js:75
+#: assets/src/modules/promo/index.js:67
 msgid "Activated"
 msgstr ""
 
@@ -1256,7 +1527,7 @@ msgid "Install Plugin (Free)"
 msgstr ""
 
 #: assets/src/common/plugin-cta.js:120
-#: assets/src/modules/blc/index.js:82
+#: assets/src/modules/promo/index.js:74
 msgid "Installing…"
 msgstr ""
 
@@ -1365,50 +1636,46 @@ msgstr ""
 msgid "That didn’t work. Please install it from WordPress.org instead."
 msgstr ""
 
-#: assets/src/modules/about/index.js:227
-msgid "404 to 301 - About Us"
-msgstr ""
-
-#: assets/src/modules/about/index.js:238
+#: assets/src/modules/about/index.js:240
 msgid "About us"
 msgstr ""
 
 #. Translators: 1 - The plugin name ("404 to 301").
-#: assets/src/modules/about/index.js:244
+#: assets/src/modules/about/index.js:246
 #, js-format
 msgid "The team behind %1$s"
 msgstr ""
 
-#: assets/src/modules/about/index.js:250
+#: assets/src/modules/about/index.js:252
 msgid "404 to 301 helps you catch every broken URL on your site and send visitors somewhere useful instead. We’re proud to keep building on it — staying simple, fast, and dependable."
 msgstr ""
 
-#: assets/src/modules/about/index.js:257
+#: assets/src/modules/about/index.js:259
 msgid "Today it’s part of Awesome Motive — the team behind All in One SEO, WPBeginner, OptinMonster, MonsterInsights, and more. Our mission is simple: help small businesses grow and compete with the big guys, with tools that work great together."
 msgstr ""
 
-#: assets/src/modules/about/index.js:270
+#: assets/src/modules/about/index.js:272
 msgid "Websites use our plugins"
 msgstr ""
 
-#: assets/src/modules/about/index.js:283
+#: assets/src/modules/about/index.js:285
 msgid "Leading products"
 msgstr ""
 
-#: assets/src/modules/about/index.js:293
+#: assets/src/modules/about/index.js:295
 msgid "Team members worldwide"
 msgstr ""
 
-#: assets/src/modules/about/index.js:314
+#: assets/src/modules/about/index.js:316
 msgid "Recommended for you"
 msgstr ""
 
-#: assets/src/modules/about/index.js:351
+#: assets/src/modules/about/index.js:353
 msgid "More from the family"
 msgstr ""
 
 #. Translators: 1 - A number of plugins.
-#: assets/src/modules/about/index.js:356
+#: assets/src/modules/about/index.js:358
 #, js-format
 msgid "%1$s plugins"
 msgstr ""
@@ -1527,74 +1794,6 @@ msgstr ""
 
 #: assets/src/modules/about/plugins.js:387
 msgid "Embed PDFs with a clean, mobile-friendly viewer."
-msgstr ""
-
-#: assets/src/modules/blc/index.js:17
-msgid "Automatic scanning"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:18
-msgid "Continuously scans posts, pages, comments and custom content for dead links."
-msgstr ""
-
-#: assets/src/modules/blc/index.js:24
-msgid "One-click fixes"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:25
-msgid "Fix or unlink broken links from one dashboard — no editing each post by hand."
-msgstr ""
-
-#: assets/src/modules/blc/index.js:31
-msgid "Internal & external"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:32
-msgid "Monitors both internal links and outbound links to other sites."
-msgstr ""
-
-#: assets/src/modules/blc/index.js:38
-msgid "From the same team"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:39
-msgid "Trusted on 300K+ sites, built by the same team behind 404 to 301."
-msgstr ""
-
-#: assets/src/modules/blc/index.js:76
-msgid "Installed"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:81
-msgid "Activating…"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:86
-msgid "Activate Now"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:87
-msgid "Install Now (Free)"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:115
-msgid "Something went wrong. Please try again."
-msgstr ""
-
-#: assets/src/modules/blc/index.js:134
-msgid "Find and fix broken links — automatically"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:141
-msgid "404 to 301 catches the visitors who already hit a dead URL — Broken Link Checker stops them getting there. It automatically finds and fixes dead internal and external links across your site, so readers never follow a link to a broken page and your SEO stays protected."
-msgstr ""
-
-#: assets/src/modules/blc/index.js:153
-msgid "404"
-msgstr ""
-
-#: assets/src/modules/blc/index.js:173
-msgid "One-click fix"
 msgstr ""
 
 #: assets/src/modules/logs/configure-modal.js:19
@@ -1760,15 +1959,11 @@ msgstr ""
 msgid "Custom redirects"
 msgstr ""
 
-#: assets/src/modules/logs/index.js:35
-msgid "404 to 301 – 404 Error Logs"
-msgstr ""
-
-#: assets/src/modules/logs/index.js:49
+#: assets/src/modules/logs/index.js:47
 msgid "Broken Link Checker finds what is sending visitors here"
 msgstr ""
 
-#: assets/src/modules/logs/index.js:54
+#: assets/src/modules/logs/index.js:52
 msgid "Every row here is a visitor who hit a dead end. Find the links that sent them and fix the source, not one URL at a time."
 msgstr ""
 
@@ -1943,6 +2138,240 @@ msgstr ""
 msgid "Action Scheduler is recommended for sites with many 404 logs — it runs the migration in the background with retries. The migration still works without it, processing rows in chunks while you stay on this page."
 msgstr ""
 
+#: assets/src/modules/promo/blc-visual.js:18
+msgid "404"
+msgstr ""
+
+#: assets/src/modules/promo/blc-visual.js:38
+msgid "One-click fix"
+msgstr ""
+
+#: assets/src/modules/promo/index.js:68
+msgid "Installed"
+msgstr ""
+
+#: assets/src/modules/promo/index.js:73
+msgid "Activating…"
+msgstr ""
+
+#: assets/src/modules/promo/index.js:78
+msgid "Activate Now"
+msgstr ""
+
+#: assets/src/modules/promo/index.js:79
+msgid "Install Now (Free)"
+msgstr ""
+
+#: assets/src/modules/promo/index.js:105
+msgid "Something went wrong. Please try again."
+msgstr ""
+
+#. Translators: 1 - The name of the plugin being promoted.
+#: assets/src/modules/promo/index.js:119
+#, js-format
+msgid "Get %1$s"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:28
+msgid "The complete SEO toolkit for WordPress"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:29
+msgid "404 to 301 stops your broken URLs costing you traffic. All in One SEO covers the rest of the picture — titles and meta, schema, sitemaps and on-page analysis — from the same team, in one plugin."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:35
+msgid "On-page analysis"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:36
+msgid "TruSEO scores every post and tells you what to change, in plain language."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:42
+msgid "Schema and sitemaps"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:43
+msgid "Rich-result markup and XML sitemaps generated for you, with no code to write."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:49
+msgid "Search Console built in"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:50
+msgid "Connect Google Search Console and read your search performance inside WordPress."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:56
+msgid "Trusted on 3 million sites"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:57
+msgid "The original WordPress SEO plugin, founded in 2007 and built by the same team."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:70
+msgid "Find and fix broken links — automatically"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:71
+msgid "404 to 301 catches the visitors who already hit a dead URL — Broken Link Checker stops them getting there. It automatically finds and fixes dead internal and external links across your site, so readers never follow a link to a broken page and your SEO stays protected."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:77
+msgid "Automatic scanning"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:78
+msgid "Continuously scans posts, pages, comments and custom content for dead links."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:84
+msgid "One-click fixes"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:85
+msgid "Fix or unlink broken links from one dashboard — no editing each post by hand."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:91
+msgid "Internal and external"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:92
+msgid "Monitors both internal links and outbound links to other sites."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:98
+msgid "From the same team"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:99
+msgid "Trusted on 300K+ sites, built by the same team behind 404 to 301."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:111
+msgid "Cookie consent that holds up"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:112
+msgid "If your visitors come from the EU, the UK or California, a banner that only asks isn’t enough — the scripts have to wait for an answer. WPConsent sets that up in minutes, and keeps every consent record in your own database rather than someone else’s."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:118
+msgid "Blocks scripts, not just asks"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:119
+msgid "Third-party cookies and tracking scripts are held back until the visitor agrees."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:125
+msgid "Cookie scanning"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:126
+msgid "Scan your site for the cookies it already sets and categorise them."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:132
+msgid "A banner that looks like yours"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:133
+msgid "Multiple layouts and positions, styled to match your site rather than bolted on."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:139
+msgid "Self-hosted, no page-view caps"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:140
+msgid "Consent records live in your WordPress database — no monthly platform fee."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:152
+msgid "Back up before you change anything"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:153
+msgid "Redirect rules are cheap to undo; a bad migration is not. Duplicator packages your files and database into a single backup you can restore, move to another host, or clone into staging — without hiring anyone to do it."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:159
+msgid "Full-site backups"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:160
+msgid "Files and database in one package you can download and keep."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:166
+msgid "Migrate between hosts"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:167
+msgid "Move a site to a new domain or server with no downtime and no manual export."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:173
+msgid "Works on an empty site"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:174
+msgid "Install a backup at the destination without setting WordPress up there first."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:180
+msgid "Clone to staging"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:181
+msgid "Copy the live site somewhere safe to try a change before it reaches visitors."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:193
+msgid "Stop spam without CAPTCHAs"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:194
+msgid "Spam submissions and comments cost you the same attention a real one does. ActiveLayer catches them automatically — no puzzles, no checkboxes and no extra step for the visitors you actually want to hear from."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:200
+msgid "No CAPTCHAs"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:201
+msgid "Nothing for a real visitor to solve, so your forms stay fast and frictionless."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:207
+msgid "Works with your form builder"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:208
+msgid "WPForms, Contact Form 7, Gravity Forms, Elementor Forms, Fluent Forms and more."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:214
+msgid "Comments and registration"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:215
+msgid "Covers native WordPress comments and registration spam, not only forms."
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:221
+msgid "WooCommerce and EDD"
+msgstr ""
+
+#: assets/src/modules/promo/plugins.js:222
+msgid "Protects product reviews and customer registration on both stores."
+msgstr ""
+
 #. translators: %d: number of selected redirects.
 #: assets/src/modules/redirects/delete-modal.js:34
 #, js-format
@@ -1956,7 +2385,7 @@ msgid "Edit redirect"
 msgstr ""
 
 #: assets/src/modules/redirects/edit-modal.js:136
-#: assets/src/modules/redirects/index.js:69
+#: assets/src/modules/redirects/index.js:67
 msgid "Add redirect"
 msgstr ""
 
@@ -2007,6 +2436,7 @@ msgstr ""
 #: assets/src/modules/redirects/fields.js:26
 #: assets/src/modules/redirects/form-fields.js:147
 #: assets/src/modules/redirects/index.js:50
+#: assets/src/modules/settings/tabs/mcp/index.js:360
 msgid "Active"
 msgstr ""
 
@@ -2103,15 +2533,11 @@ msgstr ""
 msgid "Total hits"
 msgstr ""
 
-#: assets/src/modules/redirects/index.js:58
-msgid "404 to 301 - Custom Redirects"
-msgstr ""
-
-#: assets/src/modules/redirects/index.js:88
+#: assets/src/modules/redirects/index.js:86
 msgid "All in One SEO helps you earn the rankings redirects protect"
 msgstr ""
 
-#: assets/src/modules/redirects/index.js:93
+#: assets/src/modules/redirects/index.js:91
 msgid "Unlock advanced sitemaps, schema markup, Local SEO, WooCommerce SEO and more with the original SEO plugin for WordPress, now AI-powered."
 msgstr ""
 
@@ -2626,16 +3052,16 @@ msgstr ""
 msgid "Enable Telegram Alerts"
 msgstr ""
 
-#: assets/src/modules/settings/index.js:35
-msgid "404 to 301 - Settings"
-msgstr ""
-
-#: assets/src/modules/settings/tabs/index.js:23
+#: assets/src/modules/settings/tabs/index.js:27
 msgid "Notifications"
 msgstr ""
 
-#: assets/src/modules/settings/tabs/index.js:27
+#: assets/src/modules/settings/tabs/index.js:31
 msgid "Import/Export"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/index.js:35
+msgid "MCP"
 msgstr ""
 
 #: assets/src/modules/settings/tabs/logs.js:49
@@ -2675,11 +3101,11 @@ msgid "Paths to ignore"
 msgstr ""
 
 #: assets/src/modules/settings/tabs/logs.js:114
-msgid "e.g. /wp-json/ or /feed/"
+msgid "e.g. /feed/ or /20*/"
 msgstr ""
 
 #: assets/src/modules/settings/tabs/logs.js:120
-msgid "Any 404 whose URL contains one of these substrings is skipped — no log, no redirect, no email."
+msgid "Any 404 whose path contains one of these is skipped — no log, no redirect, no email. Use * to stand for any run of characters, so /20*/ covers every year of date-based archives in one row."
 msgstr ""
 
 #: assets/src/modules/settings/tabs/logs.js:133
@@ -2688,6 +3114,400 @@ msgstr ""
 
 #: assets/src/modules/settings/tabs/logs.js:138
 msgid "Logging shows which URLs break. It finds the links pointing at them across your content, so you can fix the source."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:66
+#: assets/src/modules/settings/tabs/mcp/clients.js:112
+#: assets/src/modules/settings/tabs/mcp/clients.js:154
+msgid "Save to:"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:77
+msgid "Open the file for your operating system above, creating it if it does not exist. On Linux, use the Claude Code tab instead."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:81
+#: assets/src/modules/settings/tabs/mcp/clients.js:124
+#: assets/src/modules/settings/tabs/mcp/clients.js:176
+msgid "Paste the snippet into the file."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:82
+msgid "Restart Claude Desktop to pick up the 404 to 301 abilities."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:92
+msgid "Run in:"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:93
+msgid "Your terminal"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:100
+msgid "Open a terminal in your project directory."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:101
+msgid "Paste the command and press enter."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:102
+msgid "Start a new Claude Code session to pick up the 404 to 301 abilities."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:120
+msgid "Open the file above, creating it if it does not exist."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:125
+msgid "Restart the Gemini CLI to pick up the 404 to 301 abilities."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:135
+msgid "Add in:"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:136
+msgid "Settings → MCP → Add Server"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:139
+msgid "In Cursor, go to Settings → MCP → Add Server."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:143
+msgid "Paste the snippet as a new server."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:144
+msgid "Enable the server in the MCP list to pick up the 404 to 301 abilities."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:172
+msgid "Create the file above in your workspace, or use the user-level equivalent."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:177
+msgid "Open the Chat view in agent mode and start the server to pick up the 404 to 301 abilities."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:186
+msgid "ChatGPT’s developer-mode connectors only support OAuth, which this site does not offer. Use Claude, Gemini, Cursor or VS Code instead."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:215
+msgid "Connect an AI Client"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:218
+msgid "Pick the tool you want to connect, then copy its configuration. Your application password is filled in for you while this page is open."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:241
+msgid "Not supported:"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:248
+msgid "Your application password is filled into the snippet below — copy and paste it as-is."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/clients.js:267
+msgid "Copy snippet"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/copy-button.js:34
+msgid "Copied"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/copy-button.js:35
+msgid "Copy"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:26
+msgid "Which 404s got the most hits last month?"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:27
+msgid "Redirect /old-pricing/ to /pricing/"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:28
+msgid "What happens if someone visits /blog/2019/?"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:29
+msgid "Fix my top ten 404s by pointing them at the closest page"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:130
+msgid "The install failed. Check the site’s connectivity and write permissions, then try again."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:161
+msgid "Could not generate an application password."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:193
+msgid "Your application password was rejected — it may have been revoked. Generate a new one and test again."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:207
+msgid "The abilities endpoint answered, but not with a list of abilities. Check the MCP Adapter is active and try again."
+msgstr ""
+
+#. Translators: 1 - A number of abilities, 2 - A round-trip time in milliseconds.
+#: assets/src/modules/settings/tabs/mcp/index.js:224
+#, js-format
+msgid "Signed in with your application password and found %1$d 404 to 301 abilities in %2$dms. Your site is ready to connect an AI client below."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:235
+msgid "Could not reach the abilities endpoint. Check the site is reachable and try again."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:258
+msgid "This version of WordPress does not include the Abilities API."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:263
+msgid "Update WordPress"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:265
+msgid "to 6.9 or later, then come back to this page."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:276
+msgid "The Abilities API is available but nothing at all is registered on it, which means something is switching it off — usually a security plugin or a snippet in the site’s code. Re-enable it, then reload this page."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:286
+msgid "The Abilities API is working, but this plugin’s abilities did not register. Deactivating and reactivating 404 to 301 usually clears it; if not, please contact support."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:297
+msgid "404 to 301 abilities registered"
+msgstr ""
+
+#. Translators: 1 - A number of abilities.
+#: assets/src/modules/settings/tabs/mcp/index.js:301
+#, js-format
+msgid "%1$d redirect and 404 abilities registered with the WordPress Abilities API"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:307
+msgid "Nothing for an AI client to call yet"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:310
+msgid "Ready"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:314
+msgid "Not registered"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:315
+msgid "Needs WP 6.9+"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:328
+msgid "Hide abilities"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:329
+msgid "View all abilities"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:338
+msgid "These are the redirect and 404 operations an AI client can perform on this site. Reads are marked read-only; the rest change your redirects, logs or settings."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:353
+msgid "MCP Adapter installed"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:354
+msgid "Bridges registered abilities to the Model Context Protocol"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:363
+#: assets/src/modules/settings/tabs/mcp/index.js:432
+#: assets/src/modules/settings/tabs/mcp/index.js:558
+msgid "Action needed"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:377
+msgid "Activate MCP Adapter"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:378
+msgid "Install MCP Adapter"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:385
+msgid "The MCP Adapter plugin is installed but not active. Activate it so AI clients can call these abilities."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:389
+msgid "The MCP Adapter is a free WordPress plugin that exposes registered abilities over the Model Context Protocol. Install it so AI clients can call them."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:410
+msgid "Application password generated"
+msgstr ""
+
+#. Translators: 1 - A WordPress username.
+#: assets/src/modules/settings/tabs/mcp/index.js:414
+#, js-format
+msgid "Generated for %1$s"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:418
+msgid "An AI client needs a credential to sign in with"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:422
+msgid "Application passwords are switched off on this site"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:428
+msgid "Generated"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:436
+msgid "Unavailable"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:445
+msgid "Manage in your profile"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:457
+msgid "Generate password"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:465
+msgid "Application passwords are disabled on this site. A security plugin, or a constant or filter in your site’s code, is switching the feature off. Re-enable it, then reload this page."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:469
+msgid "Application passwords are disabled because this site is not served over HTTPS. Switch the site to HTTPS to enable them."
+msgstr ""
+
+#. Translators: 1 - A WordPress username.
+#: assets/src/modules/settings/tabs/mcp/index.js:478
+#, js-format
+msgid "An application password lets an AI client sign in to this site as %1$s. It carries the same access your own account has, and you can revoke it from your profile at any time."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:490
+msgid "This password will not be shown again. Copy it now."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:498
+msgid "Username"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:506
+msgid "Password"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:513
+msgid "It is also filled into the configuration snippets below for as long as this page stays open."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:538
+msgid "Connection confirmed"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:539
+msgid "Connection failed"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:541
+msgid "Ready to connect"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:542
+msgid "Test the connection"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:544
+msgid "Every step above is complete — configure a client below."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:548
+msgid "We’ll sign in with your application password and confirm an AI client can reach these abilities."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:554
+msgid "Verified"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:560
+msgid "Pending"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:573
+msgid "Test again"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:574
+msgid "Test connection"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:581
+msgid "Available once the steps above are complete."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:590
+msgid "Your site is set up and ready for an AI client. A live test signs in with the password itself, and WordPress only reveals one at the moment it is created — so testing means generating another."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:603
+msgid "Generate a new password"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:640
+msgid "Let your AI assistant handle your redirects"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:647
+msgid "Connect any MCP-compatible AI client and it can read your 404 logs, create redirects and check where a URL lands — from chat."
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:655
+msgid "Try asking:"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:668
+msgid "Setup complete"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:669
+msgid "Setup"
+msgstr ""
+
+#. Translators: 1 - Completed steps, 2 - Total steps.
+#: assets/src/modules/settings/tabs/mcp/index.js:676
+#, js-format
+msgid "%1$d of %2$d steps complete"
+msgstr ""
+
+#. Translators: 1 - The title of the next step.
+#: assets/src/modules/settings/tabs/mcp/index.js:686
+#, js-format
+msgid "next up: %1$s"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:774
+msgid "Let AI assistants manage the rest of your site"
+msgstr ""
+
+#: assets/src/modules/settings/tabs/mcp/index.js:779
+msgid "Your redirects and 404 logs are connected. WPVibe brings the same to the rest of WordPress — letting AI assistants manage your site, safely."
 msgstr ""
 
 #: assets/src/modules/settings/tabs/notifications.js:88

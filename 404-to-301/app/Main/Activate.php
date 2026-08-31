@@ -34,6 +34,21 @@ class Activate {
 
 		if ( ! aioseo404To301()->internalOptions->internal->firstActivated ) {
 			aioseo404To301()->internalOptions->internal->firstActivated = time();
+
+			/*
+			 * A 404 log grows without bound on any site that gets crawled, and a fresh install has no
+			 * history worth protecting, so trimming starts switched on: drop entries older than the
+			 * default 30 days, keeping any that are linked to a redirect.
+			 *
+			 * Set here rather than as the option's default. Changing the default would switch this on
+			 * for every existing site that never touched the setting, and start deleting their logs on
+			 * the next update.
+			 */
+			aioseo404To301()->options->sanitizeAndSave(
+				[
+					'cleaner' => [ 'method' => 'age' ]
+				]
+			);
 		}
 
 		// The tables have to exist before the migrator queues anything against them, and dbDelta is

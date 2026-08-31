@@ -7,7 +7,8 @@
  *   ├ Redirects  (alias of top level)
  *   ├ 404 Logs
  *   ├ Settings
- *   └ Features
+ *   ├ <rotating cross-promotion item>
+ *   └ About Us
  *
  * Each sub-menu callback delegates to {@see Page::render()} — the
  * admin pages are just React mount-points; the real UI lives in
@@ -64,7 +65,7 @@ class Menu {
 			$cap,
 			Plugin::PAGE_REDIRECTS,
 			[ aioseo404To301()->admin->page, 'renderRedirects' ],
-			'dashicons-redo',
+			'data:image/svg+xml;base64,' . base64_encode( aioseo404To301()->helpers->icon() ),
 			89
 		);
 
@@ -96,6 +97,8 @@ class Menu {
 			[ aioseo404To301()->admin->page, 'renderSettings' ]
 		);
 
+		$this->registerPromoPages();
+
 		add_submenu_page(
 			Plugin::PAGE_REDIRECTS,
 			__( 'About Us', '404-to-301' ),
@@ -104,23 +107,41 @@ class Menu {
 			Plugin::PAGE_ABOUT,
 			[ aioseo404To301()->admin->page, 'renderAbout' ]
 		);
+	}
 
-		/*
-		 * Hidden page (no menu item) that installs Broken Link Checker. Reached from the
-		 * dashboard widget and the Site Health check; redirects straight to Broken Link
-		 * Checker once it is active, so a stale bookmark never lands on a dead pitch.
-		 */
-		if ( current_user_can( 'install_plugins' ) ) {
+	/**
+	 * Register the cross-promotion landing pages.
+	 *
+	 * All five are registered, but only the one whose turn it is gets a menu item - the rest are
+	 * reachable by URL alone, because the dashboard widget and the Site Health check link straight
+	 * to the Broken Link Checker page whether or not it is the promoted one this week.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @return void
+	 */
+	private function registerPromoPages(): void {
+		if ( ! current_user_can( 'install_plugins' ) ) {
+			return;
+		}
+
+		$visible = ( new PromoMenu() )->visibleKey();
+
+		foreach ( PromoMenu::items() as $key => $item ) {
+			$isVisible = ( $key === $visible );
+
 			$hook = add_submenu_page(
-				'',
-				__( 'Get Broken Link Checker', '404-to-301' ),
-				__( 'Get Broken Link Checker', '404-to-301' ),
+				$isVisible ? Plugin::PAGE_REDIRECTS : '',
+				$item['label'],
+				$item['label'],
 				'install_plugins',
-				Plugin::PAGE_BLC,
-				[ aioseo404To301()->admin->page, 'renderBlc' ]
+				'404-to-301-' . $key,
+				[ aioseo404To301()->admin->page, 'renderPromo' ]
 			);
 
-			add_action( "load-{$hook}", [ $this, 'maybeRedirectToBlc' ] );
+			// A stale bookmark, or the promoted plugin being activated mid-period, would otherwise
+			// land on a pitch for something the site already runs.
+			add_action( "load-{$hook}", [ $this, 'maybeRedirectToPlugin' ] );
 		}
 	}
 
@@ -162,7 +183,7 @@ class Menu {
 	 * Mirrors the Comments menu, so a site collecting 404s shows it without the
 	 * admin having to open the page.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string
 	 */
@@ -183,21 +204,29 @@ class Menu {
 	}
 
 	/**
-	 * Send the visitor to Broken Link Checker when it is already running.
+	 * Send the visitor to the promoted plugin when it is already running.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
-	public function maybeRedirectToBlc(): void {
-		$plugins = aioseo404To301()->helpers->getPluginData();
+	public function maybeRedirectToPlugin(): void {
+		$page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reading which admin page is being viewed.
+		$key  = (string) preg_replace( '/^404-to-301-/', '', $page );
 
-		if ( empty( $plugins['brokenLinkChecker']['activated'] ) ) {
+		if ( ! PromoMenu::has( $key ) ) {
 			return;
 		}
 
-		$target = ! empty( $plugins['brokenLinkChecker']['adminUrl'] )
-			? (string) $plugins['brokenLinkChecker']['adminUrl']
+		$plugin  = PromoMenu::pluginFor( $key );
+		$plugins = aioseo404To301()->helpers->getPluginData();
+
+		if ( empty( $plugins[ $plugin ]['activated'] ) ) {
+			return;
+		}
+
+		$target = ! empty( $plugins[ $plugin ]['adminUrl'] )
+			? (string) $plugins[ $plugin ]['adminUrl']
 			: admin_url();
 
 		wp_safe_redirect( $target );

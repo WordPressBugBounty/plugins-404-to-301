@@ -53,7 +53,7 @@ final class Cron {
 	/**
 	 * Allowed cron recurrences for the periodic method.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */

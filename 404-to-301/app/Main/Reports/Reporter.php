@@ -363,7 +363,7 @@ final class Reporter {
 	 * `index.php` covers a host with directory listing enabled; the `.htaccess` denies direct file
 	 * access on Apache. Both are best-effort — a failure here doesn't stop the report going out.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $dir Absolute path to the report directory.
 	 * @return void

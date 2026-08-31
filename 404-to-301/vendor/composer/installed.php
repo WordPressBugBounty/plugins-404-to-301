@@ -3,7 +3,7 @@
         'name' => 'aioseo/404-to-301',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '7e25b5bef2076ec251b9216473518931ebefcce6',
+        'reference' => '7505c279a8e661c0c1af0cc7623d149427994ec6',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'aioseo/404-to-301' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '7e25b5bef2076ec251b9216473518931ebefcce6',
+            'reference' => '7505c279a8e661c0c1af0cc7623d149427994ec6',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

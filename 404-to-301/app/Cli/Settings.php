@@ -158,7 +158,7 @@ class Settings extends Command {
 	/**
 	 * Flattens the nested option tree into dot-delimited keys for CLI output.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array  $options The option tree.
 	 * @param  string $prefix  Accumulated key prefix.

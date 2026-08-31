@@ -22,7 +22,7 @@ use AIOSEO\FourNotFour\Utils\Plugin;
 /**
  * Class DashboardWidget
  *
- * @since 4.0.3
+ * @since 4.0.4
  * @package AIOSEO\FourNotFour\Admin
  */
 class DashboardWidget {
@@ -30,28 +30,28 @@ class DashboardWidget {
 	/**
 	 * How many rows the widget lists.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	const ROWS = 5;
 
 	/**
 	 * How far back the widget looks.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	const DAYS = 30;
 
 	/**
 	 * Cache key for the widget's rows.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	const CACHE = '404_to_301_dashboard_rows';
 
 	/**
 	 * Hook the widget.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	public function __construct() {
 		add_action( 'wp_dashboard_setup', [ $this, 'register' ] );
@@ -60,7 +60,7 @@ class DashboardWidget {
 	/**
 	 * Register the widget, for users who can see the plugin at all.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -80,7 +80,7 @@ class DashboardWidget {
 	/**
 	 * Print the widget.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -129,7 +129,7 @@ class DashboardWidget {
 	/**
 	 * The footer: a link into the logs, plus the promo when there is something to promote.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  bool $hasRows Whether any 404s were listed.
 	 * @return void
@@ -172,7 +172,7 @@ class DashboardWidget {
 	 * Cached because the Dashboard is a hot page and this is decoration, not a
 	 * source of truth — a few minutes of staleness costs nothing.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array[] Rows of url and hits.
 	 */

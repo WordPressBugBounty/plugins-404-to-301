@@ -13,13 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * reads a `*.asset.php` manifest rather than a vite manifest. Falls back to safe defaults when the
  * bundle hasn't been built, so a fresh checkout doesn't fatal the admin.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Assets {
 	/**
 	 * Directory the bundles are emitted into, relative to the plugin root.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -28,7 +28,7 @@ class Assets {
 	/**
 	 * Returns the dependency list and version hash for a compiled bundle.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $handle Asset handle, e.g. `settings`.
 	 * @return array          Keys `dependencies` and `version`.

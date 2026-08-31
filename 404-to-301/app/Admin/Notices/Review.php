@@ -16,10 +16,17 @@ class Review {
 	/**
 	 * Class constructor.
 	 *
-	 * @since 1.2.0
+	 * The notice hook is registered here rather than by a caller. This class was written to be
+	 * driven by an `Admin\Notifications` renderer, as it still is in the other plugins - this one
+	 * has no notifications centre, so nothing ever called `maybeShowNotice()` and the notice never
+	 * appeared. Self-registering matches how {@see RedundantAddons} does it.
+	 *
+	 * @since   1.2.0
+	 * @version 4.0.4 Registers its own `admin_notices` hook.
 	 */
 	public function __construct() {
 		add_action( 'wp_ajax_404-to-301-dismiss-review-plugin-cta', [ $this, 'dismissNotice' ] );
+		add_action( 'admin_notices', [ $this, 'maybeShowNotice' ] );
 	}
 
 	/**
@@ -67,7 +74,17 @@ class Review {
 	/**
 	 * Actually show the review plugin 2.0.
 	 *
-	 * @since 1.2.0
+	 * NOTE: the class names use the `d404-` prefix the rest of the plugin's CSS uses, not the
+	 * `404-to-301-` one this file shipped with. A CSS identifier cannot start with a digit, so
+	 * `document.querySelector('.404-to-301-...')` and `Element.matches()` both throw a SyntaxError -
+	 * which killed every one of the notice's own dismiss handlers.
+	 *
+	 * The notice is also single-step here: only `.step-3` exists. The step-switching branches that
+	 * came with it referenced two more elements and two more classes that this markup never had.
+	 *
+	 * @since   1.2.0
+	 * @version 4.0.4 Class names re-prefixed so they are valid CSS identifiers.
+	 * @version 4.0.4 Dropped the step-switching branches; this notice has one step.
 	 *
 	 * @return void
 	 */
@@ -84,18 +101,18 @@ class Review {
 		$string11 = __( 'I already did', '404-to-301' );
 
 		?>
-		<div class="notice notice-info 404-to-301-review-plugin-cta is-dismissible">
+		<div class="notice notice-info d404-review-plugin-cta is-dismissible">
 			<div class="step-3">
 				<p><?php echo wp_kses_post( $string1 ); ?></p>
 				<p>
 					<?php // phpcs:ignore Generic.Files.LineLength.MaxExceeded ?>
-					<a href="https://aioseo.com/404-to-301-rating" class="404-to-301-dismiss-review-notice" target="_blank" rel="noopener noreferrer">
+					<a href="https://aioseo.com/404-to-301-rating" class="d404-dismiss-review-notice" target="_blank" rel="noopener noreferrer">
 						<?php echo esc_html( $string9 ); ?>
 					</a>&nbsp;&bull;&nbsp;
-					<a href="#" class="404-to-301-dismiss-review-notice-delay" target="_blank" rel="noopener noreferrer">
+					<a href="#" class="d404-dismiss-review-notice-delay" target="_blank" rel="noopener noreferrer">
 						<?php echo esc_html( $string10 ); ?>
 					</a>&nbsp;&bull;&nbsp;
-					<a href="#" class="404-to-301-dismiss-review-notice" target="_blank" rel="noopener noreferrer">
+					<a href="#" class="d404-dismiss-review-notice" target="_blank" rel="noopener noreferrer">
 						<?php echo esc_html( $string11 ); ?>
 					</a>
 				</p>
@@ -120,7 +137,7 @@ class Review {
 				from { opacity: 0.99; }
 				to { opacity: 1; }
 			}
-			.404-to-301-review-plugin-cta button.notice-dismiss {
+			.d404-review-plugin-cta button.notice-dismiss {
 				animation-duration: 0.001s;
 				animation-name: dismissBtnVisible;
 			}
@@ -132,12 +149,9 @@ class Review {
 					interval
 
 				aioseoFourNotFourSetupButton = function (dismissBtn) {
-					var notice      = document.querySelector('.notice.404-to-301-review-plugin-cta'),
-						delay       = false,
-						relay       = true,
-						stepOne     = notice.querySelector('.step-1'),
-						stepTwo     = notice.querySelector('.step-2'),
-						stepThree   = notice.querySelector('.step-3')
+					var notice = document.querySelector('.notice.d404-review-plugin-cta'),
+						delay  = false,
+						relay  = true
 
 					// Add an event listener to the dismiss button.
 					dismissBtn.addEventListener('click', function (event) {
@@ -156,25 +170,13 @@ class Review {
 					})
 
 					notice.addEventListener('click', function (event) {
-						if (event.target.matches('.404-to-301-review-switch-step-3')) {
-							event.preventDefault()
-							stepOne.style.display   = 'none'
-							stepTwo.style.display   = 'none'
-							stepThree.style.display = 'block'
-						}
-						if (event.target.matches('.404-to-301-review-switch-step-2')) {
-							event.preventDefault()
-							stepOne.style.display   = 'none'
-							stepThree.style.display = 'none'
-							stepTwo.style.display   = 'block'
-						}
-						if (event.target.matches('.404-to-301-dismiss-review-notice-delay')) {
+						if (event.target.matches('.d404-dismiss-review-notice-delay')) {
 							event.preventDefault()
 							delay = true
 							relay = false
 							dismissBtn.click()
 						}
-						if (event.target.matches('.404-to-301-dismiss-review-notice')) {
+						if (event.target.matches('.d404-dismiss-review-notice')) {
 							if ('#' === event.target.getAttribute('href')) {
 								event.preventDefault()
 							}
@@ -184,11 +186,11 @@ class Review {
 					})
 				}
 
-				dismissBtn = document.querySelector('.404-to-301-review-plugin-cta .notice-dismiss')
+				dismissBtn = document.querySelector('.d404-review-plugin-cta .notice-dismiss')
 				if (!dismissBtn) {
 					document.addEventListener('animationstart', function (event) {
 						if (event.animationName == 'dismissBtnVisible') {
-							dismissBtn = document.querySelector('.404-to-301-review-plugin-cta .notice-dismiss')
+							dismissBtn = document.querySelector('.d404-review-plugin-cta .notice-dismiss')
 							if (dismissBtn) {
 								aioseoFourNotFourSetupButton(dismissBtn)
 							}

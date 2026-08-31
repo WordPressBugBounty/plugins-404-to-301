@@ -72,7 +72,7 @@ class Settings extends Endpoint {
 	 * import: an envelope from an untrusted source could otherwise point the Telegram feature at
 	 * someone else's chat and quietly stream every 404 - URLs and visitor IPs included - to them.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -150,7 +150,7 @@ class Settings extends Endpoint {
 	 *
 	 * Returns the settings in the flat shape the admin app's fields are keyed by.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  WP_REST_Request $request REST request.
 	 * @return WP_REST_Response
@@ -166,7 +166,7 @@ class Settings extends Endpoint {
 	 *
 	 * Accepts a partial flat payload, so a panel can save just the fields it owns.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  WP_REST_Request $request REST request.
 	 * @return WP_REST_Response
@@ -191,7 +191,7 @@ class Settings extends Endpoint {
 	 * on. Since the toggle is the only record of that, the rule is directional — true to false is
 	 * allowed, false to true never is.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $incoming Flat payload.
 	 * @return array           The payload, with any attempt to re-enable Telegram dropped.
@@ -336,7 +336,7 @@ class Settings extends Endpoint {
 	/**
 	 * Strips every SECRET_PATHS entry out of a settings tree.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $settings Nested settings.
 	 * @return array           The same tree without the secrets.

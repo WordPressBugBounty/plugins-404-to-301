@@ -8,13 +8,13 @@ namespace AIOSEO\FourNotFour {
 	/**
 	 * The main FourNotFour class.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 */
 	final class FourNotFour {
 		/**
 		 * Holds the instance of the plugin currently in use.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var FourNotFour
 		 */
@@ -24,7 +24,7 @@ namespace AIOSEO\FourNotFour {
 		 * Plugin version for enqueueing, etc.
 		 * The value is retrieved from the AIOSEO_404_TO_301_VERSION constant.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var string
 		 */
@@ -33,7 +33,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Whether we're in a dev environment.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var bool
 		 */
@@ -42,7 +42,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Core class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Core\Core
 		 */
@@ -51,7 +51,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Database Schema class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Db\Schema
 		 */
@@ -60,7 +60,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * InternalOptions class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Options\InternalOptions
 		 */
@@ -69,7 +69,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Pre updates class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Main\PreUpdates
 		 */
@@ -78,7 +78,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Helpers class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Utils\Helpers
 		 */
@@ -87,7 +87,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Options class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Options\Options
 		 */
@@ -96,7 +96,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Updates class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Main\Updates
 		 */
@@ -105,7 +105,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Action scheduler class.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Utils\ActionScheduler
 		 */
@@ -114,7 +114,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Access class.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Utils\Access
 		 */
@@ -123,7 +123,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Main class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Main\Main
 		 */
@@ -132,7 +132,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * API class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Api\Api
 		 */
@@ -141,16 +141,25 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * VueSettings class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Utils\VueSettings
 		 */
 		public $vueSettings;
 
 		/**
+		 * Abilities class instance.
+		 *
+		 * @since 4.0.4
+		 *
+		 * @var Abilities\Abilities
+		 */
+		public $abilities;
+
+		/**
 		 * Admin class instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @var Admin\Admin
 		 */
@@ -159,7 +168,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * The main FourNotFour instance.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return FourNotFour The 404 to 301 instance.
 		 */
@@ -176,7 +185,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Initializes 404 to 301.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
@@ -191,7 +200,7 @@ namespace AIOSEO\FourNotFour {
 		 * Sets up the plugin constants.
 		 * All the path/URL related constants are defined in the main plugin file.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
@@ -224,7 +233,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Loads the required dependencies.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
@@ -260,7 +269,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Loads the version of the plugin we are currently using.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
@@ -287,7 +296,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Runs before we load the plugin.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
@@ -302,7 +311,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Loads our classes.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
@@ -315,7 +324,8 @@ namespace AIOSEO\FourNotFour {
 			$this->api             = new Api\Api();
 
 			$this->endpoints();
-			$this->admin = new Admin\Admin();
+			$this->abilities = new Abilities\Abilities();
+			$this->admin     = new Admin\Admin();
 
 			// Static registrar, and only meaningful under WP-CLI.
 			if ( defined( 'WP_CLI' ) && \WP_CLI ) {
@@ -331,12 +341,12 @@ namespace AIOSEO\FourNotFour {
 		 * Each endpoint hooks its own `rest_api_init` from its constructor, so instantiating is all
 		 * that's needed. They hold no per-request state, so a fresh instance per boot is fine.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
 		private function endpoints() {
-			$endpoints = [ 'Settings', 'Logs', 'Redirects', 'Import', 'Migration' ];
+			$endpoints = [ 'Settings', 'Logs', 'Redirects', 'Import', 'Migration', 'Mcp' ];
 
 			foreach ( $endpoints as $endpoint ) {
 				$class = __NAMESPACE__ . '\\Api\\' . $endpoint;
@@ -350,7 +360,7 @@ namespace AIOSEO\FourNotFour {
 		/**
 		 * Things that need to load after init.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @return void
 		 */
@@ -369,7 +379,7 @@ namespace {
 	/**
 	 * The function which returns the one 404 to 301 instance.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return AIOSEO\FourNotFour\FourNotFour The instance.
 	 */

@@ -42,7 +42,7 @@ class Links {
 	 * Prepend the Settings link and append the promo link to the plugin actions.
 	 *
 	 * @since   4.0.0
-	 * @version 4.0.3 Dropped the Logs and Redirects links; added the promo link.
+	 * @version 4.0.4 Dropped the Logs and Redirects links; added the promo link.
 	 *
 	 * @param array $links Existing action links.
 	 *
@@ -71,7 +71,7 @@ class Links {
 	 * Points at the About page rather than wp.org, because the card there installs
 	 * in place. Empty once the site runs both.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string Anchor markup, or an empty string.
 	 */
@@ -108,7 +108,7 @@ class Links {
 	 * Append the support link to the plugin's row meta.
 	 *
 	 * @since   4.0.0
-	 * @version 4.0.3 Dropped the documentation link.
+	 * @version 4.0.4 Dropped the documentation link.
 	 *
 	 * @param string[] $meta Existing row-meta links.
 	 * @param string   $file Plugin basename of the row currently being rendered.

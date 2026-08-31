@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * The custom redirect DB model class.
  *
- * @since 4.0.3
+ * @since 4.0.4
  */
 class Redirect extends Model {
 	/**
@@ -18,7 +18,7 @@ class Redirect extends Model {
 	 * NOTE: no `aioseo_` prefix - the table predates the plugin joining AIOSEO and renaming it would
 	 * orphan every existing install's data.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -27,7 +27,7 @@ class Redirect extends Model {
 	/**
 	 * Fields set to null when empty on save.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -40,7 +40,7 @@ class Redirect extends Model {
 	 * can reference `$1`. Not a table column, so `save()` ignores it; it lives only for the request
 	 * that matched.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -55,7 +55,7 @@ class Redirect extends Model {
 	 * cache (Redis/Memcached) these become genuinely free across requests; without one they still
 	 * de-duplicate within a request, which is the case the dispatcher actually hits.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -64,7 +64,7 @@ class Redirect extends Model {
 	/**
 	 * Cache key holding the lookup cache version.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -73,7 +73,7 @@ class Redirect extends Model {
 	/**
 	 * Option backing the lookup cache version, so it survives an object-cache flush.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -85,7 +85,7 @@ class Redirect extends Model {
 	 * Stored as '1'/'0' rather than a bool so a sentinel default can tell "never computed" apart
 	 * from "computed, and there were none" - bool false collides with get_option()'s not-set return.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -94,7 +94,7 @@ class Redirect extends Model {
 	/**
 	 * The zero date MySQL hands back as the datetime column default.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var string
 	 */
@@ -106,7 +106,7 @@ class Redirect extends Model {
 	 * NOTE: the template's Model::save() auto-stamps `created`/`updated`, which our tables don't
 	 * have - they use `created_at`/`updated_at`, so those are set here instead.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -154,7 +154,7 @@ class Redirect extends Model {
 	/**
 	 * Deletes the redirect, unlinks its logs and emits the audit event.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return null
 	 */
@@ -178,7 +178,7 @@ class Redirect extends Model {
 	 * Resolution order is fixed: exact hash, then prefix, then regex. Only active rows are
 	 * considered, and the first match wins.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string        $url Raw URL.
 	 * @return Redirect|null      The matching redirect, or null.
@@ -188,34 +188,94 @@ class Redirect extends Model {
 
 		$exact = self::pickExact( $url, $candidates['exact'] );
 		if ( $exact ) {
-			return $exact;
+			return new self( $exact );
 		}
 
+		// Pattern rows are partial - see patternCandidates() - so the winner loads by primary key.
 		$prefix = self::pickPrefix( $url, $candidates['prefix'] );
 		if ( $prefix ) {
-			return $prefix;
+			return new self( $prefix );
 		}
 
-		return self::pickRegex( $url, $candidates['regex'] );
+		$regex = self::pickRegex( $url, $candidates['regex'] );
+		if ( null === $regex ) {
+			return null;
+		}
+
+		$model                = new self( $regex['row'] );
+		$model->regexCaptures = $regex['captures'];
+
+		return $model;
 	}
 
 	/**
-	 * Fetches every redirect row that could match this URL, in one query.
+	 * Fetches the rows that could match this URL.
 	 *
-	 * NOTE: one scan gets all three buckets. Walking exact, then prefix, then regex as separate
-	 * queries would cost three statements on every 404. `ORDER BY source DESC` gives the
-	 * longer-pattern-first semantics the prefix and regex walks rely on.
+	 * Split in two on purpose. The exact bucket is a hash lookup, so it is URL-specific but hits a
+	 * unique index and costs almost nothing. The prefix and regex buckets do not depend on the URL
+	 * at all, so they are cached once per cache generation instead of being re-queried for every
+	 * distinct 404 - which is what a crawled site produces.
 	 *
-	 * @since 4.0.3
+	 * Rows stay as arrays. Hydrating a model per candidate was the dominant cost on a site with
+	 * thousands of pattern rules; only the winner becomes a model, in {@see findMatch()}.
+	 *
+	 * @since   4.0.4
+	 * @version 4.0.4 Pattern rows cached independently of the URL; rows no longer hydrated here.
 	 *
 	 * @param  string $url Raw request URL.
 	 * @return array       Rows bucketed by match type.
 	 */
 	private static function candidatesForUrl( $url ) {
-		$hashWithQuery = aioseo404To301()->helpers->urlHashWithQuery( $url );
-		$hashPathOnly  = aioseo404To301()->helpers->urlHash( $url );
+		$patterns = self::patternCandidates();
 
-		$cacheKey = 'candidates_' . self::cacheVersion() . '_' . $hashWithQuery;
+		return [
+			'exact'  => self::exactCandidates( $url ),
+			'prefix' => $patterns['prefix'],
+			'regex'  => $patterns['regex']
+		];
+	}
+
+	/**
+	 * Active exact rows whose hash matches this URL, with or without its query string.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @param  string $url Raw request URL.
+	 * @return array[]     Matching rows.
+	 */
+	private static function exactCandidates( $url ) {
+		$db = aioseo404To301()->core->db;
+
+		$rows = $db
+			->start( '404_to_301_redirects' )
+			->where( 'is_active', 1 )
+			->whereRaw(
+				$db->db->prepare(
+					"( match_type = 'exact' AND source_hash IN ( %s, %s ) )",
+					aioseo404To301()->helpers->urlHashWithQuery( $url ),
+					aioseo404To301()->helpers->urlHash( $url )
+				)
+			)
+			->output( 'ARRAY_A' )
+			->run()
+			->result();
+
+		return (array) $rows;
+	}
+
+	/**
+	 * Every active prefix and regex row, bucketed and cached.
+	 *
+	 * `ORDER BY source DESC` gives the longer-pattern-first semantics the prefix walk relies on.
+	 * Each prefix row carries its normalised source, so the walk does not re-normalise every
+	 * candidate on every request.
+	 *
+	 * @since 4.0.4
+	 *
+	 * @return array Rows bucketed into `prefix` and `regex`.
+	 */
+	private static function patternCandidates() {
+		$cacheKey = 'patterns_' . self::cacheVersion();
 		$cached   = wp_cache_get( $cacheKey, self::CACHE_GROUP );
 		if ( false !== $cached ) {
 			return $cached;
@@ -224,28 +284,29 @@ class Redirect extends Model {
 		$rows = aioseo404To301()->core->db
 			->start( '404_to_301_redirects' )
 			->where( 'is_active', 1 )
-			->whereRaw(
-				aioseo404To301()->core->db->db->prepare(
-					"( ( match_type = 'exact' AND source_hash IN ( %s, %s ) ) OR match_type = 'prefix' OR match_type = 'regex' )",
-					$hashWithQuery,
-					$hashPathOnly
-				)
-			)
+			->whereRaw( "match_type IN ( 'prefix', 'regex' )" )
 			->orderBy( 'source DESC' )
 			->output( 'ARRAY_A' )
 			->run()
 			->result();
 
 		$buckets = [
-			'exact'  => [],
 			'prefix' => [],
 			'regex'  => []
 		];
 
 		foreach ( (array) $rows as $row ) {
 			$type = isset( $row['match_type'] ) ? (string) $row['match_type'] : '';
-			if ( isset( $buckets[ $type ] ) ) {
-				$buckets[ $type ][] = new self( $row );
+
+			if ( 'prefix' === $type ) {
+				$row['normalizedSource'] = aioseo404To301()->helpers->normalizeUrl( (string) ( $row['source'] ?? '' ) );
+
+				$buckets['prefix'][] = $row;
+				continue;
+			}
+
+			if ( 'regex' === $type ) {
+				$buckets['regex'][] = $row;
 			}
 		}
 
@@ -260,11 +321,11 @@ class Redirect extends Model {
 	 * A `require` row, which hashes the query string too, beats an `ignore` row that only stores the
 	 * path.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
-	 * @param  string        $url        Raw request URL.
-	 * @param  array         $candidates Active exact rows.
-	 * @return Redirect|null             The winner, or null.
+	 * @param  string     $url        Raw request URL.
+	 * @param  array      $candidates Active exact rows.
+	 * @return array|null             The winning row, or null.
 	 */
 	private static function pickExact( $url, $candidates ) {
 		if ( empty( $candidates ) ) {
@@ -276,7 +337,7 @@ class Redirect extends Model {
 
 		$fallback = null;
 		foreach ( $candidates as $row ) {
-			$hash = (string) $row->source_hash;
+			$hash = (string) ( $row['source_hash'] ?? '' );
 
 			if ( $hash === $hashWithQuery ) {
 				return $row;
@@ -293,11 +354,11 @@ class Redirect extends Model {
 	/**
 	 * Picks the first prefix rule whose source is a prefix of the URL.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
-	 * @param  string        $url        Raw request URL.
-	 * @param  array         $candidates Active prefix rows, longest first.
-	 * @return Redirect|null             The winner, or null.
+	 * @param  string     $url        Raw request URL.
+	 * @param  array      $candidates Active prefix rows, longest first.
+	 * @return array|null             The winning row, or null.
 	 */
 	private static function pickPrefix( $url, $candidates ) {
 		if ( empty( $candidates ) ) {
@@ -307,7 +368,8 @@ class Redirect extends Model {
 		$normalized = aioseo404To301()->helpers->normalizeUrl( $url );
 
 		foreach ( $candidates as $row ) {
-			$source = aioseo404To301()->helpers->normalizeUrl( (string) $row->source );
+			// Normalised when the bucket was built, so this walk stays a string comparison.
+			$source = (string) ( $row['normalizedSource'] ?? '' );
 
 			if ( '' !== $source && 0 === strpos( $normalized, $source ) ) {
 				return $row;
@@ -320,11 +382,11 @@ class Redirect extends Model {
 	/**
 	 * Picks the first regex rule whose pattern matches the URL.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
-	 * @param  string        $url        Raw request URL.
-	 * @param  array         $candidates Active regex rows.
-	 * @return Redirect|null             The winner, or null.
+	 * @param  string     $url        Raw request URL.
+	 * @param  array      $candidates Active regex rows.
+	 * @return array|null             `[ 'row' => array, 'captures' => array ]`, or null.
 	 */
 	private static function pickRegex( $url, $candidates ) {
 		if ( empty( $candidates ) ) {
@@ -332,7 +394,7 @@ class Redirect extends Model {
 		}
 
 		foreach ( $candidates as $row ) {
-			$pattern = (string) $row->source;
+			$pattern = (string) ( $row['source'] ?? '' );
 			if ( '' === $pattern ) {
 				continue;
 			}
@@ -343,9 +405,10 @@ class Redirect extends Model {
 			$matches = [];
 			// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- a malformed pattern should skip the row, not warn.
 			if ( 1 === @preg_match( $wrapped, $url, $matches ) ) {
-				$row->regexCaptures = $matches;
-
-				return $row;
+				return [
+					'row'      => $row,
+					'captures' => $matches
+				];
 			}
 		}
 
@@ -358,7 +421,7 @@ class Redirect extends Model {
 	 * The table has a UNIQUE index on source_hash, so the API layer uses this to reject duplicates
 	 * with a specific message instead of letting the insert fail silently.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string        $source        Raw source URL or path.
 	 * @param  string        $queryHandling ignore | preserve | require.
@@ -397,7 +460,7 @@ class Redirect extends Model {
 	 * NOTE: deliberately does not emit an audit event. Hits come from public 404s, not admin edits,
 	 * so stamping them as user actions would pollute the audit trail.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int  $id Row id.
 	 * @return bool     Whether the row existed.
@@ -428,7 +491,7 @@ class Redirect extends Model {
 	 * An allow-list: `orderby` reaches this from a query string and a WP-CLI flag, and the builder
 	 * escapes column names but won't reject one that doesn't exist.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @var array
 	 */
@@ -437,7 +500,7 @@ class Redirect extends Model {
 	/**
 	 * Copies a column => value map onto the row, leaving anything absent untouched.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $data Column values.
 	 * @return $this       For chaining onto save().
@@ -456,7 +519,7 @@ class Redirect extends Model {
 	 * The one place the filter vocabulary lives - the REST collection, the cleaner and the WP-CLI
 	 * list command all pass the same args.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $args number, offset, orderby, order, match_type, target_type, redirect_type, is_active, search.
 	 * @return array       [ 'items' => Redirect[], 'total' => int ].
@@ -482,7 +545,7 @@ class Redirect extends Model {
 	 * Built fresh per call because count() rewrites the SELECT, so counting and fetching can't share
 	 * one instance.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $args Query args.
 	 * @return \AIOSEO\FourNotFour\Core\Database The query.
@@ -513,7 +576,7 @@ class Redirect extends Model {
 	/**
 	 * A safe ORDER BY clause from the caller's args.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array  $args Query args.
 	 * @return string       The clause.
@@ -531,7 +594,7 @@ class Redirect extends Model {
 	/**
 	 * Returns aggregate counts for the summary cards.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return array Counts keyed total, active, inactive, hits.
 	 */
@@ -556,7 +619,7 @@ class Redirect extends Model {
 	/**
 	 * Whether at least one log row is linked to the given redirect.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  int  $redirectId Redirect row id.
 	 * @return bool             Whether a linked log exists.
@@ -583,7 +646,7 @@ class Redirect extends Model {
 	 * object-cache state. The flag is rewritten on every mutation, and bootstrapped lazily the first
 	 * time it's read on a site that hasn't computed it yet.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return bool Whether any active rule exists.
 	 */
@@ -600,7 +663,7 @@ class Redirect extends Model {
 	/**
 	 * Recomputes the has-active flag from the table and persists it.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string '1' when any active row exists, otherwise '0'.
 	 */
@@ -622,7 +685,7 @@ class Redirect extends Model {
 	/**
 	 * Drops every cached redirect lookup and resyncs the has-active flag.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return void
 	 */
@@ -646,7 +709,7 @@ class Redirect extends Model {
 	 * flush - otherwise a restarted Redis would reset the version and resurrect pre-edit entries
 	 * that happened to still be in a second cache tier.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return int The current version.
 	 */
@@ -667,7 +730,7 @@ class Redirect extends Model {
 	 * Returns an empty string for terminal and no-redirect rows, and for a page target whose post has
 	 * since been deleted - the caller treats "no destination" as "don't redirect".
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @return string The destination URL, or '' when there isn't one.
 	 */
@@ -701,7 +764,7 @@ class Redirect extends Model {
 	 *
 	 * Returns the target untouched for non-regex rules, which have no captures.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $target Raw destination as configured.
 	 * @return string         Destination with `$n` / `${n}` replaced.
@@ -745,7 +808,7 @@ class Redirect extends Model {
 	 * hash so `/foo?utm=x` still matches an `ignore` row stored as `/foo`. When the URL has no query
 	 * the two hashes are identical and the single lookup serves both.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string        $url Raw URL.
 	 * @return Redirect|null      The matching row, or null.
@@ -769,7 +832,7 @@ class Redirect extends Model {
 	/**
 	 * Returns the active exact-match row for a source hash.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string        $hash SHA1 of the normalized URL, with or without the query.
 	 * @return Redirect|null       The matching row, or null.
@@ -795,7 +858,7 @@ class Redirect extends Model {
 	 * one emits its audit event and unlinks its logs. Used by the CLI purge commands, where
 	 * correctness matters more than the round-trip count.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  array $where Column => value conditions. Empty deletes every row.
 	 * @return int          Number of rows deleted.
@@ -828,7 +891,7 @@ class Redirect extends Model {
 	 * `require` rows include the query string so several rows can share a path with different query
 	 * requirements; every other mode hashes the path only.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $source The source column value.
 	 * @param  string $mode   ignore | preserve | require.
@@ -843,7 +906,7 @@ class Redirect extends Model {
 	/**
 	 * Fires the audit action for a row mutation and invalidates the lookup cache.
 	 *
-	 * @since 4.0.3
+	 * @since 4.0.4
 	 *
 	 * @param  string $action One of created, updated, deleted.
 	 * @param  int    $id     Affected row id.
@@ -860,7 +923,7 @@ class Redirect extends Model {
 		/**
 		 * Fires after a redirect row is created, updated or deleted.
 		 *
-		 * @since 4.0.3
+		 * @since 4.0.4
 		 *
 		 * @param string $action One of created, updated, deleted.
 		 * @param int    $id     Redirect row id.
